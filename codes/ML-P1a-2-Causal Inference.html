@@ -3234,6 +3234,23 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#the-problem" id="toc-the-problem" class="nav-link" data-scroll-target="#the-problem"><span class="header-section-number">2.1.1</span> The Problem</a></li>
   <li><a href="#the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" id="toc-the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" class="nav-link" data-scroll-target="#the-solution-double-selection-by-belloni-chernozhukov-hansen-2014"><span class="header-section-number">2.1.2</span> The Solution: Double Selection (by Belloni, Chernozhukov, Hansen, 2014)</a></li>
+  <li><a href="#demo-with-market-entry-data" id="toc-demo-with-market-entry-data" class="nav-link" data-scroll-target="#demo-with-market-entry-data"><span class="header-section-number">2.1.3</span> Demo with Market Entry Data</a>
+  <ul class="collapse">
+  <li><a href="#prepare-data" id="toc-prepare-data" class="nav-link" data-scroll-target="#prepare-data"><span class="header-section-number">2.1.3.1</span> Prepare Data</a></li>
+  <li><a href="#outcome-model" id="toc-outcome-model" class="nav-link" data-scroll-target="#outcome-model"><span class="header-section-number">2.1.3.2</span> Outcome Model</a></li>
+  <li><a href="#treatment-model" id="toc-treatment-model" class="nav-link" data-scroll-target="#treatment-model"><span class="header-section-number">2.1.3.3</span> Treatment Model</a></li>
+  <li><a href="#take-the-union" id="toc-take-the-union" class="nav-link" data-scroll-target="#take-the-union"><span class="header-section-number">2.1.3.4</span> Take the Union</a></li>
+  <li><a href="#final-model" id="toc-final-model" class="nav-link" data-scroll-target="#final-model"><span class="header-section-number">2.1.3.5</span> Final Model</a></li>
+  <li><a href="#multiple-regression-without-double-selection" id="toc-multiple-regression-without-double-selection" class="nav-link" data-scroll-target="#multiple-regression-without-double-selection"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection</a></li>
+  </ul></li>
+  <li><a href="#focus-of-comparison" id="toc-focus-of-comparison" class="nav-link" data-scroll-target="#focus-of-comparison"><span class="header-section-number">2.1.4</span> Focus of Comparison</a>
+  <ul class="collapse">
+  <li><a href="#the-treatment-effect-estimate" id="toc-the-treatment-effect-estimate" class="nav-link" data-scroll-target="#the-treatment-effect-estimate"><span class="header-section-number">2.1.4.1</span> 1. <strong>The treatment effect estimate</strong></a></li>
+  <li><a href="#standard-errors-and-confidence-intervals" id="toc-standard-errors-and-confidence-intervals" class="nav-link" data-scroll-target="#standard-errors-and-confidence-intervals"><span class="header-section-number">2.1.4.2</span> <strong>2. Standard errors and confidence intervals</strong></a></li>
+  <li><a href="#variable-inclusion-bias-naive-model" id="toc-variable-inclusion-bias-naive-model" class="nav-link" data-scroll-target="#variable-inclusion-bias-naive-model"><span class="header-section-number">2.1.4.3</span> 3. <strong>Variable inclusion bias (naive model)</strong></a></li>
+  <li><a href="#model-assumptions-and-goals" id="toc-model-assumptions-and-goals" class="nav-link" data-scroll-target="#model-assumptions-and-goals"><span class="header-section-number">2.1.4.4</span> 4. <strong>Model assumptions and goals</strong></a></li>
+  <li><a href="#should-you-trust-the-double-selection-estimate-more" id="toc-should-you-trust-the-double-selection-estimate-more" class="nav-link" data-scroll-target="#should-you-trust-the-double-selection-estimate-more"><span class="header-section-number">2.1.4.5</span> Should you trust the double selection estimate more?</a></li>
+  </ul></li>
   </ul></li>
   </ul></li>
   <li><a href="#double-machine-learning-process" id="toc-double-machine-learning-process" class="nav-link" data-scroll-target="#double-machine-learning-process"><span class="header-section-number">3</span> Double Machine Learning: Process</a>
@@ -3303,6 +3320,23 @@ window.Quarto = {
   <ul>
   <li><a href="#the-problem" id="toc-the-problem"><span class="header-section-number">2.1.1</span> The Problem</a></li>
   <li><a href="#the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" id="toc-the-solution-double-selection-by-belloni-chernozhukov-hansen-2014"><span class="header-section-number">2.1.2</span> The Solution: Double Selection (by Belloni, Chernozhukov, Hansen, 2014)</a></li>
+  <li><a href="#demo-with-market-entry-data" id="toc-demo-with-market-entry-data"><span class="header-section-number">2.1.3</span> Demo with Market Entry Data</a>
+  <ul>
+  <li><a href="#prepare-data" id="toc-prepare-data"><span class="header-section-number">2.1.3.1</span> Prepare Data</a></li>
+  <li><a href="#outcome-model" id="toc-outcome-model"><span class="header-section-number">2.1.3.2</span> Outcome Model</a></li>
+  <li><a href="#treatment-model" id="toc-treatment-model"><span class="header-section-number">2.1.3.3</span> Treatment Model</a></li>
+  <li><a href="#take-the-union" id="toc-take-the-union"><span class="header-section-number">2.1.3.4</span> Take the Union</a></li>
+  <li><a href="#final-model" id="toc-final-model"><span class="header-section-number">2.1.3.5</span> Final Model</a></li>
+  <li><a href="#multiple-regression-without-double-selection" id="toc-multiple-regression-without-double-selection"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection</a></li>
+  </ul></li>
+  <li><a href="#focus-of-comparison" id="toc-focus-of-comparison"><span class="header-section-number">2.1.4</span> Focus of Comparison</a>
+  <ul>
+  <li><a href="#the-treatment-effect-estimate" id="toc-the-treatment-effect-estimate"><span class="header-section-number">2.1.4.1</span> 1. <strong>The treatment effect estimate</strong></a></li>
+  <li><a href="#standard-errors-and-confidence-intervals" id="toc-standard-errors-and-confidence-intervals"><span class="header-section-number">2.1.4.2</span> <strong>2. Standard errors and confidence intervals</strong></a></li>
+  <li><a href="#variable-inclusion-bias-naive-model" id="toc-variable-inclusion-bias-naive-model"><span class="header-section-number">2.1.4.3</span> 3. <strong>Variable inclusion bias (naive model)</strong></a></li>
+  <li><a href="#model-assumptions-and-goals" id="toc-model-assumptions-and-goals"><span class="header-section-number">2.1.4.4</span> 4. <strong>Model assumptions and goals</strong></a></li>
+  <li><a href="#should-you-trust-the-double-selection-estimate-more" id="toc-should-you-trust-the-double-selection-estimate-more"><span class="header-section-number">2.1.4.5</span> Should you trust the double selection estimate more?</a></li>
+  </ul></li>
   </ul></li>
   </ul></li>
   <li><a href="#double-machine-learning-process" id="toc-double-machine-learning-process"><span class="header-section-number">3</span> Double Machine Learning: Process</a>
@@ -3347,7 +3381,7 @@ window.Quarto = {
 <p><strong>Double selection</strong> is a method used in <strong>causal inference</strong> to estimate the effect of a treatment (or policy, intervention, etc.) when you’re working with <strong>high-dimensional covariates</strong> — typically when the number of potential control variables is large, possibly larger than the number of observations. It’s especially relevant when you’re using <strong>machine learning techniques like LASSO</strong> for variable selection.</p>
 <section id="the-problem" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="the-problem"><span class="header-section-number">2.1.1</span> The Problem</h3>
-<p>In causal inference, you often want to estimate the effect of a treatment DDD on an outcome YYY, adjusting for a set of covariates XXX that may confound the relationship.</p>
+<p>In causal inference, you often want to estimate the effect of a treatment D on an outcome Y, adjusting for a set of covariates X that may confound the relationship.</p>
 <p>But:</p>
 <ul>
 <li><p>In high-dimensional settings, <strong>you can’t just include all</strong> X.</p></li>
@@ -3434,6 +3468,11 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+</section>
+<section id="demo-with-market-entry-data" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="demo-with-market-entry-data"><span class="header-section-number">2.1.3</span> Demo with Market Entry Data</h3>
+<section id="prepare-data" class="level4" data-number="2.1.3.1">
+<h4 data-number="2.1.3.1" class="anchored" data-anchor-id="prepare-data"><span class="header-section-number">2.1.3.1</span> Prepare Data</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dataset  <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;mentry.csv&quot;</span>)) <span class="co">#line 500</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dataset) <span class="co"># 407 30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3443,17 +3482,21 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span> </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="co"># 407 24</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 407  24</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>EntryTimes</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>dev_operator</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Now Train Lasso for Entry Times (Y_vec)</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>cv.lasso.y <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, y_vec, <span class="at">alpha=</span><span class="dv">1</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>cv.lasso.y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>dev_operator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="outcome-model" class="level4" data-number="2.1.3.2">
+<h4 data-number="2.1.3.2" class="anchored" data-anchor-id="outcome-model"><span class="header-section-number">2.1.3.2</span> Outcome Model</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now Train Lasso for Entry Times (Y_vec)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cv.lasso.y <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, y_vec, <span class="at">alpha=</span><span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cv.lasso.y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:  cv.glmnet(x = x, y = y_vec, alpha = 1) 
@@ -3461,53 +3504,67 @@ Call:  cv.glmnet(x = x, y = y_vec, alpha = 1)
 Measure: Mean-Squared Error 
 
     Lambda Index Measure     SE Nonzero
-min 0.1214    32   3.835 0.3613      10
-1se 0.4900    17   4.195 0.3805       4</code></pre>
+min 0.0525    41   3.885 0.2141      14
+1se 0.3707    20   4.079 0.2612       4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>lasso.y <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, y_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.y)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pulling coefficients </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso.y) <span class="sc">|&gt;</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;term&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">estimate =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="co"># 25 terms including those with 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>lasso.y <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, y_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.y)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Pulling coefficients </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso.y) <span class="sc">|&gt;</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;term&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">estimate =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()  <span class="co"># 25 terms including those with 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 25 × 2
-   term            estimate
-   &lt;chr&gt;              &lt;dbl&gt;
- 1 (Intercept)  10.7       
- 2 EconR         0         
- 3 Admin         0.00000245
- 4 Demographics  0.00388   
- 5 Geographic    0         
- 6 HHI           0.0594    
- 7 Pop_mill      0         
- 8 GDPcap       -0.00125   
- 9 HDI          -2.64      
-10 PopDen        0         
+   term         estimate
+   &lt;chr&gt;           &lt;dbl&gt;
+ 1 (Intercept)  10.9    
+ 2 EconR         0.0515 
+ 3 Admin         0.00391
+ 4 Demographics  0.0122 
+ 5 Geographic    0      
+ 6 HHI           0.0858 
+ 7 Pop_mill      0      
+ 8 GDPcap        0      
+ 9 HDI          -2.10   
+10 PopDen        0      
 # ℹ 15 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or use tidy() early to avoid sparse matrix</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.y, <span class="at">lambda =</span> bestlam.y )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or use tidy() early to avoid sparse matrix</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.y, <span class="at">lambda =</span> bestlam.y )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 11 × 5
-   term            step    estimate lambda dev.ratio
-   &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)        1 10.7         0.121     0.661
- 2 Admin              1  0.00000245  0.121     0.661
- 3 Demographics       1  0.00388     0.121     0.661
- 4 HHI                1  0.0594      0.121     0.661
- 5 GDPcap             1 -0.00125     0.121     0.661
- 6 HDI                1 -2.64        0.121     0.661
- 7 OverallGlob        1 -0.0452      0.121     0.661
- 8 GIIInput           1 -0.0407      0.121     0.661
- 9 LinguisticFrac     1  0.194       0.121     0.661
-10 ReligiousFrac      1  0.291       0.121     0.661
-11 G3                 1  2.99        0.121     0.661</code></pre>
+<pre><code># A tibble: 15 × 5
+   term            step estimate lambda dev.ratio
+   &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+ 1 (Intercept)        1 10.9     0.0525     0.670
+ 2 EconR              1  0.0515  0.0525     0.670
+ 3 Admin              1  0.00391 0.0525     0.670
+ 4 Demographics       1  0.0122  0.0525     0.670
+ 5 HHI                1  0.0858  0.0525     0.670
+ 6 HDI                1 -2.10    0.0525     0.670
+ 7 GINI               1 -0.00743 0.0525     0.670
+ 8 EconGlob           1 -0.00113 0.0525     0.670
+ 9 OverallGlob        1 -0.0470  0.0525     0.670
+10 GIIInput           1 -0.0505  0.0525     0.670
+11 GIIOutput          1 -0.00164 0.0525     0.670
+12 CL                 1 -0.0700  0.0525     0.670
+13 LinguisticFrac     1  0.341   0.0525     0.670
+14 ReligiousFrac      1  0.557   0.0525     0.670
+15 G3                 1  3.09    0.0525     0.670</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting variables</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>selected_y <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.y) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;term&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">estimate =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span>  <span class="co"># 25 terms including those with 0</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span><span class="dv">0</span>, term <span class="sc">!=</span> <span class="st">&quot;(Intercept)&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(term)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>&gt; tidy(lasso.y, lambda = bestlam.y )
 # A tibble: 19 × 5
@@ -3532,10 +3589,13 @@ min 0.1214    32   3.835 0.3613      10
 17 LinguisticFrac     1  0.359     0.0227     0.676
 18 ReligiousFrac      1  0.703     0.0227     0.676
 19 G3                 1  3.10      0.0227     0.676</code></pre>
+</section>
+<section id="treatment-model" class="level4" data-number="2.1.3.3">
+<h4 data-number="2.1.3.3" class="anchored" data-anchor-id="treatment-model"><span class="header-section-number">2.1.3.3</span> Treatment Model</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Lasso for treatment : Operator type (1 = operator from developed countries, 0= developing countries)</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cv.lasso.d <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, d_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>cv.lasso.d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Lasso for treatment : Operator type (1 = operator from developed countries, 0= developing countries)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cv.lasso.d <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, d_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>cv.lasso.d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:  cv.glmnet(x = x, y = d_vec, alpha = 1, family = &quot;binomial&quot;) 
@@ -3543,62 +3603,71 @@ Call:  cv.glmnet(x = x, y = d_vec, alpha = 1, family = &quot;binomial&quot;)
 Measure: Binomial Deviance 
 
      Lambda Index Measure      SE Nonzero
-min 0.00302    46  0.9265 0.06702      20
-1se 0.03392    20  0.9898 0.04318       7</code></pre>
+min 0.00331    45  0.9329 0.07603      20
+1se 0.04086    18  1.0049 0.04524       7</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, d_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract coefficient</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso.d) <span class="sc">|&gt;</span> </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;term&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">estimate =</span> <span class="st">&quot;s0&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="co"># 24 x variables + intercept = 25 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, d_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract coefficient</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso.d) <span class="sc">|&gt;</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;term&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">estimate =</span> <span class="st">&quot;s0&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="co"># 24 x variables + intercept = 25 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 25 × 2
    term          estimate
    &lt;chr&gt;            &lt;dbl&gt;
- 1 (Intercept)  -5.00    
+ 1 (Intercept)  -5.04    
  2 EconR         0       
- 3 Admin         0.0566  
- 4 Demographics  0.181   
- 5 Geographic    0.0634  
- 6 HHI          -0.00518 
- 7 Pop_mill     -0.000425
- 8 GDPcap        0.0431  
- 9 HDI          -3.33    
-10 PopDen        0.000160
+ 3 Admin         0.0559  
+ 4 Demographics  0.179   
+ 5 Geographic    0.0624  
+ 6 HHI          -0.00373 
+ 7 Pop_mill     -0.000436
+ 8 GDPcap        0.0416  
+ 9 HDI          -3.19    
+10 PopDen        0.000142
 # ℹ 15 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.d, <span class="at">lambda =</span> bestlam.d) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.d, <span class="at">lambda =</span> bestlam.d) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 5
    term            step  estimate  lambda dev.ratio
    &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)        1 -5.00     0.00302     0.359
- 2 Admin              1  0.0566   0.00302     0.359
- 3 Demographics       1  0.181    0.00302     0.359
- 4 Geographic         1  0.0634   0.00302     0.359
- 5 HHI                1 -0.00518  0.00302     0.359
- 6 Pop_mill           1 -0.000425 0.00302     0.359
- 7 GDPcap             1  0.0431   0.00302     0.359
- 8 HDI                1 -3.33     0.00302     0.359
- 9 PopDen             1  0.000160 0.00302     0.359
-10 Urbanization       1  0.00831  0.00302     0.359
-11 GINI               1  0.0146   0.00302     0.359
-12 EconGlob           1  0.0207   0.00302     0.359
-13 SocialGlob         1  0.0598   0.00302     0.359
-14 PoliticalGlob      1  0.0208   0.00302     0.359
-15 GIIInput           1 -0.0282   0.00302     0.359
-16 PR                 1 -0.0292   0.00302     0.359
-17 CL                 1 -0.137    0.00302     0.359
-18 EthnicFrac         1  0.925    0.00302     0.359
-19 LinguisticFrac     1 -0.791    0.00302     0.359
-20 ReligiousFrac      1 -0.509    0.00302     0.359
-21 G3                 1  0.802    0.00302     0.359</code></pre>
+ 1 (Intercept)        1 -5.04     0.00331     0.358
+ 2 Admin              1  0.0559   0.00331     0.358
+ 3 Demographics       1  0.179    0.00331     0.358
+ 4 Geographic         1  0.0624   0.00331     0.358
+ 5 HHI                1 -0.00373  0.00331     0.358
+ 6 Pop_mill           1 -0.000436 0.00331     0.358
+ 7 GDPcap             1  0.0416   0.00331     0.358
+ 8 HDI                1 -3.19     0.00331     0.358
+ 9 PopDen             1  0.000142 0.00331     0.358
+10 Urbanization       1  0.00810  0.00331     0.358
+11 GINI               1  0.0140   0.00331     0.358
+12 EconGlob           1  0.0200   0.00331     0.358
+13 SocialGlob         1  0.0585   0.00331     0.358
+14 PoliticalGlob      1  0.0205   0.00331     0.358
+15 GIIInput           1 -0.0252   0.00331     0.358
+16 PR                 1 -0.0353   0.00331     0.358
+17 CL                 1 -0.126    0.00331     0.358
+18 EthnicFrac         1  0.910    0.00331     0.358
+19 LinguisticFrac     1 -0.770    0.00331     0.358
+20 ReligiousFrac      1 -0.505    0.00331     0.358
+21 G3                 1  0.789    0.00331     0.358</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting variables</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>selected_d <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.d) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;term&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">estimate =</span> <span class="st">&quot;s0&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span>  <span class="co"># 25 terms including those with 0</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span><span class="dv">0</span>, term <span class="sc">!=</span> <span class="st">&quot;(Intercept)&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(term)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>&gt; tidy(lasso.d, lambda = bestlam.d)
 # A tibble: 21 × 5
@@ -3625,21 +3694,50 @@ min 0.00302    46  0.9265 0.06702      20
 19 LinguisticFrac     1 -0.770    0.00331     0.358**
 20 ReligiousFrac      1 -0.505    0.00331     0.358**
 21 G3                 1  0.789    0.00331     0.358**</code></pre>
+</section>
+<section id="take-the-union" class="level4" data-number="2.1.3.4">
+<h4 data-number="2.1.3.4" class="anchored" data-anchor-id="take-the-union"><span class="header-section-number">2.1.3.4</span> Take the Union</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>selected_y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] &quot;EconR&quot;          &quot;Admin&quot;          &quot;Demographics&quot;   &quot;HHI&quot;           
+ [5] &quot;HDI&quot;            &quot;GINI&quot;           &quot;EconGlob&quot;       &quot;OverallGlob&quot;   
+ [9] &quot;GIIInput&quot;       &quot;GIIOutput&quot;      &quot;CL&quot;             &quot;LinguisticFrac&quot;
+[13] &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>selected_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] &quot;Admin&quot;          &quot;Demographics&quot;   &quot;Geographic&quot;     &quot;HHI&quot;           
+ [5] &quot;Pop_mill&quot;       &quot;GDPcap&quot;         &quot;HDI&quot;            &quot;PopDen&quot;        
+ [9] &quot;Urbanization&quot;   &quot;GINI&quot;           &quot;EconGlob&quot;       &quot;SocialGlob&quot;    
+[13] &quot;PoliticalGlob&quot;  &quot;GIIInput&quot;       &quot;PR&quot;             &quot;CL&quot;            
+[17] &quot;EthnicFrac&quot;     &quot;LinguisticFrac&quot; &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>selected_union <span class="ot">=</span> <span class="fu">union</span>(selected_y, selected_d)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare dataset for final model</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>x_selected <span class="ot">&lt;-</span> dataset[, selected_union]</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>data_final <span class="ot">=</span> <span class="fu">cbind</span>(<span class="at">EntryTimes =</span> y_vec, <span class="at">dev_operator =</span> d_vec, x_selected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li><p>List of variables picked from either of the two Lasso regressions</p>
 <ul>
-<li><p>19 or 21</p></li>
+<li><p>18 or 20</p></li>
 <li><p>Union of the sets: 23 variables –&gt; <code>Admin + Demographics + Geographic + HHI + Pop_mill + GDPcap + HDI + PopDen + Urbanization + GINI + EconGlob + SocialGlob + PoliticalGlob + GIIInput + PR + CL + EthnicFrac + LinguisticFrac + G3 + EconR + OverallGlob + GIIOutput + ReligiousFrac</code></p>
 <ul>
-<li>23 out of 24 variables: all but one was selected.</li>
+<li>23 out of 24 variables: all but one were selected.</li>
 </ul></li>
 </ul></li>
 </ul>
+</section>
+<section id="final-model" class="level4" data-number="2.1.3.5">
+<h4 data-number="2.1.3.5" class="anchored" data-anchor-id="final-model"><span class="header-section-number">2.1.3.5</span> Final Model</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression model with doublly selected controls</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(EntryTimes <span class="sc">~</span> dev_operator <span class="sc">+</span> Admin <span class="sc">+</span> Demographics <span class="sc">+</span> HHI <span class="sc">+</span> GDPcap <span class="sc">+</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>     HDI <span class="sc">+</span> GIIInput <span class="sc">+</span> LinguisticFrac <span class="sc">+</span> ReligiousFrac <span class="sc">+</span> G3, <span class="at">data =</span> dataset) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression model with doubly selected: selecting variables arbitrarily. This could have ommitted variable bias.</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>lm_final_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(EntryTimes <span class="sc">~</span> dev_operator <span class="sc">+</span> Admin <span class="sc">+</span> Demographics <span class="sc">+</span> HHI <span class="sc">+</span> GDPcap <span class="sc">+</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>     HDI <span class="sc">+</span> GIIInput <span class="sc">+</span> LinguisticFrac <span class="sc">+</span> ReligiousFrac <span class="sc">+</span> G3, <span class="at">data =</span> dataset) </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_final_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -3671,20 +3769,15 @@ Residual standard error: 1.921 on 396 degrees of freedom
 Multiple R-squared:  0.6663,    Adjusted R-squared:  0.6579 
 F-statistic: 79.07 on 10 and 396 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">|&gt;</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(EntryTimes <span class="sc">~</span> dev_operator <span class="sc">+</span> Admin <span class="sc">+</span> Demographics <span class="sc">+</span> Geographic <span class="sc">+</span> HHI <span class="sc">+</span> Pop_mill <span class="sc">+</span> </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>       GDPcap <span class="sc">+</span> HDI <span class="sc">+</span> PopDen <span class="sc">+</span> Urbanization <span class="sc">+</span> GINI <span class="sc">+</span> EconGlob <span class="sc">+</span> SocialGlob <span class="sc">+</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>       PoliticalGlob <span class="sc">+</span> GIIInput <span class="sc">+</span> PR <span class="sc">+</span> CL <span class="sc">+</span> EthnicFrac <span class="sc">+</span> LinguisticFrac <span class="sc">+</span> G3 <span class="sc">+</span> EconR <span class="sc">+</span> </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>       OverallGlob <span class="sc">+</span> GIIOutput <span class="sc">+</span> ReligiousFrac, <span class="at">data =</span> _) <span class="sc">|&gt;</span> </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct way: Taking the entire union of non-zero coefficients from the outcome and treatment models, even if some look &quot;less important&quot;.</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>lm_final_union <span class="ot">&lt;-</span> data_final <span class="sc">|&gt;</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(EntryTimes <span class="sc">~</span> dev_operator <span class="sc">+</span> ., <span class="at">data =</span> _) </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_final_union)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = EntryTimes ~ dev_operator + Admin + Demographics + 
-    Geographic + HHI + Pop_mill + GDPcap + HDI + PopDen + Urbanization + 
-    GINI + EconGlob + SocialGlob + PoliticalGlob + GIIInput + 
-    PR + CL + EthnicFrac + LinguisticFrac + G3 + EconR + OverallGlob + 
-    GIIOutput + ReligiousFrac, data = dataset)
+lm(formula = EntryTimes ~ dev_operator + ., data = data_final)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -3694,29 +3787,29 @@ Coefficients:
                  Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    11.0434033  2.3028386   4.796 2.33e-06 ***
 dev_operator   -0.6533221  0.2479690  -2.635  0.00876 ** 
+EconR           0.4248744  0.2936145   1.447  0.14870    
 Admin           0.0120256  0.0067334   1.786  0.07490 .  
 Demographics    0.0364246  0.0186279   1.955  0.05127 .  
-Geographic      0.0069494  0.0292153   0.238  0.81211    
 HHI             0.1410283  0.0529181   2.665  0.00802 ** 
-Pop_mill        0.0004272  0.0007817   0.547  0.58502    
-GDPcap          0.0045528  0.0128076   0.355  0.72243    
 HDI            -3.1894826  1.8282592  -1.745  0.08187 .  
-PopDen          0.0001326  0.0001977   0.670  0.50300    
-Urbanization    0.0213218  0.0080977   2.633  0.00880 ** 
 GINI           -0.0247090  0.0157713  -1.567  0.11801    
 EconGlob        0.0263109  0.0220095   1.195  0.23266    
+OverallGlob    -0.1330403  0.0596612  -2.230  0.02633 *  
+GIIInput       -0.0574334  0.0258236  -2.224  0.02673 *  
+GIIOutput      -0.0310697  0.0194885  -1.594  0.11171    
+CL             -0.3689508  0.1969042  -1.874  0.06173 .  
+LinguisticFrac  0.6104116  0.6116430   0.998  0.31892    
+ReligiousFrac   0.7946179  0.5169745   1.537  0.12511    
+G3              3.1656230  0.2255165  14.037  &lt; 2e-16 ***
+Geographic      0.0069494  0.0292153   0.238  0.81211    
+Pop_mill        0.0004272  0.0007817   0.547  0.58502    
+GDPcap          0.0045528  0.0128076   0.355  0.72243    
+PopDen          0.0001326  0.0001977   0.670  0.50300    
+Urbanization    0.0213218  0.0080977   2.633  0.00880 ** 
 SocialGlob      0.0468362  0.0252978   1.851  0.06488 .  
 PoliticalGlob   0.0255285  0.0200828   1.271  0.20444    
-GIIInput       -0.0574334  0.0258236  -2.224  0.02673 *  
 PR              0.0874588  0.1582236   0.553  0.58076    
-CL             -0.3689508  0.1969042  -1.874  0.06173 .  
 EthnicFrac     -0.4434659  0.7249098  -0.612  0.54106    
-LinguisticFrac  0.6104116  0.6116430   0.998  0.31892    
-G3              3.1656230  0.2255165  14.037  &lt; 2e-16 ***
-EconR           0.4248744  0.2936145   1.447  0.14870    
-OverallGlob    -0.1330403  0.0596612  -2.230  0.02633 *  
-GIIOutput      -0.0310697  0.0194885  -1.594  0.11171    
-ReligiousFrac   0.7946179  0.5169745   1.537  0.12511    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
@@ -3724,9 +3817,60 @@ Residual standard error: 1.894 on 382 degrees of freedom
 Multiple R-squared:  0.687, Adjusted R-squared:  0.6674 
 F-statistic: 34.94 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run simple multiple regression without DML to check results later</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a> x1 <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">summary</span>(<span class="fu">lm</span>(EntryTimes <span class="sc">~</span> ., <span class="at">data=</span>x1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>&gt; summary(lm_final_union)
+
+Call:
+lm(formula = EntryTimes ~ dev_operator + ., data = data_final)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.8747 -1.1188 -0.1196  1.0907  6.3562 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    11.0434033  2.3028386   4.796 2.33e-06 ***
+dev_operator   -0.6533221  0.2479690  -2.635  0.00876 ** 
+EconR           0.4248744  0.2936145   1.447  0.14870    
+Admin           0.0120256  0.0067334   1.786  0.07490 .  
+Demographics    0.0364246  0.0186279   1.955  0.05127 .  
+HHI             0.1410283  0.0529181   2.665  0.00802 ** 
+Pop_mill        0.0004272  0.0007817   0.547  0.58502    
+HDI            -3.1894826  1.8282592  -1.745  0.08187 .  
+PopDen          0.0001326  0.0001977   0.670  0.50300    
+Urbanization    0.0213218  0.0080977   2.633  0.00880 ** 
+GINI           -0.0247090  0.0157713  -1.567  0.11801    
+EconGlob        0.0263109  0.0220095   1.195  0.23266    
+PoliticalGlob   0.0255285  0.0200828   1.271  0.20444    
+OverallGlob    -0.1330403  0.0596612  -2.230  0.02633 *  
+GIIInput       -0.0574334  0.0258236  -2.224  0.02673 *  
+GIIOutput      -0.0310697  0.0194885  -1.594  0.11171    
+CL             -0.3689508  0.1969042  -1.874  0.06173 .  
+EthnicFrac     -0.4434659  0.7249098  -0.612  0.54106    
+LinguisticFrac  0.6104116  0.6116430   0.998  0.31892    
+ReligiousFrac   0.7946179  0.5169745   1.537  0.12511    
+G3              3.1656230  0.2255165  14.037  &lt; 2e-16 ***
+Geographic      0.0069494  0.0292153   0.238  0.81211    
+GDPcap          0.0045528  0.0128076   0.355  0.72243    
+SocialGlob      0.0468362  0.0252978   1.851  0.06488 .  
+PR              0.0874588  0.1582236   0.553  0.58076    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.894 on 382 degrees of freedom
+Multiple R-squared:  0.687, Adjusted R-squared:  0.6674 
+F-statistic: 34.94 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
+</section>
+<section id="multiple-regression-without-double-selection" class="level4" data-number="2.1.3.6">
+<h4 data-number="2.1.3.6" class="anchored" data-anchor-id="multiple-regression-without-double-selection"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run simple multiple regression without DML to check results later</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>lm_without_ds <span class="ot">&lt;-</span> <span class="fu">lm</span>(EntryTimes <span class="sc">~</span> ., <span class="at">data=</span>x1)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_without_ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -3771,31 +3915,15 @@ Multiple R-squared:  0.6888,    Adjusted R-squared:  0.6692
 F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<pre><code>Call:
-lm(formula = EntryTimes ~ dev_operator + Admin + Demographics + 
-    HHI + GDPcap + HDI + GIIInput + LinguisticFrac + ReligiousFrac + 
-    G3, data = dataset)
+<pre><code>&gt; summary(lm_without_ds)
+
+Call:
+lm(formula = EntryTimes ~ ., data = x1)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5.6068 -1.2014 -0.0755  1.1787  6.0042 
+-6.0178 -1.1964 -0.1081  1.1077  6.3878 
 
-Coefficients:
-                Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)     9.601572   0.834724  11.503  &lt; 2e-16 ***
-dev_operator   -0.709594   0.230088  -3.084  0.00219 ** 
-Admin           0.012812   0.006275   2.042  0.04182 *  
-Demographics    0.033636   0.017590   1.912  0.05657 .  
-HHI             0.115617   0.046208   2.502  0.01275 *  
-GDPcap          0.002008   0.011634   0.173  0.86307    
-HDI            -3.535464   1.185223  -2.983  0.00303 ** 
-GIIInput       -0.083246   0.018101  -4.599 5.72e-06 ***
-LinguisticFrac  0.467672   0.447942   1.044  0.29710    
-ReligiousFrac   0.899635   0.502719   1.790  0.07429 .  
-G3              3.216842   0.221957  14.493  &lt; 2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
-<pre><code>&gt;  summary(lm(EntryTimes ~ ., data=x1))
 Coefficients:
                  Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    13.5618765  1.5727439   8.623  &lt; 2e-16 ***
@@ -3824,7 +3952,96 @@ LinguisticFrac  0.6534741  0.6105783   1.070  0.28518
 ReligiousFrac   0.7696271  0.5149768   1.494  0.13587    
 G3              3.1441466  0.2231254  14.091  &lt; 2e-16 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.889 on 382 degrees of freedom
+Multiple R-squared:  0.6888,    Adjusted R-squared:  0.6692 
+F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
+</section>
+</section>
+<section id="focus-of-comparison" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="focus-of-comparison"><span class="header-section-number">2.1.4</span> Focus of Comparison</h3>
+<section id="the-treatment-effect-estimate" class="level4" data-number="2.1.4.1">
+<h4 data-number="2.1.4.1" class="anchored" data-anchor-id="the-treatment-effect-estimate"><span class="header-section-number">2.1.4.1</span> 1. <strong>The treatment effect estimate</strong></h4>
+<ul>
+<li><p>Yes — this is the key quantity of interest.</p></li>
+<li><p>You want to compare:</p></li>
+</ul>
+<pre><code>-    The **magnitude**
+
+-    The **direction**
+
+-    The **statistical significance**</code></pre>
+<p>→ Ask: <em>Does the double selection model confirm, reduce, or reverse the naive estimate?</em></p>
+</section>
+<section id="standard-errors-and-confidence-intervals" class="level4" data-number="2.1.4.2">
+<h4 data-number="2.1.4.2" class="anchored" data-anchor-id="standard-errors-and-confidence-intervals"><span class="header-section-number">2.1.4.2</span> <strong>2. Standard errors and confidence intervals</strong></h4>
+<ul>
+<li><p>LASSO helps reduce noise and variance by excluding irrelevant variables.</p></li>
+<li><p>Double selection often leads to <strong>more stable inference</strong>, especially in high-dimensional settings.</p></li>
+</ul>
+<p>→ Are the confidence intervals wider or narrower in one model?</p>
+</section>
+<section id="variable-inclusion-bias-naive-model" class="level4" data-number="2.1.4.3">
+<h4 data-number="2.1.4.3" class="anchored" data-anchor-id="variable-inclusion-bias-naive-model"><span class="header-section-number">2.1.4.3</span> 3. <strong>Variable inclusion bias (naive model)</strong></h4>
+<p>The naive model might:</p>
+<ul>
+<li><p>Include irrelevant variables → <strong>overfitting</strong>, inflated SEs, unstable estimates.</p></li>
+<li><p>Omit key confounders → <strong>biased treatment effect</strong>.</p></li>
+</ul>
+<p>→ The double selection model is explicitly designed to <strong>select only variables that matter</strong>, reducing both issues.</p>
+</section>
+<section id="model-assumptions-and-goals" class="level4" data-number="2.1.4.4">
+<h4 data-number="2.1.4.4" class="anchored" data-anchor-id="model-assumptions-and-goals"><span class="header-section-number">2.1.4.4</span> 4. <strong>Model assumptions and goals</strong></h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Naive Regression</th>
+<th>Double Selection</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Assumes correct covariate set</td>
+<td>✅ Needed</td>
+<td>❌ Relaxed (uses LASSO to choose)</td>
+</tr>
+<tr class="even">
+<td>Risk of omitted variable bias</td>
+<td>High if covariates are mischosen</td>
+<td>Low (by design)</td>
+</tr>
+<tr class="odd">
+<td>Good for prediction?</td>
+<td>Sometimes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Good for causal inference?</td>
+<td>❌ Not reliable unless fully specified</td>
+<td>✅ Designed for causal inference</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="should-you-trust-the-double-selection-estimate-more" class="level4" data-number="2.1.4.5">
+<h4 data-number="2.1.4.5" class="anchored" data-anchor-id="should-you-trust-the-double-selection-estimate-more"><span class="header-section-number">2.1.4.5</span> Should you trust the double selection estimate more?</h4>
+<blockquote class="blockquote">
+<p><strong>Yes</strong>, <em>if your goal is causal inference</em>, the double selection estimate is more trustworthy.</p>
+</blockquote>
+<p>Why?</p>
+<ul>
+<li><p>It avoids omitted variable bias by including any variable predictive of either treatment or outcome.</p></li>
+<li><p>It excludes irrelevant noise variables.</p></li>
+<li><p>It’s <em>grounded in strong statistical theory</em> for <strong>valid post-selection inference</strong>.</p></li>
+</ul>
+</section>
 </section>
 </section>
 </section>
@@ -3877,50 +4094,50 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 <section id="demo" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="demo"><span class="header-section-number">3.2.1</span> Demo</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="co"># [1] 407  23</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="co"># [1] 407  23</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 407  23</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>y_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>EntryTimes</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>dev_operator</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the sample into training (S1) and estimation sample (S2)</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>S1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)), <span class="at">size =</span> <span class="fu">nrow</span>(x)<span class="sc">/</span><span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">sort</span>()</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>S2 <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)),S1)</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Now Train Lasso for Entry Times (Y_vec)</span></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>cv.lasso.y <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>)</span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>lasso.y <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.y)</span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Lasso for treatment : Operator type (1 = operator from developed countries, 0= developing countries)</span></span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>cv.lasso.d <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Make prediction in sample S2, estimation sample</span></span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>predict.y <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.y, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.y)</span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>predict.d <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.d, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.d, <span class="at">type=</span><span class="st">&quot;response&quot;</span>) <span class="co"># predicts probabilities</span></span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the residuals</span></span>
-<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>resid.y <span class="ot">&lt;-</span> y_vec[S2]<span class="sc">-</span>predict.y</span>
-<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>resid.d <span class="ot">&lt;-</span> d_vec[S2]<span class="sc">-</span>predict.d</span>
-<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a><span class="co"># DML Estimator</span></span>
-<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resid.y<span class="sc">*</span>resid.d)<span class="sc">/</span><span class="fu">mean</span>(resid.d<span class="sc">*</span>resid.d) <span class="co"># Average Treatment Effect</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>y_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>EntryTimes</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>dev_operator</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the sample into training (S1) and estimation sample (S2)</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>S1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)), <span class="at">size =</span> <span class="fu">nrow</span>(x)<span class="sc">/</span><span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">sort</span>()</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>S2 <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)),S1)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Now Train Lasso for Entry Times (Y_vec)</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>cv.lasso.y <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>lasso.y <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.y)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Lasso for treatment : Operator type (1 = operator from developed countries, 0= developing countries)</span></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>cv.lasso.d <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Make prediction in sample S2, estimation sample</span></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>predict.y <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.y, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.y)</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>predict.d <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.d, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.d, <span class="at">type=</span><span class="st">&quot;response&quot;</span>) <span class="co"># predicts probabilities</span></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the residuals</span></span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>resid.y <span class="ot">&lt;-</span> y_vec[S2]<span class="sc">-</span>predict.y</span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a>resid.d <span class="ot">&lt;-</span> d_vec[S2]<span class="sc">-</span>predict.d</span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a><span class="co"># DML Estimator</span></span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resid.y<span class="sc">*</span>resid.d)<span class="sc">/</span><span class="fu">mean</span>(resid.d<span class="sc">*</span>resid.d) <span class="co"># Average Treatment Effect</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.4862118</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(resid.y <span class="sc">~</span> resid.d) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="co">#  regressing residuals of the outcome Y on the residuals of the treatment D</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(resid.y <span class="sc">~</span> resid.d) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="co">#  regressing residuals of the outcome Y on the residuals of the treatment D</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic p.value
@@ -3976,70 +4193,70 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 <li><p>You want valid <strong>statistical inference</strong> (standard errors, p-values).</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 407  23</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>y_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>EntryTimes</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>dev_operator</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the sample into training (S1) and estimation sample (S2)</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1278</span>)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>S1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)), <span class="at">size =</span> <span class="fu">nrow</span>(x)<span class="sc">/</span><span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">sort</span>()</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>S2 <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)),S1)</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>DML_estimator <span class="ot">&lt;-</span>  <span class="cf">function</span>(data, S1, S2) {</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create x and y matrix</span></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.matrix</span>() <span class="ot">-&gt;</span> x</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>y_vec <span class="ot">&lt;-</span> data<span class="sc">$</span>EntryTimes</span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> data<span class="sc">$</span>dev_operator</span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Now Train Lasso for Entry Times (Y_vec)</span></span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>cv.lasso.y <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>)</span>
-<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
-<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>lasso.y <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.y)</span>
-<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Lasso for treatment : Operator type (1 = operator from developed countries, 0= developing countries)</span></span>
-<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>cv.lasso.d <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
-<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Make prediction in sample S2, estimation sample</span></span>
-<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>predict.y <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.y, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.y)</span>
-<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>predict.d <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.d, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.d, <span class="at">type=</span><span class="st">&quot;response&quot;</span>) <span class="co"># predicts probabilities</span></span>
-<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the residuals</span></span>
-<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>resid.y <span class="ot">&lt;-</span> y_vec[S2]<span class="sc">-</span>predict.y</span>
-<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a>resid.d <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(d_vec[S2])<span class="sc">-</span>predict.d</span>
-<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a><span class="co"># DML Estimator</span></span>
-<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resid.y<span class="sc">*</span>resid.d)<span class="sc">/</span><span class="fu">mean</span>(resid.d<span class="sc">*</span>resid.d) <span class="sc">%&gt;%</span></span>
-<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.)</span>
-<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb37-44"><a href="#cb37-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-45"><a href="#cb37-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a><span class="co">#DML_estimator(data=dataset, S1=S1, S2=S2)</span></span>
-<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a>DML_crossfit <span class="ot">&lt;-</span> <span class="cf">function</span>(data, S1, S2){</span>
-<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a>  est1 <span class="ot">&lt;-</span> <span class="fu">DML_estimator</span>(<span class="at">data=</span>data, <span class="at">S1=</span>S1, <span class="at">S2=</span>S2)</span>
-<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a>  est2 <span class="ot">&lt;-</span> <span class="fu">DML_estimator</span>(<span class="at">data=</span>data, <span class="at">S1=</span>S2, <span class="at">S2=</span>S1)</span>
-<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimate=</span><span class="fl">0.50</span><span class="sc">*</span>est1 <span class="sc">+</span> <span class="fl">0.50</span><span class="sc">*</span>est2, est1, est2) <span class="sc">%&gt;%</span></span>
-<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(.)</span>
-<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb37-56"><a href="#cb37-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-57"><a href="#cb37-57" aria-hidden="true" tabindex="-1"></a><span class="fu">DML_crossfit</span>(<span class="at">data=</span>dataset, <span class="at">S1=</span>S1, <span class="at">S2=</span>S2) <span class="co"># could do so with bootstrapping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>y_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>EntryTimes</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>dev_operator</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the sample into training (S1) and estimation sample (S2)</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1278</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>S1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)), <span class="at">size =</span> <span class="fu">nrow</span>(x)<span class="sc">/</span><span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">sort</span>()</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>S2 <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)),S1)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>DML_estimator <span class="ot">&lt;-</span>  <span class="cf">function</span>(data, S1, S2) {</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create x and y matrix</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.matrix</span>() <span class="ot">-&gt;</span> x</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>y_vec <span class="ot">&lt;-</span> data<span class="sc">$</span>EntryTimes</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> data<span class="sc">$</span>dev_operator</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Now Train Lasso for Entry Times (Y_vec)</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>cv.lasso.y <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>)</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>lasso.y <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.y)</span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Lasso for treatment : Operator type (1 = operator from developed countries, 0= developing countries)</span></span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>cv.lasso.d <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Make prediction in sample S2, estimation sample</span></span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>predict.y <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.y, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.y)</span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>predict.d <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.d, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.d, <span class="at">type=</span><span class="st">&quot;response&quot;</span>) <span class="co"># predicts probabilities</span></span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the residuals</span></span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>resid.y <span class="ot">&lt;-</span> y_vec[S2]<span class="sc">-</span>predict.y</span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>resid.d <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(d_vec[S2])<span class="sc">-</span>predict.d</span>
+<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a><span class="co"># DML Estimator</span></span>
+<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resid.y<span class="sc">*</span>resid.d)<span class="sc">/</span><span class="fu">mean</span>(resid.d<span class="sc">*</span>resid.d) <span class="sc">%&gt;%</span></span>
+<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.)</span>
+<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a><span class="co">#DML_estimator(data=dataset, S1=S1, S2=S2)</span></span>
+<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a>DML_crossfit <span class="ot">&lt;-</span> <span class="cf">function</span>(data, S1, S2){</span>
+<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a>  est1 <span class="ot">&lt;-</span> <span class="fu">DML_estimator</span>(<span class="at">data=</span>data, <span class="at">S1=</span>S1, <span class="at">S2=</span>S2)</span>
+<span id="cb46-51"><a href="#cb46-51" aria-hidden="true" tabindex="-1"></a>  est2 <span class="ot">&lt;-</span> <span class="fu">DML_estimator</span>(<span class="at">data=</span>data, <span class="at">S1=</span>S2, <span class="at">S2=</span>S1)</span>
+<span id="cb46-52"><a href="#cb46-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb46-53"><a href="#cb46-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimate=</span><span class="fl">0.50</span><span class="sc">*</span>est1 <span class="sc">+</span> <span class="fl">0.50</span><span class="sc">*</span>est2, est1, est2) <span class="sc">%&gt;%</span></span>
+<span id="cb46-54"><a href="#cb46-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(.)</span>
+<span id="cb46-55"><a href="#cb46-55" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb46-56"><a href="#cb46-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-57"><a href="#cb46-57" aria-hidden="true" tabindex="-1"></a><span class="fu">DML_crossfit</span>(<span class="at">data=</span>dataset, <span class="at">S1=</span>S1, <span class="at">S2=</span>S2) <span class="co"># could do so with bootstrapping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    estimate       est1       est2
 1 -0.5346617 -0.4866136 -0.5827099</code></pre>
@@ -4188,7 +4405,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 <ul>
 <li><p>You have <strong>flexible ML models</strong> (random forest, XGBoost, neural nets),</p></li>
 <li><p>You want to protect against overfitting,</p></li>
-<li><p>You’re estimating <strong>ATE (Average Treatment Effect)</strong>, <strong>CATE (Conditioanl ATE)</strong>, or treatment effect heterogeneity.</p></li>
+<li><p>You’re estimating <strong>ATE (Average Treatment Effect)</strong>, <strong>CATEConditional ATE)</strong>, or treatment effect heterogeneity.</p></li>
 </ul></li>
 </ul>
 </section>

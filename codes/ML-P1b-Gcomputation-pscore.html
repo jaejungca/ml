@@ -3294,23 +3294,24 @@ window.Quarto = {
   <li><a href="#marginal-standardization-with-random-forest-stratified-sampling" id="toc-marginal-standardization-with-random-forest-stratified-sampling" class="nav-link" data-scroll-target="#marginal-standardization-with-random-forest-stratified-sampling"><span class="header-section-number">6</span> Marginal standardization with random forest (Stratified Sampling)</a></li>
   <li><a href="#propensity-score-inverse-probability-weighting" id="toc-propensity-score-inverse-probability-weighting" class="nav-link" data-scroll-target="#propensity-score-inverse-probability-weighting"><span class="header-section-number">7</span> Propensity score &amp; Inverse Probability weighting</a>
   <ul>
-  <li><a href="#what-is-a-propensity-score-ps" id="toc-what-is-a-propensity-score-ps" class="nav-link" data-scroll-target="#what-is-a-propensity-score-ps"><span class="header-section-number">7.1</span> What is a <strong>Propensity Score (PS)?</strong></a></li>
-  <li><a href="#what-is-inverse-probability-weighting-ipw" id="toc-what-is-inverse-probability-weighting-ipw" class="nav-link" data-scroll-target="#what-is-inverse-probability-weighting-ipw"><span class="header-section-number">7.2</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></a></li>
-  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">7.3</span> Intuition</a></li>
-  <li><a href="#estimating-propensity-scores-and-applying-ipw-in-a-model" id="toc-estimating-propensity-scores-and-applying-ipw-in-a-model" class="nav-link" data-scroll-target="#estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">7.4</span> Estimating Propensity Scores and Applying IPW in a Model</a>
+  <li><a href="#prelude" id="toc-prelude" class="nav-link" data-scroll-target="#prelude"><span class="header-section-number">7.1</span> Prelude:</a></li>
+  <li><a href="#what-is-a-propensity-score-ps" id="toc-what-is-a-propensity-score-ps" class="nav-link" data-scroll-target="#what-is-a-propensity-score-ps"><span class="header-section-number">7.2</span> What is a <strong>Propensity Score (PS)?</strong></a></li>
+  <li><a href="#what-is-inverse-probability-weighting-ipw" id="toc-what-is-inverse-probability-weighting-ipw" class="nav-link" data-scroll-target="#what-is-inverse-probability-weighting-ipw"><span class="header-section-number">7.3</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></a></li>
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">7.4</span> Intuition</a></li>
+  <li><a href="#estimating-propensity-scores-and-applying-ipw-in-a-model" id="toc-estimating-propensity-scores-and-applying-ipw-in-a-model" class="nav-link" data-scroll-target="#estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">7.5</span> Estimating Propensity Scores and Applying IPW in a Model</a>
   <ul class="collapse">
-  <li><a href="#step-1-estimate-propensity-scores" id="toc-step-1-estimate-propensity-scores" class="nav-link" data-scroll-target="#step-1-estimate-propensity-scores"><span class="header-section-number">7.4.1</span> Step 1: Estimate Propensity Scores</a></li>
-  <li><a href="#step-3-weighted-outcome-model" id="toc-step-3-weighted-outcome-model" class="nav-link" data-scroll-target="#step-3-weighted-outcome-model"><span class="header-section-number">7.4.2</span> Step 3: Weighted Outcome Model</a></li>
+  <li><a href="#step-1-estimate-propensity-scores" id="toc-step-1-estimate-propensity-scores" class="nav-link" data-scroll-target="#step-1-estimate-propensity-scores"><span class="header-section-number">7.5.1</span> Step 1: Estimate Propensity Scores</a></li>
+  <li><a href="#step-3-weighted-outcome-model" id="toc-step-3-weighted-outcome-model" class="nav-link" data-scroll-target="#step-3-weighted-outcome-model"><span class="header-section-number">7.5.2</span> Step 3: Weighted Outcome Model</a></li>
   </ul></li>
-  <li><a href="#summary-ps-vs-ipw" id="toc-summary-ps-vs-ipw" class="nav-link" data-scroll-target="#summary-ps-vs-ipw"><span class="header-section-number">7.5</span> Summary: PS vs IPW</a></li>
-  <li><a href="#when-to-use" id="toc-when-to-use" class="nav-link" data-scroll-target="#when-to-use"><span class="header-section-number">7.6</span> When to Use</a></li>
-  <li><a href="#demo-weighted-logistic-regression-model-with-sipw" id="toc-demo-weighted-logistic-regression-model-with-sipw" class="nav-link" data-scroll-target="#demo-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">7.7</span> Demo: <strong>Weighted Logistic Regression Model with SIPW</strong></a>
+  <li><a href="#summary-ps-vs-ipw" id="toc-summary-ps-vs-ipw" class="nav-link" data-scroll-target="#summary-ps-vs-ipw"><span class="header-section-number">7.6</span> Summary: PS vs IPW</a></li>
+  <li><a href="#when-to-use" id="toc-when-to-use" class="nav-link" data-scroll-target="#when-to-use"><span class="header-section-number">7.7</span> When to Use</a></li>
+  <li><a href="#demo-weighted-logistic-regression-model-with-sipw" id="toc-demo-weighted-logistic-regression-model-with-sipw" class="nav-link" data-scroll-target="#demo-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">7.8</span> Demo: <strong>Weighted Logistic Regression Model with SIPW</strong></a>
   <ul class="collapse">
-  <li><a href="#interpretation-of-coefficients" id="toc-interpretation-of-coefficients" class="nav-link" data-scroll-target="#interpretation-of-coefficients"><span class="header-section-number">7.7.1</span> Interpretation of Coefficients</a>
+  <li><a href="#interpretation-of-coefficients" id="toc-interpretation-of-coefficients" class="nav-link" data-scroll-target="#interpretation-of-coefficients"><span class="header-section-number">7.8.1</span> Interpretation of Coefficients</a>
   <ul class="collapse">
-  <li><a href="#why-use-vcovhc" id="toc-why-use-vcovhc" class="nav-link" data-scroll-target="#why-use-vcovhc"><span class="header-section-number">7.7.1.1</span> Why use <code>vcovHC</code>?</a></li>
-  <li><a href="#coefficients" id="toc-coefficients" class="nav-link" data-scroll-target="#coefficients"><span class="header-section-number">7.7.1.2</span> Coefficients</a></li>
-  <li><a href="#summary-for-reporting" id="toc-summary-for-reporting" class="nav-link" data-scroll-target="#summary-for-reporting"><span class="header-section-number">7.7.1.3</span> Summary for Reporting</a></li>
+  <li><a href="#why-use-vcovhc" id="toc-why-use-vcovhc" class="nav-link" data-scroll-target="#why-use-vcovhc"><span class="header-section-number">7.8.1.1</span> Why use <code>vcovHC</code>?</a></li>
+  <li><a href="#coefficients" id="toc-coefficients" class="nav-link" data-scroll-target="#coefficients"><span class="header-section-number">7.8.1.2</span> Coefficients</a></li>
+  <li><a href="#summary-for-reporting" id="toc-summary-for-reporting" class="nav-link" data-scroll-target="#summary-for-reporting"><span class="header-section-number">7.8.1.3</span> Summary for Reporting</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -3414,23 +3415,24 @@ window.Quarto = {
   <li><a href="#marginal-standardization-with-random-forest-stratified-sampling" id="toc-marginal-standardization-with-random-forest-stratified-sampling"><span class="header-section-number">6</span> Marginal standardization with random forest (Stratified Sampling)</a></li>
   <li><a href="#propensity-score-inverse-probability-weighting" id="toc-propensity-score-inverse-probability-weighting"><span class="header-section-number">7</span> Propensity score &amp; Inverse Probability weighting</a>
   <ul>
-  <li><a href="#what-is-a-propensity-score-ps" id="toc-what-is-a-propensity-score-ps"><span class="header-section-number">7.1</span> What is a <strong>Propensity Score (PS)?</strong></a></li>
-  <li><a href="#what-is-inverse-probability-weighting-ipw" id="toc-what-is-inverse-probability-weighting-ipw"><span class="header-section-number">7.2</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></a></li>
-  <li><a href="#intuition" id="toc-intuition"><span class="header-section-number">7.3</span> Intuition</a></li>
-  <li><a href="#estimating-propensity-scores-and-applying-ipw-in-a-model" id="toc-estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">7.4</span> Estimating Propensity Scores and Applying IPW in a Model</a>
+  <li><a href="#prelude" id="toc-prelude"><span class="header-section-number">7.1</span> Prelude:</a></li>
+  <li><a href="#what-is-a-propensity-score-ps" id="toc-what-is-a-propensity-score-ps"><span class="header-section-number">7.2</span> What is a <strong>Propensity Score (PS)?</strong></a></li>
+  <li><a href="#what-is-inverse-probability-weighting-ipw" id="toc-what-is-inverse-probability-weighting-ipw"><span class="header-section-number">7.3</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></a></li>
+  <li><a href="#intuition" id="toc-intuition"><span class="header-section-number">7.4</span> Intuition</a></li>
+  <li><a href="#estimating-propensity-scores-and-applying-ipw-in-a-model" id="toc-estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">7.5</span> Estimating Propensity Scores and Applying IPW in a Model</a>
   <ul>
-  <li><a href="#step-1-estimate-propensity-scores" id="toc-step-1-estimate-propensity-scores"><span class="header-section-number">7.4.1</span> Step 1: Estimate Propensity Scores</a></li>
-  <li><a href="#step-3-weighted-outcome-model" id="toc-step-3-weighted-outcome-model"><span class="header-section-number">7.4.2</span> Step 3: Weighted Outcome Model</a></li>
+  <li><a href="#step-1-estimate-propensity-scores" id="toc-step-1-estimate-propensity-scores"><span class="header-section-number">7.5.1</span> Step 1: Estimate Propensity Scores</a></li>
+  <li><a href="#step-3-weighted-outcome-model" id="toc-step-3-weighted-outcome-model"><span class="header-section-number">7.5.2</span> Step 3: Weighted Outcome Model</a></li>
   </ul></li>
-  <li><a href="#summary-ps-vs-ipw" id="toc-summary-ps-vs-ipw"><span class="header-section-number">7.5</span> Summary: PS vs IPW</a></li>
-  <li><a href="#when-to-use" id="toc-when-to-use"><span class="header-section-number">7.6</span> When to Use</a></li>
-  <li><a href="#demo-weighted-logistic-regression-model-with-sipw" id="toc-demo-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">7.7</span> Demo: <strong>Weighted Logistic Regression Model with SIPW</strong></a>
+  <li><a href="#summary-ps-vs-ipw" id="toc-summary-ps-vs-ipw"><span class="header-section-number">7.6</span> Summary: PS vs IPW</a></li>
+  <li><a href="#when-to-use" id="toc-when-to-use"><span class="header-section-number">7.7</span> When to Use</a></li>
+  <li><a href="#demo-weighted-logistic-regression-model-with-sipw" id="toc-demo-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">7.8</span> Demo: <strong>Weighted Logistic Regression Model with SIPW</strong></a>
   <ul>
-  <li><a href="#interpretation-of-coefficients" id="toc-interpretation-of-coefficients"><span class="header-section-number">7.7.1</span> Interpretation of Coefficients</a>
+  <li><a href="#interpretation-of-coefficients" id="toc-interpretation-of-coefficients"><span class="header-section-number">7.8.1</span> Interpretation of Coefficients</a>
   <ul>
-  <li><a href="#why-use-vcovhc" id="toc-why-use-vcovhc"><span class="header-section-number">7.7.1.1</span> Why use <code>vcovHC</code>?</a></li>
-  <li><a href="#coefficients" id="toc-coefficients"><span class="header-section-number">7.7.1.2</span> Coefficients</a></li>
-  <li><a href="#summary-for-reporting" id="toc-summary-for-reporting"><span class="header-section-number">7.7.1.3</span> Summary for Reporting</a></li>
+  <li><a href="#why-use-vcovhc" id="toc-why-use-vcovhc"><span class="header-section-number">7.8.1.1</span> Why use <code>vcovHC</code>?</a></li>
+  <li><a href="#coefficients" id="toc-coefficients"><span class="header-section-number">7.8.1.2</span> Coefficients</a></li>
+  <li><a href="#summary-for-reporting" id="toc-summary-for-reporting"><span class="header-section-number">7.8.1.3</span> Summary for Reporting</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -4378,8 +4380,12 @@ Introduction:
 <p>They are designed to <strong>adjust for confounding</strong> — that is, differences in background characteristics between treated and untreated groups — when treatment is not randomly assigned.</p>
 </div>
 </div>
-<section id="what-is-a-propensity-score-ps" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="what-is-a-propensity-score-ps"><span class="header-section-number">7.1</span> What is a <strong>Propensity Score (PS)?</strong></h2>
+<section id="prelude" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="prelude"><span class="header-section-number">7.1</span> Prelude:</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/YQDMlNIQSA8" title frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</section>
+<section id="what-is-a-propensity-score-ps" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="what-is-a-propensity-score-ps"><span class="header-section-number">7.2</span> What is a <strong>Propensity Score (PS)?</strong></h2>
 <p>A <strong>propensity score</strong> is:</p>
 <blockquote class="blockquote">
 <p>The <strong>probability of receiving the treatment</strong> given a set of observed covariates.</p>
@@ -4394,8 +4400,8 @@ Introduction:
 </ul>
 <p>It’s typically estimated using <strong>logistic regression</strong> or <strong>machine learning models</strong> like random forests or gradient boosting.</p>
 </section>
-<section id="what-is-inverse-probability-weighting-ipw" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="what-is-inverse-probability-weighting-ipw"><span class="header-section-number">7.2</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></h2>
+<section id="what-is-inverse-probability-weighting-ipw" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="what-is-inverse-probability-weighting-ipw"><span class="header-section-number">7.3</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></h2>
 <p><strong>IPW</strong> uses the estimated propensity scores to create a <strong>pseudo-population</strong> in which <strong>treatment is independent of covariates</strong> — mimicking a randomized experiment.</p>
 <p>The idea:</p>
 <ul>
@@ -4411,15 +4417,15 @@ w_i = \begin{cases}
 \]</span></p>
 <p>This gives us a <strong>weighted sample</strong> in which the distribution of covariates is balanced across treatment groups.</p>
 </section>
-<section id="intuition" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="intuition"><span class="header-section-number">7.3</span> Intuition</h2>
+<section id="intuition" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="intuition"><span class="header-section-number">7.4</span> Intuition</h2>
 <p>Imagine you want to compare people who <strong>quit smoking</strong> (<code>qsmk = 1</code>) to those who <strong>did not</strong> (<code>qsmk = 0</code>). But quitting is more likely among older, richer, or sicker people.</p>
 <p>To make a fair comparison, IPW adjusts the contribution of each observation based on how “expected” their treatment status was given their covariates.</p>
 </section>
-<section id="estimating-propensity-scores-and-applying-ipw-in-a-model" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">7.4</span> Estimating Propensity Scores and Applying IPW in a Model</h2>
-<section id="step-1-estimate-propensity-scores" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="step-1-estimate-propensity-scores"><span class="header-section-number">7.4.1</span> Step 1: Estimate Propensity Scores</h3>
+<section id="estimating-propensity-scores-and-applying-ipw-in-a-model" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">7.5</span> Estimating Propensity Scores and Applying IPW in a Model</h2>
+<section id="step-1-estimate-propensity-scores" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="step-1-estimate-propensity-scores"><span class="header-section-number">7.5.1</span> Step 1: Estimate Propensity Scores</h3>
 <p>```{r}} ps_model &lt;- glm(qsmk ~ age + sex + income + sbp + dbp, data = nhefs, family = binomial)</p>
 <p>nhefs$ps &lt;- predict(ps_model, type = “response”)</p>
 <pre><code>
@@ -4429,14 +4435,14 @@ w_i = \begin{cases}
 nhefs &lt;- nhefs %&gt;%
   mutate(ipw = ifelse(qsmk == 1, 1/ps, 1/(1 - ps)))</code></pre>
 </section>
-<section id="step-3-weighted-outcome-model" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="step-3-weighted-outcome-model"><span class="header-section-number">7.4.2</span> Step 3: Weighted Outcome Model</h3>
+<section id="step-3-weighted-outcome-model" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="step-3-weighted-outcome-model"><span class="header-section-number">7.5.2</span> Step 3: Weighted Outcome Model</h3>
 <p><code>{r}} weighted_model &lt;- glm(wt_delta ~ qsmk,                        data = nhefs, weights = ipw,                        family = binomial) summary(weighted_model)</code></p>
 <p>This gives you a <strong>causal estimate of treatment effect</strong> (e.g., on weight change), <strong>adjusted for confounding via IPW</strong>.</p>
 </section>
 </section>
-<section id="summary-ps-vs-ipw" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="summary-ps-vs-ipw"><span class="header-section-number">7.5</span> Summary: PS vs IPW</h2>
+<section id="summary-ps-vs-ipw" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="summary-ps-vs-ipw"><span class="header-section-number">7.6</span> Summary: PS vs IPW</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -4464,8 +4470,8 @@ nhefs &lt;- nhefs %&gt;%
 </tbody>
 </table>
 </section>
-<section id="when-to-use" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="when-to-use"><span class="header-section-number">7.6</span> When to Use</h2>
+<section id="when-to-use" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="when-to-use"><span class="header-section-number">7.7</span> When to Use</h2>
 <ul>
 <li><p>You want to estimate <strong>marginal (population-level)</strong> treatment effects.</p></li>
 <li><p>You’re working with <strong>observational data</strong>.</p></li>
@@ -4473,8 +4479,8 @@ nhefs &lt;- nhefs %&gt;%
 <li><p>You’re aiming for <strong>doubly robust estimation</strong> (combine IPW + outcome model).</p></li>
 </ul>
 </section>
-<section id="demo-weighted-logistic-regression-model-with-sipw" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="demo-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">7.7</span> Demo: <strong>Weighted Logistic Regression Model with SIPW</strong></h2>
+<section id="demo-weighted-logistic-regression-model-with-sipw" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="demo-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">7.8</span> Demo: <strong>Weighted Logistic Regression Model with SIPW</strong></h2>
 <ul>
 <li><strong>Run Weighted logistic regression model with identity link</strong> to estimate a <strong>causal risk difference (ATE)</strong> using <strong>stabilized inverse probability weights (IPW) to control for confounding.</strong></li>
 </ul>
@@ -4587,10 +4593,10 @@ Tips:
 </ul>
 </div>
 </div>
-<section id="interpretation-of-coefficients" class="level3" data-number="7.7.1">
-<h3 data-number="7.7.1" class="anchored" data-anchor-id="interpretation-of-coefficients"><span class="header-section-number">7.7.1</span> Interpretation of Coefficients</h3>
-<section id="why-use-vcovhc" class="level4" data-number="7.7.1.1">
-<h4 data-number="7.7.1.1" class="anchored" data-anchor-id="why-use-vcovhc"><span class="header-section-number">7.7.1.1</span> Why use <code>vcovHC</code>?</h4>
+<section id="interpretation-of-coefficients" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="interpretation-of-coefficients"><span class="header-section-number">7.8.1</span> Interpretation of Coefficients</h3>
+<section id="why-use-vcovhc" class="level4" data-number="7.8.1.1">
+<h4 data-number="7.8.1.1" class="anchored" data-anchor-id="why-use-vcovhc"><span class="header-section-number">7.8.1.1</span> Why use <code>vcovHC</code>?</h4>
 <p>You’re using <strong>inverse probability weights (IPW)</strong>, which:</p>
 <ul>
 <li><p>Can <strong>induce heteroskedasticity</strong> (variance of residuals changes across individuals),</p></li>
@@ -4603,8 +4609,8 @@ Tips:
 <li><p>Is <strong>recommended practice</strong> with IPW or survey weights.</p></li>
 </ul>
 </section>
-<section id="coefficients" class="level4" data-number="7.7.1.2">
-<h4 data-number="7.7.1.2" class="anchored" data-anchor-id="coefficients"><span class="header-section-number">7.7.1.2</span> Coefficients</h4>
+<section id="coefficients" class="level4" data-number="7.8.1.2">
+<h4 data-number="7.8.1.2" class="anchored" data-anchor-id="coefficients"><span class="header-section-number">7.8.1.2</span> Coefficients</h4>
 <pre><code>z test of coefficients:
 
             Estimate Std. Error z value  Pr(&gt;|z|)    
@@ -4623,8 +4629,8 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 </ul></li>
 </ul>
 </section>
-<section id="summary-for-reporting" class="level4" data-number="7.7.1.3">
-<h4 data-number="7.7.1.3" class="anchored" data-anchor-id="summary-for-reporting"><span class="header-section-number">7.7.1.3</span> Summary for Reporting</h4>
+<section id="summary-for-reporting" class="level4" data-number="7.8.1.3">
+<h4 data-number="7.8.1.3" class="anchored" data-anchor-id="summary-for-reporting"><span class="header-section-number">7.8.1.3</span> Summary for Reporting</h4>
 <blockquote class="blockquote">
 <p>After adjusting for confounding via stabilized inverse probability weighting, quitting smoking increases the probability of weight gain by <strong>13.8 percentage points</strong>. This effect is statistically significant (<strong>p &lt; 0.001</strong>, robust SE = 0.032).</p>
 <p>The <strong>robust 95% CI</strong> can be calcuated as: <span class="math inline">\(0.138 \pm 1.96 \times 0.03204 \approx (0.075, 0.201)\)</span></p>
