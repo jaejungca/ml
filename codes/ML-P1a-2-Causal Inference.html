@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-08-03">
 
-<title>Part 1a-2: Causal Inference</title>
+<title>Part 1a-2: Causal Inference Using Machine Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3228,56 +3228,51 @@ window.Quarto = {
    
   <ul>
   <li><a href="#package" id="toc-package" class="nav-link active" data-scroll-target="#package"><span class="header-section-number">1</span> Package</a></li>
-  <li><a href="#causal-inference-using-lasso" id="toc-causal-inference-using-lasso" class="nav-link" data-scroll-target="#causal-inference-using-lasso"><span class="header-section-number">2</span> Causal Inference using LASSO</a>
+  <li><a href="#introduction-to-causal-inference-using-lasso" id="toc-introduction-to-causal-inference-using-lasso" class="nav-link" data-scroll-target="#introduction-to-causal-inference-using-lasso"><span class="header-section-number">2</span> Introduction to Causal Inference using LASSO</a></li>
+  <li><a href="#double-selection-market-entry-data" id="toc-double-selection-market-entry-data" class="nav-link" data-scroll-target="#double-selection-market-entry-data"><span class="header-section-number">3</span> Double Selection: Market entry data</a>
   <ul>
-  <li><a href="#double-selection-market-entry-data" id="toc-double-selection-market-entry-data" class="nav-link" data-scroll-target="#double-selection-market-entry-data"><span class="header-section-number">2.1</span> Double Selection: Market entry data</a>
+  <li><a href="#the-problem" id="toc-the-problem" class="nav-link" data-scroll-target="#the-problem"><span class="header-section-number">3.1</span> The Problem</a></li>
+  <li><a href="#the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" id="toc-the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" class="nav-link" data-scroll-target="#the-solution-double-selection-by-belloni-chernozhukov-hansen-2014"><span class="header-section-number">3.2</span> The Solution: Double Selection (by Belloni, Chernozhukov, Hansen, 2014)</a></li>
+  <li><a href="#double-selection-demo-with-market-entry-data" id="toc-double-selection-demo-with-market-entry-data" class="nav-link" data-scroll-target="#double-selection-demo-with-market-entry-data"><span class="header-section-number">3.3</span> Double Selection Demo with Market Entry Data</a>
   <ul class="collapse">
-  <li><a href="#the-problem" id="toc-the-problem" class="nav-link" data-scroll-target="#the-problem"><span class="header-section-number">2.1.1</span> The Problem</a></li>
-  <li><a href="#the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" id="toc-the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" class="nav-link" data-scroll-target="#the-solution-double-selection-by-belloni-chernozhukov-hansen-2014"><span class="header-section-number">2.1.2</span> The Solution: Double Selection (by Belloni, Chernozhukov, Hansen, 2014)</a></li>
-  <li><a href="#demo-with-market-entry-data" id="toc-demo-with-market-entry-data" class="nav-link" data-scroll-target="#demo-with-market-entry-data"><span class="header-section-number">2.1.3</span> Demo with Market Entry Data</a>
+  <li><a href="#prepare-data" id="toc-prepare-data" class="nav-link" data-scroll-target="#prepare-data"><span class="header-section-number">3.3.1</span> Prepare Data</a></li>
+  <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure"><span class="header-section-number">3.3.2</span> Procedure</a>
   <ul class="collapse">
-  <li><a href="#prepare-data" id="toc-prepare-data" class="nav-link" data-scroll-target="#prepare-data"><span class="header-section-number">2.1.3.1</span> Prepare Data</a></li>
-  <li><a href="#outcome-model" id="toc-outcome-model" class="nav-link" data-scroll-target="#outcome-model"><span class="header-section-number">2.1.3.2</span> Outcome Model</a></li>
-  <li><a href="#treatment-model" id="toc-treatment-model" class="nav-link" data-scroll-target="#treatment-model"><span class="header-section-number">2.1.3.3</span> Treatment Model</a></li>
-  <li><a href="#take-the-union" id="toc-take-the-union" class="nav-link" data-scroll-target="#take-the-union"><span class="header-section-number">2.1.3.4</span> Take the Union</a></li>
-  <li><a href="#final-model" id="toc-final-model" class="nav-link" data-scroll-target="#final-model"><span class="header-section-number">2.1.3.5</span> Final Model</a></li>
-  <li><a href="#multiple-regression-without-double-selection-naive-model" id="toc-multiple-regression-without-double-selection-naive-model" class="nav-link" data-scroll-target="#multiple-regression-without-double-selection-naive-model"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection = Naive model</a></li>
-  </ul></li>
-  <li><a href="#focus-of-comparison" id="toc-focus-of-comparison" class="nav-link" data-scroll-target="#focus-of-comparison"><span class="header-section-number">2.1.4</span> Focus of Comparison</a>
-  <ul class="collapse">
-  <li><a href="#the-treatment-effect-estimate" id="toc-the-treatment-effect-estimate" class="nav-link" data-scroll-target="#the-treatment-effect-estimate"><span class="header-section-number">2.1.4.1</span> 1. <strong>The treatment effect estimate</strong></a></li>
-  <li><a href="#standard-errors-and-confidence-intervals" id="toc-standard-errors-and-confidence-intervals" class="nav-link" data-scroll-target="#standard-errors-and-confidence-intervals"><span class="header-section-number">2.1.4.2</span> <strong>2. Standard errors and confidence intervals</strong></a></li>
-  <li><a href="#variable-inclusion-bias-naive-model" id="toc-variable-inclusion-bias-naive-model" class="nav-link" data-scroll-target="#variable-inclusion-bias-naive-model"><span class="header-section-number">2.1.4.3</span> 3. <strong>Variable inclusion bias (naive model)</strong></a></li>
-  <li><a href="#model-assumptions-and-goals" id="toc-model-assumptions-and-goals" class="nav-link" data-scroll-target="#model-assumptions-and-goals"><span class="header-section-number">2.1.4.4</span> 4. <strong>Model assumptions and goals</strong></a></li>
-  <li><a href="#should-you-trust-the-double-selection-estimate-more" id="toc-should-you-trust-the-double-selection-estimate-more" class="nav-link" data-scroll-target="#should-you-trust-the-double-selection-estimate-more"><span class="header-section-number">2.1.4.5</span> Should you trust the double selection estimate more?</a></li>
+  <li><a href="#outcome-model" id="toc-outcome-model" class="nav-link" data-scroll-target="#outcome-model"><span class="header-section-number">3.3.2.1</span> Outcome Model</a></li>
+  <li><a href="#treatment-model" id="toc-treatment-model" class="nav-link" data-scroll-target="#treatment-model"><span class="header-section-number">3.3.2.2</span> Treatment Model</a></li>
+  <li><a href="#take-the-union" id="toc-take-the-union" class="nav-link" data-scroll-target="#take-the-union"><span class="header-section-number">3.3.2.3</span> Take the Union</a></li>
+  <li><a href="#final-model" id="toc-final-model" class="nav-link" data-scroll-target="#final-model"><span class="header-section-number">3.3.2.4</span> Final Model</a></li>
+  <li><a href="#naive-model-multiple-regression-without-double-selection" id="toc-naive-model-multiple-regression-without-double-selection" class="nav-link" data-scroll-target="#naive-model-multiple-regression-without-double-selection"><span class="header-section-number">3.3.2.5</span> Naive Model: Multiple Regression without Double Selection</a></li>
+  <li><a href="#comparison" id="toc-comparison" class="nav-link" data-scroll-target="#comparison"><span class="header-section-number">3.3.2.6</span> Comparison</a></li>
+  <li><a href="#should-you-trust-the-double-selection-estimate-more" id="toc-should-you-trust-the-double-selection-estimate-more" class="nav-link" data-scroll-target="#should-you-trust-the-double-selection-estimate-more"><span class="header-section-number">3.3.2.7</span> Should you trust the double selection estimate more?</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
-  <li><a href="#double-machine-learning-process" id="toc-double-machine-learning-process" class="nav-link" data-scroll-target="#double-machine-learning-process"><span class="header-section-number">3</span> Double Machine Learning: Process</a>
+  <li><a href="#double-machine-learning-process" id="toc-double-machine-learning-process" class="nav-link" data-scroll-target="#double-machine-learning-process"><span class="header-section-number">4</span> Double Machine Learning: Process</a>
   <ul>
-  <li><a href="#double-machine-learning-dml" id="toc-double-machine-learning-dml" class="nav-link" data-scroll-target="#double-machine-learning-dml"><span class="header-section-number">3.1</span> Double Machine Learning (DML)</a>
+  <li><a href="#double-machine-learning-dml" id="toc-double-machine-learning-dml" class="nav-link" data-scroll-target="#double-machine-learning-dml"><span class="header-section-number">4.1</span> Double Machine Learning (DML)</a>
   <ul class="collapse">
-  <li><a href="#orthogonalization-a.k.a.-neyman-orthogonality" id="toc-orthogonalization-a.k.a.-neyman-orthogonality" class="nav-link" data-scroll-target="#orthogonalization-a.k.a.-neyman-orthogonality"><span class="header-section-number">3.1.1</span> 1. <strong>Orthogonalization</strong> (a.k.a. Neyman orthogonality)</a></li>
-  <li><a href="#sample-splitting-cross-fitting" id="toc-sample-splitting-cross-fitting" class="nav-link" data-scroll-target="#sample-splitting-cross-fitting"><span class="header-section-number">3.1.2</span> 2. <strong>Sample Splitting / Cross-Fitting</strong></a></li>
+  <li><a href="#orthogonalization-a.k.a.-neyman-orthogonality" id="toc-orthogonalization-a.k.a.-neyman-orthogonality" class="nav-link" data-scroll-target="#orthogonalization-a.k.a.-neyman-orthogonality"><span class="header-section-number">4.1.1</span> 1. <strong>Orthogonalization</strong> (a.k.a. Neyman orthogonality)</a></li>
+  <li><a href="#sample-splitting-cross-fitting" id="toc-sample-splitting-cross-fitting" class="nav-link" data-scroll-target="#sample-splitting-cross-fitting"><span class="header-section-number">4.1.2</span> 2. <strong>Sample Splitting / Cross-Fitting</strong></a></li>
   </ul></li>
-  <li><a href="#basic-dml-workflow" id="toc-basic-dml-workflow" class="nav-link" data-scroll-target="#basic-dml-workflow"><span class="header-section-number">3.2</span> Basic DML Workflow</a>
+  <li><a href="#basic-dml-workflow" id="toc-basic-dml-workflow" class="nav-link" data-scroll-target="#basic-dml-workflow"><span class="header-section-number">4.2</span> Basic DML Workflow</a>
   <ul class="collapse">
-  <li><a href="#demo" id="toc-demo" class="nav-link" data-scroll-target="#demo"><span class="header-section-number">3.2.1</span> Demo</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">3.2.2</span> Interpretation</a></li>
+  <li><a href="#demo" id="toc-demo" class="nav-link" data-scroll-target="#demo"><span class="header-section-number">4.2.1</span> Demo</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">4.2.2</span> Interpretation</a></li>
   </ul></li>
-  <li><a href="#dml-with-cross-fit" id="toc-dml-with-cross-fit" class="nav-link" data-scroll-target="#dml-with-cross-fit"><span class="header-section-number">3.3</span> DML with Cross-fit</a>
+  <li><a href="#dml-with-cross-fit" id="toc-dml-with-cross-fit" class="nav-link" data-scroll-target="#dml-with-cross-fit"><span class="header-section-number">4.3</span> DML with Cross-fit</a>
   <ul class="collapse">
-  <li><a href="#what-is-cross-fitting" id="toc-what-is-cross-fitting" class="nav-link" data-scroll-target="#what-is-cross-fitting"><span class="header-section-number">3.3.1</span> What is <strong>Cross-Fitting</strong>?</a></li>
-  <li><a href="#why-cross-fitting" id="toc-why-cross-fitting" class="nav-link" data-scroll-target="#why-cross-fitting"><span class="header-section-number">3.3.2</span> Why Cross-Fitting?</a></li>
-  <li><a href="#explanation-of-the-functions" id="toc-explanation-of-the-functions" class="nav-link" data-scroll-target="#explanation-of-the-functions"><span class="header-section-number">3.3.3</span> Explanation of the Functions</a></li>
-  <li><a href="#dml_estimator" id="toc-dml_estimator" class="nav-link" data-scroll-target="#dml_estimator"><span class="header-section-number">3.3.4</span> DML_estimator(…):</a></li>
-  <li><a href="#dml_crossfit" id="toc-dml_crossfit" class="nav-link" data-scroll-target="#dml_crossfit"><span class="header-section-number">3.3.5</span> DML_crossfit(…)</a></li>
+  <li><a href="#what-is-cross-fitting" id="toc-what-is-cross-fitting" class="nav-link" data-scroll-target="#what-is-cross-fitting"><span class="header-section-number">4.3.1</span> What is <strong>Cross-Fitting</strong>?</a></li>
+  <li><a href="#why-cross-fitting" id="toc-why-cross-fitting" class="nav-link" data-scroll-target="#why-cross-fitting"><span class="header-section-number">4.3.2</span> Why Cross-Fitting?</a></li>
+  <li><a href="#explanation-of-the-functions" id="toc-explanation-of-the-functions" class="nav-link" data-scroll-target="#explanation-of-the-functions"><span class="header-section-number">4.3.3</span> Explanation of the Functions</a></li>
+  <li><a href="#dml_estimator" id="toc-dml_estimator" class="nav-link" data-scroll-target="#dml_estimator"><span class="header-section-number">4.3.4</span> DML_estimator(…):</a></li>
+  <li><a href="#dml_crossfit" id="toc-dml_crossfit" class="nav-link" data-scroll-target="#dml_crossfit"><span class="header-section-number">4.3.5</span> DML_crossfit(…)</a></li>
   </ul></li>
-  <li><a href="#summary-benefits-of-cross-fitting" id="toc-summary-benefits-of-cross-fitting" class="nav-link" data-scroll-target="#summary-benefits-of-cross-fitting"><span class="header-section-number">3.4</span> Summary: Benefits of Cross-Fitting</a></li>
-  <li><a href="#double-selection-vs.-double-machine-learning" id="toc-double-selection-vs.-double-machine-learning" class="nav-link" data-scroll-target="#double-selection-vs.-double-machine-learning"><span class="header-section-number">3.5</span> Double Selection vs. Double Machine Learning</a>
+  <li><a href="#summary-benefits-of-cross-fitting" id="toc-summary-benefits-of-cross-fitting" class="nav-link" data-scroll-target="#summary-benefits-of-cross-fitting"><span class="header-section-number">4.4</span> Summary: Benefits of Cross-Fitting</a></li>
+  <li><a href="#double-selection-vs.-double-machine-learning" id="toc-double-selection-vs.-double-machine-learning" class="nav-link" data-scroll-target="#double-selection-vs.-double-machine-learning"><span class="header-section-number">4.5</span> Double Selection vs. Double Machine Learning</a>
   <ul class="collapse">
-  <li><a href="#relationship" id="toc-relationship" class="nav-link" data-scroll-target="#relationship"><span class="header-section-number">3.5.1</span> Relationship</a></li>
-  <li><a href="#when-to-use-what" id="toc-when-to-use-what" class="nav-link" data-scroll-target="#when-to-use-what"><span class="header-section-number">3.5.2</span> When to Use What?</a></li>
+  <li><a href="#relationship" id="toc-relationship" class="nav-link" data-scroll-target="#relationship"><span class="header-section-number">4.5.1</span> Relationship</a></li>
+  <li><a href="#when-to-use-what" id="toc-when-to-use-what" class="nav-link" data-scroll-target="#when-to-use-what"><span class="header-section-number">4.5.2</span> When to Use What?</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -3287,7 +3282,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Part 1a-2: Causal Inference</h1>
+<h1 class="title">Part 1a-2: Causal Inference Using Machine Learning</h1>
 </div>
 
 
@@ -3314,56 +3309,51 @@ window.Quarto = {
    
   <ul>
   <li><a href="#package" id="toc-package"><span class="header-section-number">1</span> Package</a></li>
-  <li><a href="#causal-inference-using-lasso" id="toc-causal-inference-using-lasso"><span class="header-section-number">2</span> Causal Inference using LASSO</a>
+  <li><a href="#introduction-to-causal-inference-using-lasso" id="toc-introduction-to-causal-inference-using-lasso"><span class="header-section-number">2</span> Introduction to Causal Inference using LASSO</a></li>
+  <li><a href="#double-selection-market-entry-data" id="toc-double-selection-market-entry-data"><span class="header-section-number">3</span> Double Selection: Market entry data</a>
   <ul>
-  <li><a href="#double-selection-market-entry-data" id="toc-double-selection-market-entry-data"><span class="header-section-number">2.1</span> Double Selection: Market entry data</a>
+  <li><a href="#the-problem" id="toc-the-problem"><span class="header-section-number">3.1</span> The Problem</a></li>
+  <li><a href="#the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" id="toc-the-solution-double-selection-by-belloni-chernozhukov-hansen-2014"><span class="header-section-number">3.2</span> The Solution: Double Selection (by Belloni, Chernozhukov, Hansen, 2014)</a></li>
+  <li><a href="#double-selection-demo-with-market-entry-data" id="toc-double-selection-demo-with-market-entry-data"><span class="header-section-number">3.3</span> Double Selection Demo with Market Entry Data</a>
   <ul>
-  <li><a href="#the-problem" id="toc-the-problem"><span class="header-section-number">2.1.1</span> The Problem</a></li>
-  <li><a href="#the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" id="toc-the-solution-double-selection-by-belloni-chernozhukov-hansen-2014"><span class="header-section-number">2.1.2</span> The Solution: Double Selection (by Belloni, Chernozhukov, Hansen, 2014)</a></li>
-  <li><a href="#demo-with-market-entry-data" id="toc-demo-with-market-entry-data"><span class="header-section-number">2.1.3</span> Demo with Market Entry Data</a>
+  <li><a href="#prepare-data" id="toc-prepare-data"><span class="header-section-number">3.3.1</span> Prepare Data</a></li>
+  <li><a href="#procedure" id="toc-procedure"><span class="header-section-number">3.3.2</span> Procedure</a>
   <ul>
-  <li><a href="#prepare-data" id="toc-prepare-data"><span class="header-section-number">2.1.3.1</span> Prepare Data</a></li>
-  <li><a href="#outcome-model" id="toc-outcome-model"><span class="header-section-number">2.1.3.2</span> Outcome Model</a></li>
-  <li><a href="#treatment-model" id="toc-treatment-model"><span class="header-section-number">2.1.3.3</span> Treatment Model</a></li>
-  <li><a href="#take-the-union" id="toc-take-the-union"><span class="header-section-number">2.1.3.4</span> Take the Union</a></li>
-  <li><a href="#final-model" id="toc-final-model"><span class="header-section-number">2.1.3.5</span> Final Model</a></li>
-  <li><a href="#multiple-regression-without-double-selection-naive-model" id="toc-multiple-regression-without-double-selection-naive-model"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection = Naive model</a></li>
-  </ul></li>
-  <li><a href="#focus-of-comparison" id="toc-focus-of-comparison"><span class="header-section-number">2.1.4</span> Focus of Comparison</a>
-  <ul>
-  <li><a href="#the-treatment-effect-estimate" id="toc-the-treatment-effect-estimate"><span class="header-section-number">2.1.4.1</span> 1. <strong>The treatment effect estimate</strong></a></li>
-  <li><a href="#standard-errors-and-confidence-intervals" id="toc-standard-errors-and-confidence-intervals"><span class="header-section-number">2.1.4.2</span> <strong>2. Standard errors and confidence intervals</strong></a></li>
-  <li><a href="#variable-inclusion-bias-naive-model" id="toc-variable-inclusion-bias-naive-model"><span class="header-section-number">2.1.4.3</span> 3. <strong>Variable inclusion bias (naive model)</strong></a></li>
-  <li><a href="#model-assumptions-and-goals" id="toc-model-assumptions-and-goals"><span class="header-section-number">2.1.4.4</span> 4. <strong>Model assumptions and goals</strong></a></li>
-  <li><a href="#should-you-trust-the-double-selection-estimate-more" id="toc-should-you-trust-the-double-selection-estimate-more"><span class="header-section-number">2.1.4.5</span> Should you trust the double selection estimate more?</a></li>
+  <li><a href="#outcome-model" id="toc-outcome-model"><span class="header-section-number">3.3.2.1</span> Outcome Model</a></li>
+  <li><a href="#treatment-model" id="toc-treatment-model"><span class="header-section-number">3.3.2.2</span> Treatment Model</a></li>
+  <li><a href="#take-the-union" id="toc-take-the-union"><span class="header-section-number">3.3.2.3</span> Take the Union</a></li>
+  <li><a href="#final-model" id="toc-final-model"><span class="header-section-number">3.3.2.4</span> Final Model</a></li>
+  <li><a href="#naive-model-multiple-regression-without-double-selection" id="toc-naive-model-multiple-regression-without-double-selection"><span class="header-section-number">3.3.2.5</span> Naive Model: Multiple Regression without Double Selection</a></li>
+  <li><a href="#comparison" id="toc-comparison"><span class="header-section-number">3.3.2.6</span> Comparison</a></li>
+  <li><a href="#should-you-trust-the-double-selection-estimate-more" id="toc-should-you-trust-the-double-selection-estimate-more"><span class="header-section-number">3.3.2.7</span> Should you trust the double selection estimate more?</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
-  <li><a href="#double-machine-learning-process" id="toc-double-machine-learning-process"><span class="header-section-number">3</span> Double Machine Learning: Process</a>
+  <li><a href="#double-machine-learning-process" id="toc-double-machine-learning-process"><span class="header-section-number">4</span> Double Machine Learning: Process</a>
   <ul>
-  <li><a href="#double-machine-learning-dml" id="toc-double-machine-learning-dml"><span class="header-section-number">3.1</span> Double Machine Learning (DML)</a>
+  <li><a href="#double-machine-learning-dml" id="toc-double-machine-learning-dml"><span class="header-section-number">4.1</span> Double Machine Learning (DML)</a>
   <ul>
-  <li><a href="#orthogonalization-a.k.a.-neyman-orthogonality" id="toc-orthogonalization-a.k.a.-neyman-orthogonality"><span class="header-section-number">3.1.1</span> 1. <strong>Orthogonalization</strong> (a.k.a. Neyman orthogonality)</a></li>
-  <li><a href="#sample-splitting-cross-fitting" id="toc-sample-splitting-cross-fitting"><span class="header-section-number">3.1.2</span> 2. <strong>Sample Splitting / Cross-Fitting</strong></a></li>
+  <li><a href="#orthogonalization-a.k.a.-neyman-orthogonality" id="toc-orthogonalization-a.k.a.-neyman-orthogonality"><span class="header-section-number">4.1.1</span> 1. <strong>Orthogonalization</strong> (a.k.a. Neyman orthogonality)</a></li>
+  <li><a href="#sample-splitting-cross-fitting" id="toc-sample-splitting-cross-fitting"><span class="header-section-number">4.1.2</span> 2. <strong>Sample Splitting / Cross-Fitting</strong></a></li>
   </ul></li>
-  <li><a href="#basic-dml-workflow" id="toc-basic-dml-workflow"><span class="header-section-number">3.2</span> Basic DML Workflow</a>
+  <li><a href="#basic-dml-workflow" id="toc-basic-dml-workflow"><span class="header-section-number">4.2</span> Basic DML Workflow</a>
   <ul>
-  <li><a href="#demo" id="toc-demo"><span class="header-section-number">3.2.1</span> Demo</a></li>
-  <li><a href="#interpretation" id="toc-interpretation"><span class="header-section-number">3.2.2</span> Interpretation</a></li>
+  <li><a href="#demo" id="toc-demo"><span class="header-section-number">4.2.1</span> Demo</a></li>
+  <li><a href="#interpretation" id="toc-interpretation"><span class="header-section-number">4.2.2</span> Interpretation</a></li>
   </ul></li>
-  <li><a href="#dml-with-cross-fit" id="toc-dml-with-cross-fit"><span class="header-section-number">3.3</span> DML with Cross-fit</a>
+  <li><a href="#dml-with-cross-fit" id="toc-dml-with-cross-fit"><span class="header-section-number">4.3</span> DML with Cross-fit</a>
   <ul>
-  <li><a href="#what-is-cross-fitting" id="toc-what-is-cross-fitting"><span class="header-section-number">3.3.1</span> What is <strong>Cross-Fitting</strong>?</a></li>
-  <li><a href="#why-cross-fitting" id="toc-why-cross-fitting"><span class="header-section-number">3.3.2</span> Why Cross-Fitting?</a></li>
-  <li><a href="#explanation-of-the-functions" id="toc-explanation-of-the-functions"><span class="header-section-number">3.3.3</span> Explanation of the Functions</a></li>
-  <li><a href="#dml_estimator" id="toc-dml_estimator"><span class="header-section-number">3.3.4</span> DML_estimator(…):</a></li>
-  <li><a href="#dml_crossfit" id="toc-dml_crossfit"><span class="header-section-number">3.3.5</span> DML_crossfit(…)</a></li>
+  <li><a href="#what-is-cross-fitting" id="toc-what-is-cross-fitting"><span class="header-section-number">4.3.1</span> What is <strong>Cross-Fitting</strong>?</a></li>
+  <li><a href="#why-cross-fitting" id="toc-why-cross-fitting"><span class="header-section-number">4.3.2</span> Why Cross-Fitting?</a></li>
+  <li><a href="#explanation-of-the-functions" id="toc-explanation-of-the-functions"><span class="header-section-number">4.3.3</span> Explanation of the Functions</a></li>
+  <li><a href="#dml_estimator" id="toc-dml_estimator"><span class="header-section-number">4.3.4</span> DML_estimator(…):</a></li>
+  <li><a href="#dml_crossfit" id="toc-dml_crossfit"><span class="header-section-number">4.3.5</span> DML_crossfit(…)</a></li>
   </ul></li>
-  <li><a href="#summary-benefits-of-cross-fitting" id="toc-summary-benefits-of-cross-fitting"><span class="header-section-number">3.4</span> Summary: Benefits of Cross-Fitting</a></li>
-  <li><a href="#double-selection-vs.-double-machine-learning" id="toc-double-selection-vs.-double-machine-learning"><span class="header-section-number">3.5</span> Double Selection vs. Double Machine Learning</a>
+  <li><a href="#summary-benefits-of-cross-fitting" id="toc-summary-benefits-of-cross-fitting"><span class="header-section-number">4.4</span> Summary: Benefits of Cross-Fitting</a></li>
+  <li><a href="#double-selection-vs.-double-machine-learning" id="toc-double-selection-vs.-double-machine-learning"><span class="header-section-number">4.5</span> Double Selection vs. Double Machine Learning</a>
   <ul>
-  <li><a href="#relationship" id="toc-relationship"><span class="header-section-number">3.5.1</span> Relationship</a></li>
-  <li><a href="#when-to-use-what" id="toc-when-to-use-what"><span class="header-section-number">3.5.2</span> When to Use What?</a></li>
+  <li><a href="#relationship" id="toc-relationship"><span class="header-section-number">4.5.1</span> Relationship</a></li>
+  <li><a href="#when-to-use-what" id="toc-when-to-use-what"><span class="header-section-number">4.5.2</span> When to Use What?</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -3374,13 +3364,14 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;AmesHousing&quot;)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="causal-inference-using-lasso" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Causal Inference using LASSO</h1>
-<section id="double-selection-market-entry-data" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="double-selection-market-entry-data"><span class="header-section-number">2.1</span> Double Selection: Market entry data</h2>
+<section id="introduction-to-causal-inference-using-lasso" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Introduction to Causal Inference using LASSO</h1>
+</section>
+<section id="double-selection-market-entry-data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Double Selection: Market entry data</h1>
 <p><strong>Double selection</strong> is a method used in <strong>causal inference</strong> to estimate the effect of a treatment (or policy, intervention, etc.) when you’re working with <strong>high-dimensional covariates</strong> — typically when the number of potential control variables is large, possibly larger than the number of observations. It’s especially relevant when you’re using <strong>machine learning techniques like LASSO</strong> for variable selection.</p>
-<section id="the-problem" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="the-problem"><span class="header-section-number">2.1.1</span> The Problem</h3>
+<section id="the-problem" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="the-problem"><span class="header-section-number">3.1</span> The Problem</h2>
 <p>In causal inference, you often want to estimate the effect of a treatment D on an outcome Y, adjusting for a set of covariates X that may confound the relationship.</p>
 <p>But:</p>
 <ul>
@@ -3388,8 +3379,8 @@ window.Quarto = {
 <li><p>Using machine learning (like LASSO) for variable selection can be biased <strong>if you only select based on predicting</strong> Y.</p></li>
 </ul>
 </section>
-<section id="the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="the-solution-double-selection-by-belloni-chernozhukov-hansen-2014"><span class="header-section-number">2.1.2</span> The Solution: Double Selection (by Belloni, Chernozhukov, Hansen, 2014)</h3>
+<section id="the-solution-double-selection-by-belloni-chernozhukov-hansen-2014" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="the-solution-double-selection-by-belloni-chernozhukov-hansen-2014"><span class="header-section-number">3.2</span> The Solution: Double Selection (by Belloni, Chernozhukov, Hansen, 2014)</h2>
 <p>The <strong>double selection</strong> method addresses this bias by selecting control variables from <strong>two separate predictive models</strong>:</p>
 <ol type="1">
 <li><p><strong>Outcome model</strong>: Regress Y on X to select covariates that predict the outcome.</p></li>
@@ -3469,10 +3460,10 @@ window.Quarto = {
 </tbody>
 </table>
 </section>
-<section id="demo-with-market-entry-data" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="demo-with-market-entry-data"><span class="header-section-number">2.1.3</span> Demo with Market Entry Data</h3>
-<section id="prepare-data" class="level4" data-number="2.1.3.1">
-<h4 data-number="2.1.3.1" class="anchored" data-anchor-id="prepare-data"><span class="header-section-number">2.1.3.1</span> Prepare Data</h4>
+<section id="double-selection-demo-with-market-entry-data" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="double-selection-demo-with-market-entry-data"><span class="header-section-number">3.3</span> Double Selection Demo with Market Entry Data</h2>
+<section id="prepare-data" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="prepare-data"><span class="header-section-number">3.3.1</span> Prepare Data</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dataset  <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;mentry.csv&quot;</span>)) <span class="co">#line 500</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dataset) <span class="co"># 407 30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3491,8 +3482,10 @@ window.Quarto = {
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> dataset<span class="sc">$</span>dev_operator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="outcome-model" class="level4" data-number="2.1.3.2">
-<h4 data-number="2.1.3.2" class="anchored" data-anchor-id="outcome-model"><span class="header-section-number">2.1.3.2</span> Outcome Model</h4>
+<section id="procedure" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="procedure"><span class="header-section-number">3.3.2</span> Procedure</h3>
+<section id="outcome-model" class="level4" data-number="3.3.2.1">
+<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="outcome-model"><span class="header-section-number">3.3.2.1</span> Outcome Model</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now Train Lasso for Entry Times (Y_vec)</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cv.lasso.y <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, y_vec, <span class="at">alpha=</span><span class="dv">1</span>)</span>
@@ -3504,8 +3497,8 @@ Call:  cv.glmnet(x = x, y = y_vec, alpha = 1)
 Measure: Mean-Squared Error 
 
     Lambda Index Measure     SE Nonzero
-min 0.1106    33   3.846 0.3976      10
-1se 0.4900    17   4.218 0.4269       4</code></pre>
+min 0.0002   100   3.843 0.2343      24
+1se 0.3707    20   4.043 0.3016       4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -3520,37 +3513,38 @@ min 0.1106    33   3.846 0.3976      10
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span>  <span class="co"># 25 terms including those with 0</span></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span><span class="dv">0</span>, term <span class="sc">!=</span> <span class="st">&quot;(Intercept)&quot;</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 2
-   term            estimate
-   &lt;chr&gt;              &lt;dbl&gt;
- 1 Admin           0.000764
- 2 Demographics    0.00487 
- 3 HHI             0.0623  
- 4 GDPcap         -0.00140 
- 5 HDI            -2.58    
- 6 OverallGlob    -0.0451  
- 7 GIIInput       -0.0419  
- 8 LinguisticFrac  0.220   
- 9 ReligiousFrac   0.336   
-10 G3              3.01    </code></pre>
+<pre><code># A tibble: 24 × 2
+   term          estimate
+   &lt;chr&gt;            &lt;dbl&gt;
+ 1 EconR         0.493   
+ 2 Admin         0.00904 
+ 3 Demographics  0.0231  
+ 4 Geographic   -0.00111 
+ 5 HHI           0.122   
+ 6 Pop_mill      0.000451
+ 7 GDPcap        0.00248 
+ 8 HDI          -2.57    
+ 9 PopDen        0.000111
+10 Urbanization  0.0212  
+# ℹ 14 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or use tidy() early to avoid sparse matrix</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.y, <span class="at">lambda =</span> bestlam.y )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 11 × 5
-   term            step  estimate lambda dev.ratio
-   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)        1 10.6       0.111     0.662
- 2 Admin              1  0.000764  0.111     0.662
- 3 Demographics       1  0.00487   0.111     0.662
- 4 HHI                1  0.0623    0.111     0.662
- 5 GDPcap             1 -0.00140   0.111     0.662
- 6 HDI                1 -2.58      0.111     0.662
- 7 OverallGlob        1 -0.0451    0.111     0.662
- 8 GIIInput           1 -0.0419    0.111     0.662
- 9 LinguisticFrac     1  0.220     0.111     0.662
-10 ReligiousFrac      1  0.336     0.111     0.662
-11 G3                 1  3.01      0.111     0.662</code></pre>
+<pre><code># A tibble: 25 × 5
+   term          step  estimate   lambda dev.ratio
+   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+ 1 (Intercept)      1 10.8      0.000217     0.686
+ 2 EconR            1  0.493    0.000217     0.686
+ 3 Admin            1  0.00904  0.000217     0.686
+ 4 Demographics     1  0.0231   0.000217     0.686
+ 5 Geographic       1 -0.00111  0.000217     0.686
+ 6 HHI              1  0.122    0.000217     0.686
+ 7 Pop_mill         1  0.000451 0.000217     0.686
+ 8 GDPcap           1  0.00248  0.000217     0.686
+ 9 HDI              1 -2.57     0.000217     0.686
+10 PopDen           1  0.000111 0.000217     0.686
+# ℹ 15 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting variables</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>selected_y <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.y) <span class="sc">|&gt;</span> </span>
@@ -3586,8 +3580,8 @@ min 0.1106    33   3.846 0.3976      10
 18 G3                 1  3.09       0.0250     0.676
 &gt; </code></pre>
 </section>
-<section id="treatment-model" class="level4" data-number="2.1.3.3">
-<h4 data-number="2.1.3.3" class="anchored" data-anchor-id="treatment-model"><span class="header-section-number">2.1.3.3</span> Treatment Model</h4>
+<section id="treatment-model" class="level4" data-number="3.3.2.2">
+<h4 data-number="3.3.2.2" class="anchored" data-anchor-id="treatment-model"><span class="header-section-number">3.3.2.2</span> Treatment Model</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Lasso for treatment : Operator type (1 = operator from developed countries, 0= developing countries)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cv.lasso.d <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x, d_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
@@ -3599,8 +3593,8 @@ Call:  cv.glmnet(x = x, y = d_vec, alpha = 1, family = &quot;binomial&quot;)
 Measure: Binomial Deviance 
 
      Lambda Index Measure      SE Nonzero
-min 0.00302    46  0.9479 0.06329      20
-1se 0.04086    18  1.0049 0.02863       7</code></pre>
+min 0.00698    37  0.9521 0.06135      17
+1se 0.04086    18  1.0130 0.05152       7</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, d_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
@@ -3614,56 +3608,50 @@ min 0.00302    46  0.9479 0.06329      20
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span>  <span class="co"># 24 x variables + intercept = 25 rows</span></span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span><span class="dv">0</span>, term <span class="sc">!=</span> <span class="st">&quot;(Intercept)&quot;</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 × 2
+<pre><code># A tibble: 17 × 2
    term            estimate
    &lt;chr&gt;              &lt;dbl&gt;
- 1 Admin           0.0566  
- 2 Demographics    0.181   
- 3 Geographic      0.0634  
- 4 HHI            -0.00518 
- 5 Pop_mill       -0.000425
- 6 GDPcap          0.0431  
- 7 HDI            -3.33    
- 8 PopDen          0.000160
- 9 Urbanization    0.00831 
-10 GINI            0.0146  
-11 EconGlob        0.0207  
-12 SocialGlob      0.0598  
-13 PoliticalGlob   0.0208  
-14 GIIInput       -0.0282  
-15 PR             -0.0292  
-16 CL             -0.137   
-17 EthnicFrac      0.925   
-18 LinguisticFrac -0.791   
-19 ReligiousFrac  -0.509   
-20 G3              0.802   </code></pre>
+ 1 Admin           0.0482  
+ 2 Demographics    0.162   
+ 3 Geographic      0.0525  
+ 4 Pop_mill       -0.000538
+ 5 GDPcap          0.0270  
+ 6 HDI            -1.60    
+ 7 Urbanization    0.00569 
+ 8 GINI            0.00770 
+ 9 EconGlob        0.0138  
+10 SocialGlob      0.0465  
+11 PoliticalGlob   0.0177  
+12 PR             -0.0949  
+13 CL             -0.0156  
+14 EthnicFrac      0.722   
+15 LinguisticFrac -0.527   
+16 ReligiousFrac  -0.423   
+17 G3              0.678   </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.d, <span class="at">lambda =</span> bestlam.d) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 21 × 5
+<pre><code># A tibble: 18 × 5
    term            step  estimate  lambda dev.ratio
    &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)        1 -5.00     0.00302     0.359
- 2 Admin              1  0.0566   0.00302     0.359
- 3 Demographics       1  0.181    0.00302     0.359
- 4 Geographic         1  0.0634   0.00302     0.359
- 5 HHI                1 -0.00518  0.00302     0.359
- 6 Pop_mill           1 -0.000425 0.00302     0.359
- 7 GDPcap             1  0.0431   0.00302     0.359
- 8 HDI                1 -3.33     0.00302     0.359
- 9 PopDen             1  0.000160 0.00302     0.359
-10 Urbanization       1  0.00831  0.00302     0.359
-11 GINI               1  0.0146   0.00302     0.359
-12 EconGlob           1  0.0207   0.00302     0.359
-13 SocialGlob         1  0.0598   0.00302     0.359
-14 PoliticalGlob      1  0.0208   0.00302     0.359
-15 GIIInput           1 -0.0282   0.00302     0.359
-16 PR                 1 -0.0292   0.00302     0.359
-17 CL                 1 -0.137    0.00302     0.359
-18 EthnicFrac         1  0.925    0.00302     0.359
-19 LinguisticFrac     1 -0.791    0.00302     0.359
-20 ReligiousFrac      1 -0.509    0.00302     0.359
-21 G3                 1  0.802    0.00302     0.359</code></pre>
+ 1 (Intercept)        1 -5.29     0.00698     0.344
+ 2 Admin              1  0.0482   0.00698     0.344
+ 3 Demographics       1  0.162    0.00698     0.344
+ 4 Geographic         1  0.0525   0.00698     0.344
+ 5 Pop_mill           1 -0.000538 0.00698     0.344
+ 6 GDPcap             1  0.0270   0.00698     0.344
+ 7 HDI                1 -1.60     0.00698     0.344
+ 8 Urbanization       1  0.00569  0.00698     0.344
+ 9 GINI               1  0.00770  0.00698     0.344
+10 EconGlob           1  0.0138   0.00698     0.344
+11 SocialGlob         1  0.0465   0.00698     0.344
+12 PoliticalGlob      1  0.0177   0.00698     0.344
+13 PR                 1 -0.0949   0.00698     0.344
+14 CL                 1 -0.0156   0.00698     0.344
+15 EthnicFrac         1  0.722    0.00698     0.344
+16 LinguisticFrac     1 -0.527    0.00698     0.344
+17 ReligiousFrac      1 -0.423    0.00698     0.344
+18 G3                 1  0.678    0.00698     0.344</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting variables</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>selected_d <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.d) <span class="sc">|&gt;</span> </span>
@@ -3695,22 +3683,25 @@ min 0.00302    46  0.9479 0.06329      20
 13 ReligiousFrac     1 -0.118    0.0161     0.310
 14 G3                1  0.469    0.0161     0.310</code></pre>
 </section>
-<section id="take-the-union" class="level4" data-number="2.1.3.4">
-<h4 data-number="2.1.3.4" class="anchored" data-anchor-id="take-the-union"><span class="header-section-number">2.1.3.4</span> Take the Union</h4>
+<section id="take-the-union" class="level4" data-number="3.3.2.3">
+<h4 data-number="3.3.2.3" class="anchored" data-anchor-id="take-the-union"><span class="header-section-number">3.3.2.3</span> Take the Union</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>selected_y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] &quot;Admin&quot;          &quot;Demographics&quot;   &quot;HHI&quot;            &quot;GDPcap&quot;        
- [5] &quot;HDI&quot;            &quot;OverallGlob&quot;    &quot;GIIInput&quot;       &quot;LinguisticFrac&quot;
- [9] &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
+<pre><code> [1] &quot;EconR&quot;          &quot;Admin&quot;          &quot;Demographics&quot;   &quot;Geographic&quot;    
+ [5] &quot;HHI&quot;            &quot;Pop_mill&quot;       &quot;GDPcap&quot;         &quot;HDI&quot;           
+ [9] &quot;PopDen&quot;         &quot;Urbanization&quot;   &quot;GINI&quot;           &quot;EconGlob&quot;      
+[13] &quot;SocialGlob&quot;     &quot;PoliticalGlob&quot;  &quot;OverallGlob&quot;    &quot;GIIInput&quot;      
+[17] &quot;GIIOutput&quot;      &quot;GIIOverall&quot;     &quot;PR&quot;             &quot;CL&quot;            
+[21] &quot;EthnicFrac&quot;     &quot;LinguisticFrac&quot; &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>selected_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] &quot;Admin&quot;          &quot;Demographics&quot;   &quot;Geographic&quot;     &quot;HHI&quot;           
- [5] &quot;Pop_mill&quot;       &quot;GDPcap&quot;         &quot;HDI&quot;            &quot;PopDen&quot;        
- [9] &quot;Urbanization&quot;   &quot;GINI&quot;           &quot;EconGlob&quot;       &quot;SocialGlob&quot;    
-[13] &quot;PoliticalGlob&quot;  &quot;GIIInput&quot;       &quot;PR&quot;             &quot;CL&quot;            
-[17] &quot;EthnicFrac&quot;     &quot;LinguisticFrac&quot; &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
+<pre><code> [1] &quot;Admin&quot;          &quot;Demographics&quot;   &quot;Geographic&quot;     &quot;Pop_mill&quot;      
+ [5] &quot;GDPcap&quot;         &quot;HDI&quot;            &quot;Urbanization&quot;   &quot;GINI&quot;          
+ [9] &quot;EconGlob&quot;       &quot;SocialGlob&quot;     &quot;PoliticalGlob&quot;  &quot;PR&quot;            
+[13] &quot;CL&quot;             &quot;EthnicFrac&quot;     &quot;LinguisticFrac&quot; &quot;ReligiousFrac&quot; 
+[17] &quot;G3&quot;            </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>selected_union <span class="ot">=</span> <span class="fu">union</span>(selected_y, selected_d) <span class="co">#22 covariate</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -3729,8 +3720,8 @@ min 0.00302    46  0.9479 0.06329      20
 </ul></li>
 </ul>
 </section>
-<section id="final-model" class="level4" data-number="2.1.3.5">
-<h4 data-number="2.1.3.5" class="anchored" data-anchor-id="final-model"><span class="header-section-number">2.1.3.5</span> Final Model</h4>
+<section id="final-model" class="level4" data-number="3.3.2.4">
+<h4 data-number="3.3.2.4" class="anchored" data-anchor-id="final-model"><span class="header-section-number">3.3.2.4</span> Final Model</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression model with doubly selected: selecting variables arbitrarily. This could have ommitted variable bias.</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>lm_final_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(EntryTimes <span class="sc">~</span> dev_operator <span class="sc">+</span> Admin <span class="sc">+</span> Demographics <span class="sc">+</span> HHI <span class="sc">+</span> GDPcap <span class="sc">+</span> </span>
@@ -3780,39 +3771,42 @@ lm(formula = EntryTimes ~ dev_operator + ., data = data_final)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--6.0080 -1.1813 -0.1659  1.0942  6.4208 
+-5.7917 -1.1873 -0.1091  1.1297  6.3168 
 
 Coefficients:
                  Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)     1.309e+01  1.553e+00   8.433 6.92e-16 ***
-dev_operator   -6.629e-01  2.485e-01  -2.668  0.00796 ** 
-Admin           9.660e-03  6.617e-03   1.460  0.14517    
-Demographics    3.607e-02  1.866e-02   1.933  0.05395 .  
-HHI             1.271e-01  5.223e-02   2.433  0.01543 *  
-GDPcap          6.451e-04  1.266e-02   0.051  0.95938    
-HDI            -4.390e+00  1.550e+00  -2.833  0.00485 ** 
-OverallGlob    -1.170e-01  5.909e-02  -1.980  0.04844 *  
-GIIInput       -7.472e-02  2.386e-02  -3.131  0.00187 ** 
-LinguisticFrac  5.132e-01  6.100e-01   0.841  0.40069    
-ReligiousFrac   7.369e-01  5.173e-01   1.425  0.15509    
-G3              3.118e+00  2.240e-01  13.923  &lt; 2e-16 ***
-Geographic      1.148e-02  2.908e-02   0.395  0.69312    
-Pop_mill        6.129e-05  7.604e-04   0.081  0.93580    
-PopDen          1.237e-04  1.977e-04   0.626  0.53196    
-Urbanization    1.662e-02  7.738e-03   2.147  0.03240 *  
-GINI           -2.220e-02  1.545e-02  -1.436  0.15177    
-EconGlob        1.813e-02  2.165e-02   0.837  0.40296    
-SocialGlob      3.696e-02  2.484e-02   1.488  0.13748    
-PoliticalGlob   2.142e-02  1.984e-02   1.080  0.28099    
-PR              4.256e-02  1.566e-01   0.272  0.78592    
-CL             -2.805e-01  1.915e-01  -1.465  0.14373    
-EthnicFrac     -2.254e-01  7.146e-01  -0.315  0.75255    
+(Intercept)    10.7251749  2.2953605   4.673 4.13e-06 ***
+dev_operator   -0.6148362  0.2472884  -2.486  0.01334 *  
+EconR           0.4976108  0.2939081   1.693  0.09126 .  
+Admin           0.0127925  0.0067074   1.907  0.05725 .  
+Demographics    0.0367962  0.0185323   1.986  0.04780 *  
+Geographic      0.0062770  0.0290657   0.216  0.82913    
+HHI             0.1231294  0.0532516   2.312  0.02130 *  
+Pop_mill        0.0004085  0.0007777   0.525  0.59967    
+GDPcap          0.0043713  0.0127416   0.343  0.73173    
+HDI            -3.0929464  1.8193178  -1.700  0.08994 .  
+PopDen          0.0001481  0.0001968   0.752  0.45235    
+Urbanization    0.0228595  0.0080852   2.827  0.00494 ** 
+GINI           -0.0243612  0.0156905  -1.553  0.12135    
+EconGlob        0.0514317  0.0246187   2.089  0.03736 *  
+SocialGlob      0.0671619  0.0267638   2.509  0.01251 *  
+PoliticalGlob   0.0416376  0.0212425   1.960  0.05071 .  
+OverallGlob    -0.1946378  0.0654545  -2.974  0.00313 ** 
+GIIInput       -0.2143628  0.0748528  -2.864  0.00442 ** 
+GIIOutput      -0.1809755  0.0699021  -2.589  0.00999 ** 
+GIIOverall      0.3076525  0.1378320   2.232  0.02619 *  
+PR              0.1198587  0.1580732   0.758  0.44877    
+CL             -0.4066684  0.1966134  -2.068  0.03928 *  
+EthnicFrac     -0.3831427  0.7216669  -0.531  0.59579    
+LinguisticFrac  0.6820903  0.6093265   1.119  0.26367    
+ReligiousFrac   0.8132292  0.5143683   1.581  0.11470    
+G3              3.1975420  0.2248054  14.224  &lt; 2e-16 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 1.899 on 384 degrees of freedom
-Multiple R-squared:  0.6839,    Adjusted R-squared:  0.6658 
-F-statistic: 37.77 on 22 and 384 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1.884 on 381 degrees of freedom
+Multiple R-squared:  0.6911,    Adjusted R-squared:  0.6708 
+F-statistic: 34.09 on 25 and 381 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <pre><code>&gt; summary(lm_final_union)
@@ -3857,8 +3851,8 @@ Residual standard error: 1.893 on 383 degrees of freedom
 Multiple R-squared:  0.6867,    Adjusted R-squared:  0.6679 
 F-statistic: 36.49 on 23 and 383 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
-<section id="multiple-regression-without-double-selection-naive-model" class="level4" data-number="2.1.3.6">
-<h4 data-number="2.1.3.6" class="anchored" data-anchor-id="multiple-regression-without-double-selection-naive-model"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection = Naive model</h4>
+<section id="naive-model-multiple-regression-without-double-selection" class="level4" data-number="3.3.2.5">
+<h4 data-number="3.3.2.5" class="anchored" data-anchor-id="naive-model-multiple-regression-without-double-selection"><span class="header-section-number">3.3.2.5</span> Naive Model: Multiple Regression without Double Selection</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run simple multiple regression without DML to check results later</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
@@ -3954,11 +3948,10 @@ Residual standard error: 1.889 on 382 degrees of freedom
 Multiple R-squared:  0.6888,    Adjusted R-squared:  0.6692 
 F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
-</section>
-<section id="focus-of-comparison" class="level3" data-number="2.1.4">
-<h3 data-number="2.1.4" class="anchored" data-anchor-id="focus-of-comparison"><span class="header-section-number">2.1.4</span> Focus of Comparison</h3>
-<section id="the-treatment-effect-estimate" class="level4" data-number="2.1.4.1">
-<h4 data-number="2.1.4.1" class="anchored" data-anchor-id="the-treatment-effect-estimate"><span class="header-section-number">2.1.4.1</span> 1. <strong>The treatment effect estimate</strong></h4>
+<section id="comparison" class="level4" data-number="3.3.2.6">
+<h4 data-number="3.3.2.6" class="anchored" data-anchor-id="comparison"><span class="header-section-number">3.3.2.6</span> Comparison</h4>
+<section id="the-treatment-effect-estimate" class="level5" data-number="3.3.2.6.1">
+<h5 data-number="3.3.2.6.1" class="anchored" data-anchor-id="the-treatment-effect-estimate"><span class="header-section-number">3.3.2.6.1</span> 1. <strong>The treatment effect estimate</strong></h5>
 <ul>
 <li><p>Yes — this is the key quantity of interest.</p></li>
 <li><p>You want to compare:</p></li>
@@ -3970,16 +3963,16 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 -    The **statistical significance**</code></pre>
 <p>→ Ask: <em>Does the double selection model confirm, reduce, or reverse the naive estimate?</em></p>
 </section>
-<section id="standard-errors-and-confidence-intervals" class="level4" data-number="2.1.4.2">
-<h4 data-number="2.1.4.2" class="anchored" data-anchor-id="standard-errors-and-confidence-intervals"><span class="header-section-number">2.1.4.2</span> <strong>2. Standard errors and confidence intervals</strong></h4>
+<section id="standard-errors-and-confidence-intervals" class="level5" data-number="3.3.2.6.2">
+<h5 data-number="3.3.2.6.2" class="anchored" data-anchor-id="standard-errors-and-confidence-intervals"><span class="header-section-number">3.3.2.6.2</span> <strong>2. Standard errors and confidence intervals</strong></h5>
 <ul>
 <li><p>LASSO helps reduce noise and variance by excluding irrelevant variables.</p></li>
 <li><p>Double selection often leads to <strong>more stable inference</strong>, especially in high-dimensional settings.</p></li>
 </ul>
 <p>→ Are the confidence intervals wider or narrower in one model?</p>
 </section>
-<section id="variable-inclusion-bias-naive-model" class="level4" data-number="2.1.4.3">
-<h4 data-number="2.1.4.3" class="anchored" data-anchor-id="variable-inclusion-bias-naive-model"><span class="header-section-number">2.1.4.3</span> 3. <strong>Variable inclusion bias (naive model)</strong></h4>
+<section id="variable-inclusion-bias-naive-model" class="level5" data-number="3.3.2.6.3">
+<h5 data-number="3.3.2.6.3" class="anchored" data-anchor-id="variable-inclusion-bias-naive-model"><span class="header-section-number">3.3.2.6.3</span> 3. <strong>Variable inclusion bias (naive model)</strong></h5>
 <p>The naive model might:</p>
 <ul>
 <li><p>Include irrelevant variables → <strong>overfitting</strong>, inflated SEs, unstable estimates.</p></li>
@@ -3987,8 +3980,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ul>
 <p>→ The double selection model is explicitly designed to <strong>select only variables that matter</strong>, reducing both issues.</p>
 </section>
-<section id="model-assumptions-and-goals" class="level4" data-number="2.1.4.4">
-<h4 data-number="2.1.4.4" class="anchored" data-anchor-id="model-assumptions-and-goals"><span class="header-section-number">2.1.4.4</span> 4. <strong>Model assumptions and goals</strong></h4>
+<section id="model-assumptions-and-goals" class="level5" data-number="3.3.2.6.4">
+<h5 data-number="3.3.2.6.4" class="anchored" data-anchor-id="model-assumptions-and-goals"><span class="header-section-number">3.3.2.6.4</span> 4. <strong>Model assumptions and goals</strong></h5>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -4026,10 +4019,11 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </tbody>
 </table>
 </section>
-<section id="should-you-trust-the-double-selection-estimate-more" class="level4" data-number="2.1.4.5">
-<h4 data-number="2.1.4.5" class="anchored" data-anchor-id="should-you-trust-the-double-selection-estimate-more"><span class="header-section-number">2.1.4.5</span> Should you trust the double selection estimate more?</h4>
+</section>
+<section id="should-you-trust-the-double-selection-estimate-more" class="level4" data-number="3.3.2.7">
+<h4 data-number="3.3.2.7" class="anchored" data-anchor-id="should-you-trust-the-double-selection-estimate-more"><span class="header-section-number">3.3.2.7</span> Should you trust the double selection estimate more?</h4>
 <blockquote class="blockquote">
-<p><strong>Yes</strong>, <em>if your goal is causal inference</em>, the double selection estimate is more trustworthy.</p>
+<p><strong>Yes</strong>, <em>if your goal is causal inference</em>, the double selection estimate is more trustworthy than naive regression models.</p>
 </blockquote>
 <p>Why?</p>
 <ul>
@@ -4041,20 +4035,23 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 </section>
 </section>
-<section id="double-machine-learning-process" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Double Machine Learning: Process</h1>
-<section id="double-machine-learning-dml" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="double-machine-learning-dml"><span class="header-section-number">3.1</span> Double Machine Learning (DML)</h2>
+<section id="double-machine-learning-process" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Double Machine Learning: Process</h1>
+<section id="double-machine-learning-dml" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="double-machine-learning-dml"><span class="header-section-number">4.1</span> Double Machine Learning (DML)</h2>
 <p><strong>Double Machine Learning</strong> (Chernozhukov et al., 2018) is a framework designed to estimate <strong>causal parameters</strong> (like treatment effects) <strong>while using machine learning models to control for high-dimensional confounders</strong>.</p>
 <p>It’s built on two key ideas:</p>
-<section id="orthogonalization-a.k.a.-neyman-orthogonality" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="orthogonalization-a.k.a.-neyman-orthogonality"><span class="header-section-number">3.1.1</span> 1. <strong>Orthogonalization</strong> (a.k.a. Neyman orthogonality)</h3>
+<section id="orthogonalization-a.k.a.-neyman-orthogonality" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="orthogonalization-a.k.a.-neyman-orthogonality"><span class="header-section-number">4.1.1</span> 1. <strong>Orthogonalization</strong> (a.k.a. Neyman orthogonality)</h3>
 <ul>
-<li>You adjust for nuisance functions (e.g., predicted outcome and treatment) so that small ML estimation errors in those don’t bias the final causal estimate.</li>
+<li>You adjust for nuisance functions (e.g., predicted outcome and treatment) so that small ML estimation errors in those don’t bias the final causal estimate.
+<ul>
+<li>In economics, particularly within econometrics and statistical modeling, the term “nuisance model” or more commonly, “<strong>nuisance parameter</strong>”, refers to aspects of a statistical model that are not the primary focus of the research question but are necessary to specify the model correctly and obtain accurate inferences about the parameters of interest.</li>
+</ul></li>
 </ul>
 </section>
-<section id="sample-splitting-cross-fitting" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="sample-splitting-cross-fitting"><span class="header-section-number">3.1.2</span> 2. <strong>Sample Splitting / Cross-Fitting</strong></h3>
+<section id="sample-splitting-cross-fitting" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="sample-splitting-cross-fitting"><span class="header-section-number">4.1.2</span> 2. <strong>Sample Splitting / Cross-Fitting</strong></h3>
 <ul>
 <li><p>You <strong>split your data</strong> into folds (e.g., 2-fold or K-fold).</p></li>
 <li><p>In each fold:</p>
@@ -4066,8 +4063,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>This avoids <strong>overfitting</strong> when using flexible machine learning methods.</p>
 </section>
 </section>
-<section id="basic-dml-workflow" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="basic-dml-workflow"><span class="header-section-number">3.2</span> Basic DML Workflow</h2>
+<section id="basic-dml-workflow" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="basic-dml-workflow"><span class="header-section-number">4.2</span> Basic DML Workflow</h2>
 <p>Assume you want to estimate the effect of a binary treatment D on an outcome Y, adjusting for covariates X.</p>
 <ol type="1">
 <li><strong>Learn the nuisance functions:</strong></li>
@@ -4087,8 +4084,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><strong>Estimate the causal effect by regressing residualized</strong> <span class="math inline">\(\tilde{Y}\)</span> on <span class="math inline">\(\tilde{D}\)</span>.</li>
 </ol>
 <p>This gives an estimate of the <strong>average treatment effect (ATE)</strong> that’s <strong>robust to high-dimensional or nonparametric estimation of nuisance functions</strong>.</p>
-<section id="demo" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="demo"><span class="header-section-number">3.2.1</span> Demo</h3>
+<section id="demo" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="demo"><span class="header-section-number">4.2.1</span> Demo</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span></span>
@@ -4153,8 +4150,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 2 resid.d      -0.480      0.352    -1.36    0.175
 &gt; </code></pre>
 </section>
-<section id="interpretation" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">3.2.2</span> Interpretation</h3>
+<section id="interpretation" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">4.2.2</span> Interpretation</h3>
 <p>Your <strong>estimated ATE is -0.480</strong>, meaning:</p>
 <blockquote class="blockquote">
 <p>After controlling for covariates (using machine learning to predict both <code>Y</code> and <code>D</code>), <strong>a one-unit increase in treatment</strong> <code>D</code> is associated with a <strong>0.48 unit decrease in the outcome</strong> <code>Y</code> on average.</p>
@@ -4162,10 +4159,10 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>However, this estimate is <strong>not statistically significant</strong> at typical thresholds: <strong>t-statistic</strong> = -1.36, <strong>p-value</strong> = 0.175. This means you <strong>do not have strong evidence</strong> that the treatment has a non-zero causal effect in this sample, <strong>based on this model and estimation procedure</strong>.</p>
 </section>
 </section>
-<section id="dml-with-cross-fit" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="dml-with-cross-fit"><span class="header-section-number">3.3</span> DML with Cross-fit</h2>
-<section id="what-is-cross-fitting" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="what-is-cross-fitting"><span class="header-section-number">3.3.1</span> What is <strong>Cross-Fitting</strong>?</h3>
+<section id="dml-with-cross-fit" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="dml-with-cross-fit"><span class="header-section-number">4.3</span> DML with Cross-fit</h2>
+<section id="what-is-cross-fitting" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="what-is-cross-fitting"><span class="header-section-number">4.3.1</span> What is <strong>Cross-Fitting</strong>?</h3>
 <p><strong>Cross-fitting</strong> is a method where you</p>
 <ol type="1">
 <li><p><strong>Split your data</strong> into two (or more) parts: say, <strong>S1</strong> and <strong>S2</strong>.</p></li>
@@ -4176,8 +4173,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>Finally, you <strong>average</strong> the two treatment effect estimates.</p></li>
 </ol>
 </section>
-<section id="why-cross-fitting" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="why-cross-fitting"><span class="header-section-number">3.3.2</span> Why Cross-Fitting?</h3>
+<section id="why-cross-fitting" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="why-cross-fitting"><span class="header-section-number">4.3.2</span> Why Cross-Fitting?</h3>
 <p>Cross-fitting <strong>avoids “overfitting bias”</strong> caused by using machine learning models that are flexible and prone to capturing noise.</p>
 <ul>
 <li><p>If you predict Y or D using the <strong>same data you use for estimation</strong>, your residuals may be too small, and the causal estimate becomes biased.</p></li>
@@ -4261,14 +4258,14 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="explanation-of-the-functions" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="explanation-of-the-functions"><span class="header-section-number">3.3.3</span> Explanation of the Functions</h3>
+<section id="explanation-of-the-functions" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="explanation-of-the-functions"><span class="header-section-number">4.3.3</span> Explanation of the Functions</h3>
 <ul>
 <li>Two functions were defined above</li>
 </ul>
 </section>
-<section id="dml_estimator" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="dml_estimator"><span class="header-section-number">3.3.4</span> DML_estimator(…):</h3>
+<section id="dml_estimator" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="dml_estimator"><span class="header-section-number">4.3.4</span> DML_estimator(…):</h3>
 <p>Estimates treatment effect using:</p>
 <ul>
 <li><p>Model trained on <strong>S1</strong></p></li>
@@ -4276,8 +4273,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>DML formula: <span class="math display">\[\hat{\theta} = \frac{\sum_{i \in S_2} \tilde{D}_i \tilde{Y}_i}{\sum_{i \in S_2} \tilde{D}_i^2}\]</span></p></li>
 </ul>
 </section>
-<section id="dml_crossfit" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="dml_crossfit"><span class="header-section-number">3.3.5</span> DML_crossfit(…)</h3>
+<section id="dml_crossfit" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="dml_crossfit"><span class="header-section-number">4.3.5</span> DML_crossfit(…)</h3>
 <p>Does:</p>
 <ul>
 <li><p>One estimate using <code>S1 → S2</code></p></li>
@@ -4288,8 +4285,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>This is the <strong>preferred estimator</strong> in Double Machine Learning.</p>
 </section>
 </section>
-<section id="summary-benefits-of-cross-fitting" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="summary-benefits-of-cross-fitting"><span class="header-section-number">3.4</span> Summary: Benefits of Cross-Fitting</h2>
+<section id="summary-benefits-of-cross-fitting" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="summary-benefits-of-cross-fitting"><span class="header-section-number">4.4</span> Summary: Benefits of Cross-Fitting</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -4325,8 +4322,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </tbody>
 </table>
 </section>
-<section id="double-selection-vs.-double-machine-learning" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="double-selection-vs.-double-machine-learning"><span class="header-section-number">3.5</span> Double Selection vs. Double Machine Learning</h2>
+<section id="double-selection-vs.-double-machine-learning" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="double-selection-vs.-double-machine-learning"><span class="header-section-number">4.5</span> Double Selection vs. Double Machine Learning</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -4378,8 +4375,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </tr>
 </tbody>
 </table>
-<section id="relationship" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="relationship"><span class="header-section-number">3.5.1</span> Relationship</h3>
+<section id="relationship" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="relationship"><span class="header-section-number">4.5.1</span> Relationship</h3>
 <ul>
 <li><p><strong>Double Selection</strong> can be seen as a <strong>special case of Double Machine Learning</strong>, where:</p>
 <ul>
@@ -4395,8 +4392,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="when-to-use-what" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="when-to-use-what"><span class="header-section-number">3.5.2</span> When to Use What?</h3>
+<section id="when-to-use-what" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="when-to-use-what"><span class="header-section-number">4.5.2</span> When to Use What?</h3>
 <ul>
 <li><p>Use <strong>Double Selection</strong> when you’re using <strong>LASSO in a linear setting</strong> and want a fast, interpretable causal effect estimate.</p></li>
 <li><p>Use <strong>Double Machine Learning</strong> when:</p>
