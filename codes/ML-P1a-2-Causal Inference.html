@@ -3241,7 +3241,7 @@ window.Quarto = {
   <li><a href="#treatment-model" id="toc-treatment-model" class="nav-link" data-scroll-target="#treatment-model"><span class="header-section-number">2.1.3.3</span> Treatment Model</a></li>
   <li><a href="#take-the-union" id="toc-take-the-union" class="nav-link" data-scroll-target="#take-the-union"><span class="header-section-number">2.1.3.4</span> Take the Union</a></li>
   <li><a href="#final-model" id="toc-final-model" class="nav-link" data-scroll-target="#final-model"><span class="header-section-number">2.1.3.5</span> Final Model</a></li>
-  <li><a href="#multiple-regression-without-double-selection" id="toc-multiple-regression-without-double-selection" class="nav-link" data-scroll-target="#multiple-regression-without-double-selection"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection</a></li>
+  <li><a href="#multiple-regression-without-double-selection-naive-model" id="toc-multiple-regression-without-double-selection-naive-model" class="nav-link" data-scroll-target="#multiple-regression-without-double-selection-naive-model"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection = Naive model</a></li>
   </ul></li>
   <li><a href="#focus-of-comparison" id="toc-focus-of-comparison" class="nav-link" data-scroll-target="#focus-of-comparison"><span class="header-section-number">2.1.4</span> Focus of Comparison</a>
   <ul class="collapse">
@@ -3327,7 +3327,7 @@ window.Quarto = {
   <li><a href="#treatment-model" id="toc-treatment-model"><span class="header-section-number">2.1.3.3</span> Treatment Model</a></li>
   <li><a href="#take-the-union" id="toc-take-the-union"><span class="header-section-number">2.1.3.4</span> Take the Union</a></li>
   <li><a href="#final-model" id="toc-final-model"><span class="header-section-number">2.1.3.5</span> Final Model</a></li>
-  <li><a href="#multiple-regression-without-double-selection" id="toc-multiple-regression-without-double-selection"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection</a></li>
+  <li><a href="#multiple-regression-without-double-selection-naive-model" id="toc-multiple-regression-without-double-selection-naive-model"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection = Naive model</a></li>
   </ul></li>
   <li><a href="#focus-of-comparison" id="toc-focus-of-comparison"><span class="header-section-number">2.1.4</span> Focus of Comparison</a>
   <ul>
@@ -3504,8 +3504,8 @@ Call:  cv.glmnet(x = x, y = y_vec, alpha = 1)
 Measure: Mean-Squared Error 
 
     Lambda Index Measure     SE Nonzero
-min 0.0525    41   3.885 0.2141      14
-1se 0.3707    20   4.079 0.2612       4</code></pre>
+min 0.1106    33   3.846 0.3976      10
+1se 0.4900    17   4.218 0.4269       4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -3517,44 +3517,40 @@ min 0.0525    41   3.885 0.2141      14
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;term&quot;</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">estimate =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()  <span class="co"># 25 terms including those with 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span>  <span class="co"># 25 terms including those with 0</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span><span class="dv">0</span>, term <span class="sc">!=</span> <span class="st">&quot;(Intercept)&quot;</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 25 × 2
-   term         estimate
-   &lt;chr&gt;           &lt;dbl&gt;
- 1 (Intercept)  10.9    
- 2 EconR         0.0515 
- 3 Admin         0.00391
- 4 Demographics  0.0122 
- 5 Geographic    0      
- 6 HHI           0.0858 
- 7 Pop_mill      0      
- 8 GDPcap        0      
- 9 HDI          -2.10   
-10 PopDen        0      
-# ℹ 15 more rows</code></pre>
+<pre><code># A tibble: 10 × 2
+   term            estimate
+   &lt;chr&gt;              &lt;dbl&gt;
+ 1 Admin           0.000764
+ 2 Demographics    0.00487 
+ 3 HHI             0.0623  
+ 4 GDPcap         -0.00140 
+ 5 HDI            -2.58    
+ 6 OverallGlob    -0.0451  
+ 7 GIIInput       -0.0419  
+ 8 LinguisticFrac  0.220   
+ 9 ReligiousFrac   0.336   
+10 G3              3.01    </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or use tidy() early to avoid sparse matrix</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.y, <span class="at">lambda =</span> bestlam.y )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 15 × 5
-   term            step estimate lambda dev.ratio
-   &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)        1 10.9     0.0525     0.670
- 2 EconR              1  0.0515  0.0525     0.670
- 3 Admin              1  0.00391 0.0525     0.670
- 4 Demographics       1  0.0122  0.0525     0.670
- 5 HHI                1  0.0858  0.0525     0.670
- 6 HDI                1 -2.10    0.0525     0.670
- 7 GINI               1 -0.00743 0.0525     0.670
- 8 EconGlob           1 -0.00113 0.0525     0.670
- 9 OverallGlob        1 -0.0470  0.0525     0.670
-10 GIIInput           1 -0.0505  0.0525     0.670
-11 GIIOutput          1 -0.00164 0.0525     0.670
-12 CL                 1 -0.0700  0.0525     0.670
-13 LinguisticFrac     1  0.341   0.0525     0.670
-14 ReligiousFrac      1  0.557   0.0525     0.670
-15 G3                 1  3.09    0.0525     0.670</code></pre>
+<pre><code># A tibble: 11 × 5
+   term            step  estimate lambda dev.ratio
+   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+ 1 (Intercept)        1 10.6       0.111     0.662
+ 2 Admin              1  0.000764  0.111     0.662
+ 3 Demographics       1  0.00487   0.111     0.662
+ 4 HHI                1  0.0623    0.111     0.662
+ 5 GDPcap             1 -0.00140   0.111     0.662
+ 6 HDI                1 -2.58      0.111     0.662
+ 7 OverallGlob        1 -0.0451    0.111     0.662
+ 8 GIIInput           1 -0.0419    0.111     0.662
+ 9 LinguisticFrac     1  0.220     0.111     0.662
+10 ReligiousFrac      1  0.336     0.111     0.662
+11 G3                 1  3.01      0.111     0.662</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting variables</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>selected_y <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.y) <span class="sc">|&gt;</span> </span>
@@ -3567,28 +3563,28 @@ min 0.0525    41   3.885 0.2141      14
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(term)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>&gt; tidy(lasso.y, lambda = bestlam.y )
-# A tibble: 19 × 5
-   term            step   estimate lambda dev.ratio
-   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)        1 11.5       0.0227     0.676
- 2 EconR              1  0.176     0.0227     0.676
- 3 Admin              1  0.00474   0.0227     0.676*
- 4 Demographics       1  0.0175    0.0227     0.676
- 5 HHI                1  0.107     0.0227     0.676
- 6 Pop_mill           1  0.0000338 0.0227     0.676
- 7 HDI                1 -2.21      0.0227     0.676
- 8 Urbanization       1  0.00837   0.0227     0.676
- 9 GINI               1 -0.0205    0.0227     0.676
-10 EconGlob           1 -0.00292   0.0227     0.676
-11 PoliticalGlob      1 -0.000430  0.0227     0.676
-12 OverallGlob        1 -0.0508    0.0227     0.676
-13 GIIInput           1 -0.0491    0.0227     0.676
-14 GIIOutput          1 -0.0123    0.0227     0.676
-15 CL                 1 -0.170     0.0227     0.676
-16 EthnicFrac         1 -0.00208   0.0227     0.676
-17 LinguisticFrac     1  0.359     0.0227     0.676
-18 ReligiousFrac      1  0.703     0.0227     0.676
-19 G3                 1  3.10      0.0227     0.676</code></pre>
+# A tibble: 18 × 5
+   term            step    estimate lambda dev.ratio
+   &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+ 1 (Intercept)        1 11.4        0.0250     0.676
+ 2 EconR              1  0.165      0.0250     0.676
+ 3 Admin              1  0.00467    0.0250     0.676
+ 4 Demographics       1  0.0171     0.0250     0.676
+ 5 HHI                1  0.105      0.0250     0.676
+ 6 Pop_mill           1  0.00000197 0.0250     0.676
+ 7 HDI                1 -2.19       0.0250     0.676
+ 8 Urbanization       1  0.00751    0.0250     0.676
+ 9 GINI               1 -0.0194     0.0250     0.676
+10 EconGlob           1 -0.00276    0.0250     0.676
+11 PoliticalGlob      1 -0.000199   0.0250     0.676
+12 OverallGlob        1 -0.0507     0.0250     0.676
+13 GIIInput           1 -0.0491     0.0250     0.676
+14 GIIOutput          1 -0.0114     0.0250     0.676
+15 CL                 1 -0.162      0.0250     0.676
+16 LinguisticFrac     1  0.359      0.0250     0.676
+17 ReligiousFrac      1  0.689      0.0250     0.676
+18 G3                 1  3.09       0.0250     0.676
+&gt; </code></pre>
 </section>
 <section id="treatment-model" class="level4" data-number="2.1.3.3">
 <h4 data-number="2.1.3.3" class="anchored" data-anchor-id="treatment-model"><span class="header-section-number">2.1.3.3</span> Treatment Model</h4>
@@ -3603,8 +3599,8 @@ Call:  cv.glmnet(x = x, y = d_vec, alpha = 1, family = &quot;binomial&quot;)
 Measure: Binomial Deviance 
 
      Lambda Index Measure      SE Nonzero
-min 0.00331    45  0.9329 0.07603      20
-1se 0.04086    18  1.0049 0.04524       7</code></pre>
+min 0.00302    46  0.9479 0.06329      20
+1se 0.04086    18  1.0049 0.02863       7</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, d_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
@@ -3615,49 +3611,59 @@ min 0.00331    45  0.9329 0.07603      20
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;term&quot;</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">estimate =</span> <span class="st">&quot;s0&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="co"># 24 x variables + intercept = 25 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span>  <span class="co"># 24 x variables + intercept = 25 rows</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span><span class="dv">0</span>, term <span class="sc">!=</span> <span class="st">&quot;(Intercept)&quot;</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 25 × 2
-   term          estimate
-   &lt;chr&gt;            &lt;dbl&gt;
- 1 (Intercept)  -5.04    
- 2 EconR         0       
- 3 Admin         0.0559  
- 4 Demographics  0.179   
- 5 Geographic    0.0624  
- 6 HHI          -0.00373 
- 7 Pop_mill     -0.000436
- 8 GDPcap        0.0416  
- 9 HDI          -3.19    
-10 PopDen        0.000142
-# ℹ 15 more rows</code></pre>
+<pre><code># A tibble: 20 × 2
+   term            estimate
+   &lt;chr&gt;              &lt;dbl&gt;
+ 1 Admin           0.0566  
+ 2 Demographics    0.181   
+ 3 Geographic      0.0634  
+ 4 HHI            -0.00518 
+ 5 Pop_mill       -0.000425
+ 6 GDPcap          0.0431  
+ 7 HDI            -3.33    
+ 8 PopDen          0.000160
+ 9 Urbanization    0.00831 
+10 GINI            0.0146  
+11 EconGlob        0.0207  
+12 SocialGlob      0.0598  
+13 PoliticalGlob   0.0208  
+14 GIIInput       -0.0282  
+15 PR             -0.0292  
+16 CL             -0.137   
+17 EthnicFrac      0.925   
+18 LinguisticFrac -0.791   
+19 ReligiousFrac  -0.509   
+20 G3              0.802   </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.d, <span class="at">lambda =</span> bestlam.d) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 5
    term            step  estimate  lambda dev.ratio
    &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)        1 -5.04     0.00331     0.358
- 2 Admin              1  0.0559   0.00331     0.358
- 3 Demographics       1  0.179    0.00331     0.358
- 4 Geographic         1  0.0624   0.00331     0.358
- 5 HHI                1 -0.00373  0.00331     0.358
- 6 Pop_mill           1 -0.000436 0.00331     0.358
- 7 GDPcap             1  0.0416   0.00331     0.358
- 8 HDI                1 -3.19     0.00331     0.358
- 9 PopDen             1  0.000142 0.00331     0.358
-10 Urbanization       1  0.00810  0.00331     0.358
-11 GINI               1  0.0140   0.00331     0.358
-12 EconGlob           1  0.0200   0.00331     0.358
-13 SocialGlob         1  0.0585   0.00331     0.358
-14 PoliticalGlob      1  0.0205   0.00331     0.358
-15 GIIInput           1 -0.0252   0.00331     0.358
-16 PR                 1 -0.0353   0.00331     0.358
-17 CL                 1 -0.126    0.00331     0.358
-18 EthnicFrac         1  0.910    0.00331     0.358
-19 LinguisticFrac     1 -0.770    0.00331     0.358
-20 ReligiousFrac      1 -0.505    0.00331     0.358
-21 G3                 1  0.789    0.00331     0.358</code></pre>
+ 1 (Intercept)        1 -5.00     0.00302     0.359
+ 2 Admin              1  0.0566   0.00302     0.359
+ 3 Demographics       1  0.181    0.00302     0.359
+ 4 Geographic         1  0.0634   0.00302     0.359
+ 5 HHI                1 -0.00518  0.00302     0.359
+ 6 Pop_mill           1 -0.000425 0.00302     0.359
+ 7 GDPcap             1  0.0431   0.00302     0.359
+ 8 HDI                1 -3.33     0.00302     0.359
+ 9 PopDen             1  0.000160 0.00302     0.359
+10 Urbanization       1  0.00831  0.00302     0.359
+11 GINI               1  0.0146   0.00302     0.359
+12 EconGlob           1  0.0207   0.00302     0.359
+13 SocialGlob         1  0.0598   0.00302     0.359
+14 PoliticalGlob      1  0.0208   0.00302     0.359
+15 GIIInput           1 -0.0282   0.00302     0.359
+16 PR                 1 -0.0292   0.00302     0.359
+17 CL                 1 -0.137    0.00302     0.359
+18 EthnicFrac         1  0.925    0.00302     0.359
+19 LinguisticFrac     1 -0.791    0.00302     0.359
+20 ReligiousFrac      1 -0.509    0.00302     0.359
+21 G3                 1  0.802    0.00302     0.359</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting variables</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>selected_d <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.d) <span class="sc">|&gt;</span> </span>
@@ -3670,40 +3676,33 @@ min 0.00331    45  0.9329 0.07603      20
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(term)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>&gt; tidy(lasso.d, lambda = bestlam.d)
-# A tibble: 21 × 5
-   term            step  estimate  lambda dev.ratio
-   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)        1 -5.04     0.00331     0.358
- 2 Admin              1  0.0559   0.00331     0.358**
- 3 Demographics       1  0.179    0.00331     0.358**
- 4 Geographic         1  0.0624   0.00331     0.358
- 5 HHI                1 -0.00373  0.00331     0.358**
- 6 Pop_mill           1 -0.000436 0.00331     0.358*
- 7 GDPcap             1  0.0416   0.00331     0.358**
- 8 HDI                1 -3.19     0.00331     0.358**
- 9 PopDen             1  0.000142 0.00331     0.358
-10 Urbanization       1  0.00810  0.00331     0.358*
-11 GINI               1  0.0140   0.00331     0.358*
-12 EconGlob           1  0.0200   0.00331     0.358*
-13 SocialGlob         1  0.0585   0.00331     0.358
-14 PoliticalGlob      1  0.0205   0.00331     0.358*
-15 GIIInput           1 -0.0252   0.00331     0.358**
-16 PR                 1 -0.0353   0.00331     0.358
-17 CL                 1 -0.126    0.00331     0.358*
-18 EthnicFrac         1  0.910    0.00331     0.358*
-19 LinguisticFrac     1 -0.770    0.00331     0.358**
-20 ReligiousFrac      1 -0.505    0.00331     0.358**
-21 G3                 1  0.789    0.00331     0.358**</code></pre>
+&gt; tidy(lasso.d, lambda = bestlam.d) |&gt; print(n = 21)
+# A tibble: 14 × 5
+   term           step  estimate lambda dev.ratio
+   &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+ 1 (Intercept)       1 -4.37     0.0161     0.310
+ 2 Admin             1  0.0358   0.0161     0.310
+ 3 Demographics      1  0.135    0.0161     0.310
+ 4 Geographic        1  0.0309   0.0161     0.310
+ 5 Pop_mill          1 -0.000460 0.0161     0.310
+ 6 GDPcap            1  0.0118   0.0161     0.310
+ 7 Urbanization      1  0.00472  0.0161     0.310
+ 8 SocialGlob        1  0.0241   0.0161     0.310
+ 9 PoliticalGlob     1  0.00450  0.0161     0.310
+10 OverallGlob       1  0.0304   0.0161     0.310
+11 PR                1 -0.0846   0.0161     0.310
+12 EthnicFrac        1  0.0615   0.0161     0.310
+13 ReligiousFrac     1 -0.118    0.0161     0.310
+14 G3                1  0.469    0.0161     0.310</code></pre>
 </section>
 <section id="take-the-union" class="level4" data-number="2.1.3.4">
 <h4 data-number="2.1.3.4" class="anchored" data-anchor-id="take-the-union"><span class="header-section-number">2.1.3.4</span> Take the Union</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>selected_y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] &quot;EconR&quot;          &quot;Admin&quot;          &quot;Demographics&quot;   &quot;HHI&quot;           
- [5] &quot;HDI&quot;            &quot;GINI&quot;           &quot;EconGlob&quot;       &quot;OverallGlob&quot;   
- [9] &quot;GIIInput&quot;       &quot;GIIOutput&quot;      &quot;CL&quot;             &quot;LinguisticFrac&quot;
-[13] &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
+<pre><code> [1] &quot;Admin&quot;          &quot;Demographics&quot;   &quot;HHI&quot;            &quot;GDPcap&quot;        
+ [5] &quot;HDI&quot;            &quot;OverallGlob&quot;    &quot;GIIInput&quot;       &quot;LinguisticFrac&quot;
+ [9] &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>selected_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -3713,7 +3712,7 @@ min 0.00331    45  0.9329 0.07603      20
 [13] &quot;PoliticalGlob&quot;  &quot;GIIInput&quot;       &quot;PR&quot;             &quot;CL&quot;            
 [17] &quot;EthnicFrac&quot;     &quot;LinguisticFrac&quot; &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>selected_union <span class="ot">=</span> <span class="fu">union</span>(selected_y, selected_d)</span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>selected_union <span class="ot">=</span> <span class="fu">union</span>(selected_y, selected_d) <span class="co">#22 covariate</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare dataset for final model</span></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>x_selected <span class="ot">&lt;-</span> dataset[, selected_union]</span>
@@ -3771,7 +3770,7 @@ F-statistic: 79.07 on 10 and 396 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct way: Taking the entire union of non-zero coefficients from the outcome and treatment models, even if some look &quot;less important&quot;.</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>lm_final_union <span class="ot">&lt;-</span> data_final <span class="sc">|&gt;</span> </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(EntryTimes <span class="sc">~</span> dev_operator <span class="sc">+</span> ., <span class="at">data =</span> _) </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(EntryTimes <span class="sc">~</span> dev_operator <span class="sc">+</span> ., <span class="at">data =</span> _) <span class="co"># 22 covariates + 1 treatment</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_final_union)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -3781,41 +3780,39 @@ lm(formula = EntryTimes ~ dev_operator + ., data = data_final)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5.8747 -1.1188 -0.1196  1.0907  6.3562 
+-6.0080 -1.1813 -0.1659  1.0942  6.4208 
 
 Coefficients:
                  Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)    11.0434033  2.3028386   4.796 2.33e-06 ***
-dev_operator   -0.6533221  0.2479690  -2.635  0.00876 ** 
-EconR           0.4248744  0.2936145   1.447  0.14870    
-Admin           0.0120256  0.0067334   1.786  0.07490 .  
-Demographics    0.0364246  0.0186279   1.955  0.05127 .  
-HHI             0.1410283  0.0529181   2.665  0.00802 ** 
-HDI            -3.1894826  1.8282592  -1.745  0.08187 .  
-GINI           -0.0247090  0.0157713  -1.567  0.11801    
-EconGlob        0.0263109  0.0220095   1.195  0.23266    
-OverallGlob    -0.1330403  0.0596612  -2.230  0.02633 *  
-GIIInput       -0.0574334  0.0258236  -2.224  0.02673 *  
-GIIOutput      -0.0310697  0.0194885  -1.594  0.11171    
-CL             -0.3689508  0.1969042  -1.874  0.06173 .  
-LinguisticFrac  0.6104116  0.6116430   0.998  0.31892    
-ReligiousFrac   0.7946179  0.5169745   1.537  0.12511    
-G3              3.1656230  0.2255165  14.037  &lt; 2e-16 ***
-Geographic      0.0069494  0.0292153   0.238  0.81211    
-Pop_mill        0.0004272  0.0007817   0.547  0.58502    
-GDPcap          0.0045528  0.0128076   0.355  0.72243    
-PopDen          0.0001326  0.0001977   0.670  0.50300    
-Urbanization    0.0213218  0.0080977   2.633  0.00880 ** 
-SocialGlob      0.0468362  0.0252978   1.851  0.06488 .  
-PoliticalGlob   0.0255285  0.0200828   1.271  0.20444    
-PR              0.0874588  0.1582236   0.553  0.58076    
-EthnicFrac     -0.4434659  0.7249098  -0.612  0.54106    
+(Intercept)     1.309e+01  1.553e+00   8.433 6.92e-16 ***
+dev_operator   -6.629e-01  2.485e-01  -2.668  0.00796 ** 
+Admin           9.660e-03  6.617e-03   1.460  0.14517    
+Demographics    3.607e-02  1.866e-02   1.933  0.05395 .  
+HHI             1.271e-01  5.223e-02   2.433  0.01543 *  
+GDPcap          6.451e-04  1.266e-02   0.051  0.95938    
+HDI            -4.390e+00  1.550e+00  -2.833  0.00485 ** 
+OverallGlob    -1.170e-01  5.909e-02  -1.980  0.04844 *  
+GIIInput       -7.472e-02  2.386e-02  -3.131  0.00187 ** 
+LinguisticFrac  5.132e-01  6.100e-01   0.841  0.40069    
+ReligiousFrac   7.369e-01  5.173e-01   1.425  0.15509    
+G3              3.118e+00  2.240e-01  13.923  &lt; 2e-16 ***
+Geographic      1.148e-02  2.908e-02   0.395  0.69312    
+Pop_mill        6.129e-05  7.604e-04   0.081  0.93580    
+PopDen          1.237e-04  1.977e-04   0.626  0.53196    
+Urbanization    1.662e-02  7.738e-03   2.147  0.03240 *  
+GINI           -2.220e-02  1.545e-02  -1.436  0.15177    
+EconGlob        1.813e-02  2.165e-02   0.837  0.40296    
+SocialGlob      3.696e-02  2.484e-02   1.488  0.13748    
+PoliticalGlob   2.142e-02  1.984e-02   1.080  0.28099    
+PR              4.256e-02  1.566e-01   0.272  0.78592    
+CL             -2.805e-01  1.915e-01  -1.465  0.14373    
+EthnicFrac     -2.254e-01  7.146e-01  -0.315  0.75255    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 1.894 on 382 degrees of freedom
-Multiple R-squared:  0.687, Adjusted R-squared:  0.6674 
-F-statistic: 34.94 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1.899 on 384 degrees of freedom
+Multiple R-squared:  0.6839,    Adjusted R-squared:  0.6658 
+F-statistic: 37.77 on 22 and 384 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <pre><code>&gt; summary(lm_final_union)
@@ -3825,50 +3822,49 @@ lm(formula = EntryTimes ~ dev_operator + ., data = data_final)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5.8747 -1.1188 -0.1196  1.0907  6.3562 
+-5.9499 -1.1397 -0.1366  1.0618  6.3472 
 
 Coefficients:
                  Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)    11.0434033  2.3028386   4.796 2.33e-06 ***
-dev_operator   -0.6533221  0.2479690  -2.635  0.00876 ** 
-EconR           0.4248744  0.2936145   1.447  0.14870    
-Admin           0.0120256  0.0067334   1.786  0.07490 .  
-Demographics    0.0364246  0.0186279   1.955  0.05127 .  
-HHI             0.1410283  0.0529181   2.665  0.00802 ** 
-Pop_mill        0.0004272  0.0007817   0.547  0.58502    
-HDI            -3.1894826  1.8282592  -1.745  0.08187 .  
-PopDen          0.0001326  0.0001977   0.670  0.50300    
-Urbanization    0.0213218  0.0080977   2.633  0.00880 ** 
-GINI           -0.0247090  0.0157713  -1.567  0.11801    
-EconGlob        0.0263109  0.0220095   1.195  0.23266    
-PoliticalGlob   0.0255285  0.0200828   1.271  0.20444    
-OverallGlob    -0.1330403  0.0596612  -2.230  0.02633 *  
-GIIInput       -0.0574334  0.0258236  -2.224  0.02673 *  
-GIIOutput      -0.0310697  0.0194885  -1.594  0.11171    
-CL             -0.3689508  0.1969042  -1.874  0.06173 .  
-EthnicFrac     -0.4434659  0.7249098  -0.612  0.54106    
-LinguisticFrac  0.6104116  0.6116430   0.998  0.31892    
-ReligiousFrac   0.7946179  0.5169745   1.537  0.12511    
-G3              3.1656230  0.2255165  14.037  &lt; 2e-16 ***
-Geographic      0.0069494  0.0292153   0.238  0.81211    
-GDPcap          0.0045528  0.0128076   0.355  0.72243    
-SocialGlob      0.0468362  0.0252978   1.851  0.06488 .  
-PR              0.0874588  0.1582236   0.553  0.58076    
+(Intercept)    11.1099466  2.2990442   4.832 1.96e-06 ***
+dev_operator   -0.6421927  0.2472348  -2.598  0.00975 ** 
+EconR           0.4129833  0.2928676   1.410  0.15931    
+Admin           0.0116525  0.0067056   1.738  0.08306 .  
+Demographics    0.0357853  0.0185901   1.925  0.05497 .  
+HHI             0.1383463  0.0527287   2.624  0.00904 ** 
+Pop_mill        0.0003965  0.0007798   0.508  0.61141    
+HDI            -3.1735654  1.8267906  -1.737  0.08315 .  
+Urbanization    0.0219175  0.0080430   2.725  0.00672 ** 
+GINI           -0.0251255  0.0157477  -1.595  0.11143    
+EconGlob        0.0254430  0.0219555   1.159  0.24724    
+PoliticalGlob   0.0258006  0.0200643   1.286  0.19926    
+OverallGlob    -0.1346117  0.0595723  -2.260  0.02441 *  
+GIIInput       -0.0519370  0.0244700  -2.122  0.03444 *  
+GIIOutput      -0.0313059  0.0194713  -1.608  0.10870    
+CL             -0.3443947  0.1933282  -1.781  0.07564 .  
+LinguisticFrac  0.6180224  0.6110980   1.011  0.31250    
+ReligiousFrac   0.8088925  0.5161644   1.567  0.11791    
+G3              3.1605064  0.2252252  14.033  &lt; 2e-16 ***
+Geographic      0.0045044  0.0289659   0.156  0.87650    
+GDPcap          0.0048680  0.0127898   0.381  0.70370    
+SocialGlob      0.0446518  0.0250691   1.781  0.07568 .  
+PR              0.0732313  0.1566812   0.467  0.64049    
+EthnicFrac     -0.5308688  0.7125771  -0.745  0.45673    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.894 on 382 degrees of freedom
-Multiple R-squared:  0.687, Adjusted R-squared:  0.6674 
-F-statistic: 34.94 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1.893 on 383 degrees of freedom
+Multiple R-squared:  0.6867,    Adjusted R-squared:  0.6679 
+F-statistic: 36.49 on 23 and 383 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
-<section id="multiple-regression-without-double-selection" class="level4" data-number="2.1.3.6">
-<h4 data-number="2.1.3.6" class="anchored" data-anchor-id="multiple-regression-without-double-selection"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection</h4>
+<section id="multiple-regression-without-double-selection-naive-model" class="level4" data-number="2.1.3.6">
+<h4 data-number="2.1.3.6" class="anchored" data-anchor-id="multiple-regression-without-double-selection-naive-model"><span class="header-section-number">2.1.3.6</span> Multiple Regression without Double Selection = Naive model</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run simple multiple regression without DML to check results later</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR)</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>lm_without_ds <span class="ot">&lt;-</span> <span class="fu">lm</span>(EntryTimes <span class="sc">~</span> ., <span class="at">data=</span>x1)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>lm_without_ds <span class="ot">&lt;-</span> <span class="fu">lm</span>(EntryTimes <span class="sc">~</span> ., <span class="at">data=</span>x1) <span class="co"># 23 covariates + 1 Treatment</span></span>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_without_ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -4137,7 +4133,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.4862118</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(resid.y <span class="sc">~</span> resid.d) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="co">#  regressing residuals of the outcome Y on the residuals of the treatment D</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(resid.y <span class="sc">~</span> resid.d) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="co">#  regressing residuals of the outcome Y on the residuals of the treatment D</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic p.value
@@ -4215,48 +4212,49 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create x and y matrix</span></span>
 <span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.matrix</span>() <span class="ot">-&gt;</span> x</span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>y_vec <span class="ot">&lt;-</span> data<span class="sc">$</span>EntryTimes</span>
-<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> data<span class="sc">$</span>dev_operator</span>
-<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Now Train Lasso for Entry Times (Y_vec)</span></span>
-<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>cv.lasso.y <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>)</span>
-<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
-<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>lasso.y <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.y)</span>
-<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Lasso for treatment : Operator type (1 = operator from developed countries, 0= developing countries)</span></span>
-<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>cv.lasso.d <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
-<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Make prediction in sample S2, estimation sample</span></span>
-<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>predict.y <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.y, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.y)</span>
-<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>predict.d <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.d, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.d, <span class="at">type=</span><span class="st">&quot;response&quot;</span>) <span class="co"># predicts probabilities</span></span>
-<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the residuals</span></span>
-<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>resid.y <span class="ot">&lt;-</span> y_vec[S2]<span class="sc">-</span>predict.y</span>
-<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>resid.d <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(d_vec[S2])<span class="sc">-</span>predict.d</span>
-<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a><span class="co"># DML Estimator</span></span>
-<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resid.y<span class="sc">*</span>resid.d)<span class="sc">/</span><span class="fu">mean</span>(resid.d<span class="sc">*</span>resid.d) <span class="sc">%&gt;%</span></span>
-<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.)</span>
-<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, </span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>           <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.matrix</span>() <span class="ot">-&gt;</span> x</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>y_vec <span class="ot">&lt;-</span> data<span class="sc">$</span>EntryTimes</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>d_vec <span class="ot">&lt;-</span> data<span class="sc">$</span>dev_operator</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Now Train Lasso for Entry Times (Y_vec)</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>cv.lasso.y <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>)</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>lasso.y <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], y_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.y)</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Lasso for treatment : Operator type (1 = operator from developed countries, 0= developing countries)</span></span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>cv.lasso.d <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[S1,], d_vec[S1], <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Make prediction in sample S2, estimation sample</span></span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>predict.y <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.y, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.y)</span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>predict.d <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.d, <span class="at">newx=</span>x[S2,], <span class="at">s=</span>bestlam.d, <span class="at">type=</span><span class="st">&quot;response&quot;</span>) <span class="co"># predicts probabilities</span></span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the residuals</span></span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>resid.y <span class="ot">&lt;-</span> y_vec[S2]<span class="sc">-</span>predict.y</span>
+<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a>resid.d <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(d_vec[S2])<span class="sc">-</span>predict.d</span>
+<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a><span class="co"># DML Estimator</span></span>
+<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resid.y<span class="sc">*</span>resid.d)<span class="sc">/</span><span class="fu">mean</span>(resid.d<span class="sc">*</span>resid.d) <span class="sc">%&gt;%</span></span>
+<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.)</span>
+<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a><span class="co">#DML_estimator(data=dataset, S1=S1, S2=S2)</span></span>
-<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a>DML_crossfit <span class="ot">&lt;-</span> <span class="cf">function</span>(data, S1, S2){</span>
-<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a>  est1 <span class="ot">&lt;-</span> <span class="fu">DML_estimator</span>(<span class="at">data=</span>data, <span class="at">S1=</span>S1, <span class="at">S2=</span>S2)</span>
-<span id="cb46-51"><a href="#cb46-51" aria-hidden="true" tabindex="-1"></a>  est2 <span class="ot">&lt;-</span> <span class="fu">DML_estimator</span>(<span class="at">data=</span>data, <span class="at">S1=</span>S2, <span class="at">S2=</span>S1)</span>
-<span id="cb46-52"><a href="#cb46-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb46-53"><a href="#cb46-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimate=</span><span class="fl">0.50</span><span class="sc">*</span>est1 <span class="sc">+</span> <span class="fl">0.50</span><span class="sc">*</span>est2, est1, est2) <span class="sc">%&gt;%</span></span>
-<span id="cb46-54"><a href="#cb46-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(.)</span>
-<span id="cb46-55"><a href="#cb46-55" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb46-56"><a href="#cb46-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-57"><a href="#cb46-57" aria-hidden="true" tabindex="-1"></a><span class="fu">DML_crossfit</span>(<span class="at">data=</span>dataset, <span class="at">S1=</span>S1, <span class="at">S2=</span>S2) <span class="co"># could do so with bootstrapping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a><span class="co">#DML_estimator(data=dataset, S1=S1, S2=S2)</span></span>
+<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a>DML_crossfit <span class="ot">&lt;-</span> <span class="cf">function</span>(data, S1, S2){</span>
+<span id="cb46-51"><a href="#cb46-51" aria-hidden="true" tabindex="-1"></a>  est1 <span class="ot">&lt;-</span> <span class="fu">DML_estimator</span>(<span class="at">data=</span>data, <span class="at">S1=</span>S1, <span class="at">S2=</span>S2)</span>
+<span id="cb46-52"><a href="#cb46-52" aria-hidden="true" tabindex="-1"></a>  est2 <span class="ot">&lt;-</span> <span class="fu">DML_estimator</span>(<span class="at">data=</span>data, <span class="at">S1=</span>S2, <span class="at">S2=</span>S1)</span>
+<span id="cb46-53"><a href="#cb46-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb46-54"><a href="#cb46-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimate=</span><span class="fl">0.50</span><span class="sc">*</span>est1 <span class="sc">+</span> <span class="fl">0.50</span><span class="sc">*</span>est2, est1, est2) <span class="sc">%&gt;%</span></span>
+<span id="cb46-55"><a href="#cb46-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(.)</span>
+<span id="cb46-56"><a href="#cb46-56" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb46-57"><a href="#cb46-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-58"><a href="#cb46-58" aria-hidden="true" tabindex="-1"></a><span class="fu">DML_crossfit</span>(<span class="at">data=</span>dataset, <span class="at">S1=</span>S1, <span class="at">S2=</span>S2) <span class="co"># could do so with bootstrapping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    estimate       est1       est2
 1 -0.5346617 -0.4866136 -0.5827099</code></pre>
@@ -4405,7 +4403,7 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ul>
 <li><p>You have <strong>flexible ML models</strong> (random forest, XGBoost, neural nets),</p></li>
 <li><p>You want to protect against overfitting,</p></li>
-<li><p>You’re estimating <strong>ATE (Average Treatment Effect)</strong>, <strong>CATEConditional ATE)</strong>, or treatment effect heterogeneity.</p></li>
+<li><p>You’re estimating <strong>ATE (Average Treatment Effect)</strong>, <strong>CATE(Conditional ATE)</strong>, or treatment effect heterogeneity.</p></li>
 </ul></li>
 </ul>
 </section>
