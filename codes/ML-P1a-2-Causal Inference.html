@@ -3264,16 +3264,19 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#what-is-cross-fitting" id="toc-what-is-cross-fitting" class="nav-link" data-scroll-target="#what-is-cross-fitting"><span class="header-section-number">4.3.1</span> What is <strong>Cross-Fitting</strong>?</a></li>
   <li><a href="#why-cross-fitting" id="toc-why-cross-fitting" class="nav-link" data-scroll-target="#why-cross-fitting"><span class="header-section-number">4.3.2</span> Why Cross-Fitting?</a></li>
-  <li><a href="#explanation-of-the-functions" id="toc-explanation-of-the-functions" class="nav-link" data-scroll-target="#explanation-of-the-functions"><span class="header-section-number">4.3.3</span> Explanation of the Functions</a></li>
-  <li><a href="#dml_estimator" id="toc-dml_estimator" class="nav-link" data-scroll-target="#dml_estimator"><span class="header-section-number">4.3.4</span> DML_estimator(…):</a></li>
-  <li><a href="#dml_crossfit" id="toc-dml_crossfit" class="nav-link" data-scroll-target="#dml_crossfit"><span class="header-section-number">4.3.5</span> DML_crossfit(…)</a></li>
+  <li><a href="#demo-with-market-entry-data" id="toc-demo-with-market-entry-data" class="nav-link" data-scroll-target="#demo-with-market-entry-data"><span class="header-section-number">4.3.3</span> Demo with Market Entry Data</a>
+  <ul class="collapse">
+  <li><a href="#explanation-of-the-functions" id="toc-explanation-of-the-functions" class="nav-link" data-scroll-target="#explanation-of-the-functions"><span class="header-section-number">4.3.3.1</span> Explanation of the Functions</a></li>
+  <li><a href="#dml_estimator" id="toc-dml_estimator" class="nav-link" data-scroll-target="#dml_estimator"><span class="header-section-number">4.3.3.2</span> DML_estimator(…):</a></li>
+  <li><a href="#dml_crossfit" id="toc-dml_crossfit" class="nav-link" data-scroll-target="#dml_crossfit"><span class="header-section-number">4.3.3.3</span> DML_crossfit(…)</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#summary-benefits-of-cross-fitting" id="toc-summary-benefits-of-cross-fitting" class="nav-link" data-scroll-target="#summary-benefits-of-cross-fitting"><span class="header-section-number">4.4</span> Summary: Benefits of Cross-Fitting</a></li>
-  <li><a href="#double-selection-vs.-double-machine-learning" id="toc-double-selection-vs.-double-machine-learning" class="nav-link" data-scroll-target="#double-selection-vs.-double-machine-learning"><span class="header-section-number">4.5</span> Double Selection vs. Double Machine Learning</a>
-  <ul class="collapse">
-  <li><a href="#relationship" id="toc-relationship" class="nav-link" data-scroll-target="#relationship"><span class="header-section-number">4.5.1</span> Relationship</a></li>
-  <li><a href="#when-to-use-what" id="toc-when-to-use-what" class="nav-link" data-scroll-target="#when-to-use-what"><span class="header-section-number">4.5.2</span> When to Use What?</a></li>
   </ul></li>
+  <li><a href="#double-selection-vs.-double-machine-learning" id="toc-double-selection-vs.-double-machine-learning" class="nav-link" data-scroll-target="#double-selection-vs.-double-machine-learning"><span class="header-section-number">5</span> Double Selection vs. Double Machine Learning</a>
+  <ul>
+  <li><a href="#relationship" id="toc-relationship" class="nav-link" data-scroll-target="#relationship"><span class="header-section-number">5.1</span> Relationship</a></li>
+  <li><a href="#when-to-use-what" id="toc-when-to-use-what" class="nav-link" data-scroll-target="#when-to-use-what"><span class="header-section-number">5.2</span> When to Use What?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -3345,16 +3348,19 @@ window.Quarto = {
   <ul>
   <li><a href="#what-is-cross-fitting" id="toc-what-is-cross-fitting"><span class="header-section-number">4.3.1</span> What is <strong>Cross-Fitting</strong>?</a></li>
   <li><a href="#why-cross-fitting" id="toc-why-cross-fitting"><span class="header-section-number">4.3.2</span> Why Cross-Fitting?</a></li>
-  <li><a href="#explanation-of-the-functions" id="toc-explanation-of-the-functions"><span class="header-section-number">4.3.3</span> Explanation of the Functions</a></li>
-  <li><a href="#dml_estimator" id="toc-dml_estimator"><span class="header-section-number">4.3.4</span> DML_estimator(…):</a></li>
-  <li><a href="#dml_crossfit" id="toc-dml_crossfit"><span class="header-section-number">4.3.5</span> DML_crossfit(…)</a></li>
+  <li><a href="#demo-with-market-entry-data" id="toc-demo-with-market-entry-data"><span class="header-section-number">4.3.3</span> Demo with Market Entry Data</a>
+  <ul>
+  <li><a href="#explanation-of-the-functions" id="toc-explanation-of-the-functions"><span class="header-section-number">4.3.3.1</span> Explanation of the Functions</a></li>
+  <li><a href="#dml_estimator" id="toc-dml_estimator"><span class="header-section-number">4.3.3.2</span> DML_estimator(…):</a></li>
+  <li><a href="#dml_crossfit" id="toc-dml_crossfit"><span class="header-section-number">4.3.3.3</span> DML_crossfit(…)</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#summary-benefits-of-cross-fitting" id="toc-summary-benefits-of-cross-fitting"><span class="header-section-number">4.4</span> Summary: Benefits of Cross-Fitting</a></li>
-  <li><a href="#double-selection-vs.-double-machine-learning" id="toc-double-selection-vs.-double-machine-learning"><span class="header-section-number">4.5</span> Double Selection vs. Double Machine Learning</a>
-  <ul>
-  <li><a href="#relationship" id="toc-relationship"><span class="header-section-number">4.5.1</span> Relationship</a></li>
-  <li><a href="#when-to-use-what" id="toc-when-to-use-what"><span class="header-section-number">4.5.2</span> When to Use What?</a></li>
   </ul></li>
+  <li><a href="#double-selection-vs.-double-machine-learning" id="toc-double-selection-vs.-double-machine-learning"><span class="header-section-number">5</span> Double Selection vs. Double Machine Learning</a>
+  <ul>
+  <li><a href="#relationship" id="toc-relationship"><span class="header-section-number">5.1</span> Relationship</a></li>
+  <li><a href="#when-to-use-what" id="toc-when-to-use-what"><span class="header-section-number">5.2</span> When to Use What?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -3497,8 +3503,8 @@ Call:  cv.glmnet(x = x, y = y_vec, alpha = 1)
 Measure: Mean-Squared Error 
 
     Lambda Index Measure     SE Nonzero
-min 0.0002   100   3.843 0.2343      24
-1se 0.3707    20   4.043 0.3016       4</code></pre>
+min 0.0274    48   3.815 0.3439      15
+1se 0.4465    18   4.120 0.3308       4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bestlam.y <span class="ot">&lt;-</span> cv.lasso.y<span class="sc">$</span>lambda.min</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -3513,38 +3519,47 @@ min 0.0002   100   3.843 0.2343      24
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span>  <span class="co"># 25 terms including those with 0</span></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span><span class="dv">0</span>, term <span class="sc">!=</span> <span class="st">&quot;(Intercept)&quot;</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 24 × 2
-   term          estimate
-   &lt;chr&gt;            &lt;dbl&gt;
- 1 EconR         0.493   
- 2 Admin         0.00904 
- 3 Demographics  0.0231  
- 4 Geographic   -0.00111 
- 5 HHI           0.122   
- 6 Pop_mill      0.000451
- 7 GDPcap        0.00248 
- 8 HDI          -2.57    
- 9 PopDen        0.000111
-10 Urbanization  0.0212  
-# ℹ 14 more rows</code></pre>
+<pre><code># A tibble: 15 × 2
+   term           estimate
+   &lt;chr&gt;             &lt;dbl&gt;
+ 1 EconR           0.155  
+ 2 Admin           0.00463
+ 3 Demographics    0.0166 
+ 4 HHI             0.104  
+ 5 HDI            -2.15   
+ 6 Urbanization    0.00661
+ 7 GINI           -0.0183 
+ 8 EconGlob       -0.00247
+ 9 OverallGlob    -0.0504 
+10 GIIInput       -0.0495 
+11 GIIOutput      -0.0106 
+12 CL             -0.152  
+13 LinguisticFrac  0.361  
+14 ReligiousFrac   0.678  
+15 G3              3.10   </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or use tidy() early to avoid sparse matrix</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.y, <span class="at">lambda =</span> bestlam.y )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 25 × 5
-   term          step  estimate   lambda dev.ratio
-   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)      1 10.8      0.000217     0.686
- 2 EconR            1  0.493    0.000217     0.686
- 3 Admin            1  0.00904  0.000217     0.686
- 4 Demographics     1  0.0231   0.000217     0.686
- 5 Geographic       1 -0.00111  0.000217     0.686
- 6 HHI              1  0.122    0.000217     0.686
- 7 Pop_mill         1  0.000451 0.000217     0.686
- 8 GDPcap           1  0.00248  0.000217     0.686
- 9 HDI              1 -2.57     0.000217     0.686
-10 PopDen           1  0.000111 0.000217     0.686
-# ℹ 15 more rows</code></pre>
+<pre><code># A tibble: 16 × 5
+   term            step estimate lambda dev.ratio
+   &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+ 1 (Intercept)        1 11.3     0.0274     0.676
+ 2 EconR              1  0.155   0.0274     0.676
+ 3 Admin              1  0.00463 0.0274     0.676
+ 4 Demographics       1  0.0166  0.0274     0.676
+ 5 HHI                1  0.104   0.0274     0.676
+ 6 HDI                1 -2.15    0.0274     0.676
+ 7 Urbanization       1  0.00661 0.0274     0.676
+ 8 GINI               1 -0.0183  0.0274     0.676
+ 9 EconGlob           1 -0.00247 0.0274     0.676
+10 OverallGlob        1 -0.0504  0.0274     0.676
+11 GIIInput           1 -0.0495  0.0274     0.676
+12 GIIOutput          1 -0.0106  0.0274     0.676
+13 CL                 1 -0.152   0.0274     0.676
+14 LinguisticFrac     1  0.361   0.0274     0.676
+15 ReligiousFrac      1  0.678   0.0274     0.676
+16 G3                 1  3.10    0.0274     0.676</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting variables</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>selected_y <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.y) <span class="sc">|&gt;</span> </span>
@@ -3593,8 +3608,8 @@ Call:  cv.glmnet(x = x, y = d_vec, alpha = 1, family = &quot;binomial&quot;)
 Measure: Binomial Deviance 
 
      Lambda Index Measure      SE Nonzero
-min 0.00698    37  0.9521 0.06135      17
-1se 0.04086    18  1.0130 0.05152       7</code></pre>
+min 0.00331    45  0.9489 0.06378      20
+1se 0.04484    17  1.0121 0.03379       6</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bestlam.d <span class="ot">&lt;-</span> cv.lasso.d<span class="sc">$</span>lambda.min</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>lasso.d <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, d_vec, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>bestlam.d, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
@@ -3608,50 +3623,56 @@ min 0.00698    37  0.9521 0.06135      17
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span>  <span class="co"># 24 x variables + intercept = 25 rows</span></span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span><span class="dv">0</span>, term <span class="sc">!=</span> <span class="st">&quot;(Intercept)&quot;</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 17 × 2
+<pre><code># A tibble: 20 × 2
    term            estimate
    &lt;chr&gt;              &lt;dbl&gt;
- 1 Admin           0.0482  
- 2 Demographics    0.162   
- 3 Geographic      0.0525  
- 4 Pop_mill       -0.000538
- 5 GDPcap          0.0270  
- 6 HDI            -1.60    
- 7 Urbanization    0.00569 
- 8 GINI            0.00770 
- 9 EconGlob        0.0138  
-10 SocialGlob      0.0465  
-11 PoliticalGlob   0.0177  
-12 PR             -0.0949  
-13 CL             -0.0156  
-14 EthnicFrac      0.722   
-15 LinguisticFrac -0.527   
-16 ReligiousFrac  -0.423   
-17 G3              0.678   </code></pre>
+ 1 Admin           0.0559  
+ 2 Demographics    0.179   
+ 3 Geographic      0.0624  
+ 4 HHI            -0.00373 
+ 5 Pop_mill       -0.000436
+ 6 GDPcap          0.0416  
+ 7 HDI            -3.19    
+ 8 PopDen          0.000142
+ 9 Urbanization    0.00810 
+10 GINI            0.0140  
+11 EconGlob        0.0200  
+12 SocialGlob      0.0585  
+13 PoliticalGlob   0.0205  
+14 GIIInput       -0.0252  
+15 PR             -0.0353  
+16 CL             -0.126   
+17 EthnicFrac      0.910   
+18 LinguisticFrac -0.770   
+19 ReligiousFrac  -0.505   
+20 G3              0.789   </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lasso.d, <span class="at">lambda =</span> bestlam.d) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 18 × 5
+<pre><code># A tibble: 21 × 5
    term            step  estimate  lambda dev.ratio
    &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
- 1 (Intercept)        1 -5.29     0.00698     0.344
- 2 Admin              1  0.0482   0.00698     0.344
- 3 Demographics       1  0.162    0.00698     0.344
- 4 Geographic         1  0.0525   0.00698     0.344
- 5 Pop_mill           1 -0.000538 0.00698     0.344
- 6 GDPcap             1  0.0270   0.00698     0.344
- 7 HDI                1 -1.60     0.00698     0.344
- 8 Urbanization       1  0.00569  0.00698     0.344
- 9 GINI               1  0.00770  0.00698     0.344
-10 EconGlob           1  0.0138   0.00698     0.344
-11 SocialGlob         1  0.0465   0.00698     0.344
-12 PoliticalGlob      1  0.0177   0.00698     0.344
-13 PR                 1 -0.0949   0.00698     0.344
-14 CL                 1 -0.0156   0.00698     0.344
-15 EthnicFrac         1  0.722    0.00698     0.344
-16 LinguisticFrac     1 -0.527    0.00698     0.344
-17 ReligiousFrac      1 -0.423    0.00698     0.344
-18 G3                 1  0.678    0.00698     0.344</code></pre>
+ 1 (Intercept)        1 -5.04     0.00331     0.358
+ 2 Admin              1  0.0559   0.00331     0.358
+ 3 Demographics       1  0.179    0.00331     0.358
+ 4 Geographic         1  0.0624   0.00331     0.358
+ 5 HHI                1 -0.00373  0.00331     0.358
+ 6 Pop_mill           1 -0.000436 0.00331     0.358
+ 7 GDPcap             1  0.0416   0.00331     0.358
+ 8 HDI                1 -3.19     0.00331     0.358
+ 9 PopDen             1  0.000142 0.00331     0.358
+10 Urbanization       1  0.00810  0.00331     0.358
+11 GINI               1  0.0140   0.00331     0.358
+12 EconGlob           1  0.0200   0.00331     0.358
+13 SocialGlob         1  0.0585   0.00331     0.358
+14 PoliticalGlob      1  0.0205   0.00331     0.358
+15 GIIInput           1 -0.0252   0.00331     0.358
+16 PR                 1 -0.0353   0.00331     0.358
+17 CL                 1 -0.126    0.00331     0.358
+18 EthnicFrac         1  0.910    0.00331     0.358
+19 LinguisticFrac     1 -0.770    0.00331     0.358
+20 ReligiousFrac      1 -0.505    0.00331     0.358
+21 G3                 1  0.789    0.00331     0.358</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting variables</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>selected_d <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.d) <span class="sc">|&gt;</span> </span>
@@ -3688,20 +3709,18 @@ min 0.00698    37  0.9521 0.06135      17
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>selected_y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] &quot;EconR&quot;          &quot;Admin&quot;          &quot;Demographics&quot;   &quot;Geographic&quot;    
- [5] &quot;HHI&quot;            &quot;Pop_mill&quot;       &quot;GDPcap&quot;         &quot;HDI&quot;           
- [9] &quot;PopDen&quot;         &quot;Urbanization&quot;   &quot;GINI&quot;           &quot;EconGlob&quot;      
-[13] &quot;SocialGlob&quot;     &quot;PoliticalGlob&quot;  &quot;OverallGlob&quot;    &quot;GIIInput&quot;      
-[17] &quot;GIIOutput&quot;      &quot;GIIOverall&quot;     &quot;PR&quot;             &quot;CL&quot;            
-[21] &quot;EthnicFrac&quot;     &quot;LinguisticFrac&quot; &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
+<pre><code> [1] &quot;EconR&quot;          &quot;Admin&quot;          &quot;Demographics&quot;   &quot;HHI&quot;           
+ [5] &quot;HDI&quot;            &quot;Urbanization&quot;   &quot;GINI&quot;           &quot;EconGlob&quot;      
+ [9] &quot;OverallGlob&quot;    &quot;GIIInput&quot;       &quot;GIIOutput&quot;      &quot;CL&quot;            
+[13] &quot;LinguisticFrac&quot; &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>selected_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] &quot;Admin&quot;          &quot;Demographics&quot;   &quot;Geographic&quot;     &quot;Pop_mill&quot;      
- [5] &quot;GDPcap&quot;         &quot;HDI&quot;            &quot;Urbanization&quot;   &quot;GINI&quot;          
- [9] &quot;EconGlob&quot;       &quot;SocialGlob&quot;     &quot;PoliticalGlob&quot;  &quot;PR&quot;            
-[13] &quot;CL&quot;             &quot;EthnicFrac&quot;     &quot;LinguisticFrac&quot; &quot;ReligiousFrac&quot; 
-[17] &quot;G3&quot;            </code></pre>
+<pre><code> [1] &quot;Admin&quot;          &quot;Demographics&quot;   &quot;Geographic&quot;     &quot;HHI&quot;           
+ [5] &quot;Pop_mill&quot;       &quot;GDPcap&quot;         &quot;HDI&quot;            &quot;PopDen&quot;        
+ [9] &quot;Urbanization&quot;   &quot;GINI&quot;           &quot;EconGlob&quot;       &quot;SocialGlob&quot;    
+[13] &quot;PoliticalGlob&quot;  &quot;GIIInput&quot;       &quot;PR&quot;             &quot;CL&quot;            
+[17] &quot;EthnicFrac&quot;     &quot;LinguisticFrac&quot; &quot;ReligiousFrac&quot;  &quot;G3&quot;            </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>selected_union <span class="ot">=</span> <span class="fu">union</span>(selected_y, selected_d) <span class="co">#22 covariate</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -3771,42 +3790,41 @@ lm(formula = EntryTimes ~ dev_operator + ., data = data_final)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5.7917 -1.1873 -0.1091  1.1297  6.3168 
+-5.8747 -1.1188 -0.1196  1.0907  6.3562 
 
 Coefficients:
                  Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)    10.7251749  2.2953605   4.673 4.13e-06 ***
-dev_operator   -0.6148362  0.2472884  -2.486  0.01334 *  
-EconR           0.4976108  0.2939081   1.693  0.09126 .  
-Admin           0.0127925  0.0067074   1.907  0.05725 .  
-Demographics    0.0367962  0.0185323   1.986  0.04780 *  
-Geographic      0.0062770  0.0290657   0.216  0.82913    
-HHI             0.1231294  0.0532516   2.312  0.02130 *  
-Pop_mill        0.0004085  0.0007777   0.525  0.59967    
-GDPcap          0.0043713  0.0127416   0.343  0.73173    
-HDI            -3.0929464  1.8193178  -1.700  0.08994 .  
-PopDen          0.0001481  0.0001968   0.752  0.45235    
-Urbanization    0.0228595  0.0080852   2.827  0.00494 ** 
-GINI           -0.0243612  0.0156905  -1.553  0.12135    
-EconGlob        0.0514317  0.0246187   2.089  0.03736 *  
-SocialGlob      0.0671619  0.0267638   2.509  0.01251 *  
-PoliticalGlob   0.0416376  0.0212425   1.960  0.05071 .  
-OverallGlob    -0.1946378  0.0654545  -2.974  0.00313 ** 
-GIIInput       -0.2143628  0.0748528  -2.864  0.00442 ** 
-GIIOutput      -0.1809755  0.0699021  -2.589  0.00999 ** 
-GIIOverall      0.3076525  0.1378320   2.232  0.02619 *  
-PR              0.1198587  0.1580732   0.758  0.44877    
-CL             -0.4066684  0.1966134  -2.068  0.03928 *  
-EthnicFrac     -0.3831427  0.7216669  -0.531  0.59579    
-LinguisticFrac  0.6820903  0.6093265   1.119  0.26367    
-ReligiousFrac   0.8132292  0.5143683   1.581  0.11470    
-G3              3.1975420  0.2248054  14.224  &lt; 2e-16 ***
+(Intercept)    11.0434033  2.3028386   4.796 2.33e-06 ***
+dev_operator   -0.6533221  0.2479690  -2.635  0.00876 ** 
+EconR           0.4248744  0.2936145   1.447  0.14870    
+Admin           0.0120256  0.0067334   1.786  0.07490 .  
+Demographics    0.0364246  0.0186279   1.955  0.05127 .  
+HHI             0.1410283  0.0529181   2.665  0.00802 ** 
+HDI            -3.1894826  1.8282592  -1.745  0.08187 .  
+Urbanization    0.0213218  0.0080977   2.633  0.00880 ** 
+GINI           -0.0247090  0.0157713  -1.567  0.11801    
+EconGlob        0.0263109  0.0220095   1.195  0.23266    
+OverallGlob    -0.1330403  0.0596612  -2.230  0.02633 *  
+GIIInput       -0.0574334  0.0258236  -2.224  0.02673 *  
+GIIOutput      -0.0310697  0.0194885  -1.594  0.11171    
+CL             -0.3689508  0.1969042  -1.874  0.06173 .  
+LinguisticFrac  0.6104116  0.6116430   0.998  0.31892    
+ReligiousFrac   0.7946179  0.5169745   1.537  0.12511    
+G3              3.1656230  0.2255165  14.037  &lt; 2e-16 ***
+Geographic      0.0069494  0.0292153   0.238  0.81211    
+Pop_mill        0.0004272  0.0007817   0.547  0.58502    
+GDPcap          0.0045528  0.0128076   0.355  0.72243    
+PopDen          0.0001326  0.0001977   0.670  0.50300    
+SocialGlob      0.0468362  0.0252978   1.851  0.06488 .  
+PoliticalGlob   0.0255285  0.0200828   1.271  0.20444    
+PR              0.0874588  0.1582236   0.553  0.58076    
+EthnicFrac     -0.4434659  0.7249098  -0.612  0.54106    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 1.884 on 381 degrees of freedom
-Multiple R-squared:  0.6911,    Adjusted R-squared:  0.6708 
-F-statistic: 34.09 on 25 and 381 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1.894 on 382 degrees of freedom
+Multiple R-squared:  0.687, Adjusted R-squared:  0.6674 
+F-statistic: 34.94 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <pre><code>&gt; summary(lm_final_union)
@@ -4186,6 +4204,9 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>You’re working in a <strong>high-dimensional</strong> space,</p></li>
 <li><p>You want valid <strong>statistical inference</strong> (standard errors, p-values).</p></li>
 </ul>
+</section>
+<section id="demo-with-market-entry-data" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="demo-with-market-entry-data"><span class="header-section-number">4.3.3</span> Demo with Market Entry Data</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>GeoR,<span class="sc">-</span>Operators, <span class="sc">-</span>Domicile, <span class="sc">-</span>Country, <span class="sc">-</span>EconR, <span class="sc">-</span>EntryTimes, <span class="sc">-</span>dev_operator) <span class="sc">%&gt;%</span></span>
@@ -4257,15 +4278,14 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 1 -0.5346617 -0.4866136 -0.5827099</code></pre>
 </div>
 </div>
-</section>
-<section id="explanation-of-the-functions" class="level3" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="explanation-of-the-functions"><span class="header-section-number">4.3.3</span> Explanation of the Functions</h3>
+<section id="explanation-of-the-functions" class="level4" data-number="4.3.3.1">
+<h4 data-number="4.3.3.1" class="anchored" data-anchor-id="explanation-of-the-functions"><span class="header-section-number">4.3.3.1</span> Explanation of the Functions</h4>
 <ul>
 <li>Two functions were defined above</li>
 </ul>
 </section>
-<section id="dml_estimator" class="level3" data-number="4.3.4">
-<h3 data-number="4.3.4" class="anchored" data-anchor-id="dml_estimator"><span class="header-section-number">4.3.4</span> DML_estimator(…):</h3>
+<section id="dml_estimator" class="level4" data-number="4.3.3.2">
+<h4 data-number="4.3.3.2" class="anchored" data-anchor-id="dml_estimator"><span class="header-section-number">4.3.3.2</span> DML_estimator(…):</h4>
 <p>Estimates treatment effect using:</p>
 <ul>
 <li><p>Model trained on <strong>S1</strong></p></li>
@@ -4273,8 +4293,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>DML formula: <span class="math display">\[\hat{\theta} = \frac{\sum_{i \in S_2} \tilde{D}_i \tilde{Y}_i}{\sum_{i \in S_2} \tilde{D}_i^2}\]</span></p></li>
 </ul>
 </section>
-<section id="dml_crossfit" class="level3" data-number="4.3.5">
-<h3 data-number="4.3.5" class="anchored" data-anchor-id="dml_crossfit"><span class="header-section-number">4.3.5</span> DML_crossfit(…)</h3>
+<section id="dml_crossfit" class="level4" data-number="4.3.3.3">
+<h4 data-number="4.3.3.3" class="anchored" data-anchor-id="dml_crossfit"><span class="header-section-number">4.3.3.3</span> DML_crossfit(…)</h4>
 <p>Does:</p>
 <ul>
 <li><p>One estimate using <code>S1 → S2</code></p></li>
@@ -4283,6 +4303,7 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ul>
 <p><span class="math display">\[\hat{\theta}_{\text{CF}} = \frac{1}{2}(\hat{\theta}_{1} + \hat{\theta}_{2}) \]</span></p>
 <p>This is the <strong>preferred estimator</strong> in Double Machine Learning.</p>
+</section>
 </section>
 </section>
 <section id="summary-benefits-of-cross-fitting" class="level2" data-number="4.4">
@@ -4322,8 +4343,9 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </tbody>
 </table>
 </section>
-<section id="double-selection-vs.-double-machine-learning" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="double-selection-vs.-double-machine-learning"><span class="header-section-number">4.5</span> Double Selection vs. Double Machine Learning</h2>
+</section>
+<section id="double-selection-vs.-double-machine-learning" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Double Selection vs. Double Machine Learning</h1>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -4375,8 +4397,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </tr>
 </tbody>
 </table>
-<section id="relationship" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="relationship"><span class="header-section-number">4.5.1</span> Relationship</h3>
+<section id="relationship" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="relationship"><span class="header-section-number">5.1</span> Relationship</h2>
 <ul>
 <li><p><strong>Double Selection</strong> can be seen as a <strong>special case of Double Machine Learning</strong>, where:</p>
 <ul>
@@ -4392,8 +4414,8 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="when-to-use-what" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="when-to-use-what"><span class="header-section-number">4.5.2</span> When to Use What?</h3>
+<section id="when-to-use-what" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="when-to-use-what"><span class="header-section-number">5.2</span> When to Use What?</h2>
 <ul>
 <li><p>Use <strong>Double Selection</strong> when you’re using <strong>LASSO in a linear setting</strong> and want a fast, interpretable causal effect estimate.</p></li>
 <li><p>Use <strong>Double Machine Learning</strong> when:</p>
@@ -4403,7 +4425,6 @@ F-statistic: 35.22 on 24 and 382 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>You’re estimating <strong>ATE (Average Treatment Effect)</strong>, <strong>CATE(Conditional ATE)</strong>, or treatment effect heterogeneity.</p></li>
 </ul></li>
 </ul>
-</section>
 </section>
 </section>
 
