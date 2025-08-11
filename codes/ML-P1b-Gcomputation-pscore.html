@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-08-03">
 
-<title>ML-M1b: g-computation and pscore introduction</title>
+<title>ML-M1b: g-computation and p-score introduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3228,98 +3228,108 @@ window.Quarto = {
    
   <ul>
   <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages"><span class="header-section-number">1</span> Packages</a></li>
-  <li><a href="#conditionally-adjusted-parametric-regression" id="toc-conditionally-adjusted-parametric-regression" class="nav-link" data-scroll-target="#conditionally-adjusted-parametric-regression"><span class="header-section-number">2</span> Conditionally Adjusted Parametric Regression</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2</span> Introduction</a>
   <ul>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">2.1</span> Data</a></li>
-  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">2.2</span> Model</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">2.3</span> Interpretation</a>
-  <ul class="collapse">
-  <li><a href="#what-is-an-odds-ratio-or" id="toc-what-is-an-odds-ratio-or" class="nav-link" data-scroll-target="#what-is-an-odds-ratio-or"><span class="header-section-number">2.3.1</span> What is an Odds Ratio (OR)?</a></li>
+  <li><a href="#more-formal-classification-with-terminology" id="toc-more-formal-classification-with-terminology" class="nav-link" data-scroll-target="#more-formal-classification-with-terminology"><span class="header-section-number">2.1</span> More Formal Classification (with Terminology)</a></li>
+  <li><a href="#brief-comparison" id="toc-brief-comparison" class="nav-link" data-scroll-target="#brief-comparison"><span class="header-section-number">2.2</span> Brief Comparison</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.3</span> Summary</a></li>
   </ul></li>
-  <li><a href="#interpreting-odds-ratios" id="toc-interpreting-odds-ratios" class="nav-link" data-scroll-target="#interpreting-odds-ratios"><span class="header-section-number">2.4</span> Interpreting Odds Ratios</a>
-  <ul class="collapse">
-  <li><a href="#binary-predictor" id="toc-binary-predictor" class="nav-link" data-scroll-target="#binary-predictor"><span class="header-section-number">2.4.1</span> Binary predictor</a></li>
-  <li><a href="#continuous-predictor-e.g.-age" id="toc-continuous-predictor-e.g.-age" class="nav-link" data-scroll-target="#continuous-predictor-e.g.-age"><span class="header-section-number">2.4.2</span> Continuous Predictor (e.g., <code>age</code>)</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#g-computation-marginally-adjusted-parametric-regression" id="toc-g-computation-marginally-adjusted-parametric-regression" class="nav-link" data-scroll-target="#g-computation-marginally-adjusted-parametric-regression"><span class="header-section-number">3</span> g-computation: Marginally adjusted parametric regression</a>
+  <li><a href="#conditionally-adjusted-parametric-regression" id="toc-conditionally-adjusted-parametric-regression" class="nav-link" data-scroll-target="#conditionally-adjusted-parametric-regression"><span class="header-section-number">3</span> Conditionally Adjusted Parametric Regression</a>
   <ul>
-  <li><a href="#the-core-idea-of-g-computation" id="toc-the-core-idea-of-g-computation" class="nav-link" data-scroll-target="#the-core-idea-of-g-computation"><span class="header-section-number">3.1</span> The Core Idea of G-Computation</a>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">3.1</span> Data</a></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">3.2</span> Model</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">3.3</span> Interpretation</a>
   <ul class="collapse">
-  <li><a href="#step-1-fit-a-parametric-outcome-model" id="toc-step-1-fit-a-parametric-outcome-model" class="nav-link" data-scroll-target="#step-1-fit-a-parametric-outcome-model"><span class="header-section-number">3.1.1</span> Step 1: Fit a parametric outcome model</a></li>
-  <li><a href="#step-2-predict-counterfactuals-for-everyone" id="toc-step-2-predict-counterfactuals-for-everyone" class="nav-link" data-scroll-target="#step-2-predict-counterfactuals-for-everyone"><span class="header-section-number">3.1.2</span> Step 2: Predict counterfactuals for <strong>everyone</strong></a></li>
-  <li><a href="#step-3-average-over-the-population" id="toc-step-3-average-over-the-population" class="nav-link" data-scroll-target="#step-3-average-over-the-population"><span class="header-section-number">3.1.3</span> Step 3: Average over the population</a></li>
+  <li><a href="#what-is-an-odds-ratio-or" id="toc-what-is-an-odds-ratio-or" class="nav-link" data-scroll-target="#what-is-an-odds-ratio-or"><span class="header-section-number">3.3.1</span> What is an Odds Ratio (OR)?</a></li>
   </ul></li>
-  <li><a href="#why-its-called-marginally-adjusted-parametric-regression" id="toc-why-its-called-marginally-adjusted-parametric-regression" class="nav-link" data-scroll-target="#why-its-called-marginally-adjusted-parametric-regression"><span class="header-section-number">3.2</span> Why it’s called “Marginally Adjusted Parametric Regression”</a></li>
-  <li><a href="#demo-with-nhefs.csv" id="toc-demo-with-nhefs.csv" class="nav-link" data-scroll-target="#demo-with-nhefs.csv"><span class="header-section-number">3.3</span> Demo with <strong>nhefs.csv</strong></a>
+  <li><a href="#interpreting-odds-ratios" id="toc-interpreting-odds-ratios" class="nav-link" data-scroll-target="#interpreting-odds-ratios"><span class="header-section-number">3.4</span> Interpreting Odds Ratios</a>
   <ul class="collapse">
-  <li><a href="#step-1-and-2" id="toc-step-1-and-2" class="nav-link" data-scroll-target="#step-1-and-2"><span class="header-section-number">3.3.1</span> Step 1 and 2</a></li>
-  <li><a href="#step-3" id="toc-step-3" class="nav-link" data-scroll-target="#step-3"><span class="header-section-number">3.3.2</span> Step 3</a>
-  <ul class="collapse">
-  <li><a href="#a.-marginal-odds-ratio" id="toc-a.-marginal-odds-ratio" class="nav-link" data-scroll-target="#a.-marginal-odds-ratio"><span class="header-section-number">3.3.2.1</span> a. Marginal Odds Ratio</a></li>
-  <li><a href="#b.-marginal-risk-ratio" id="toc-b.-marginal-risk-ratio" class="nav-link" data-scroll-target="#b.-marginal-risk-ratio"><span class="header-section-number">3.3.2.2</span> b. <strong>Marginal Risk Ratio</strong></a></li>
-  <li><a href="#c.-marginal-risk-difference-ate" id="toc-c.-marginal-risk-difference-ate" class="nav-link" data-scroll-target="#c.-marginal-risk-difference-ate"><span class="header-section-number">3.3.2.3</span> c. <strong>Marginal Risk Difference (ATE)</strong></a></li>
-  </ul></li>
-  <li><a href="#step-4-explore-individual-level-treatment-effects-optional-but-insightful" id="toc-step-4-explore-individual-level-treatment-effects-optional-but-insightful" class="nav-link" data-scroll-target="#step-4-explore-individual-level-treatment-effects-optional-but-insightful"><span class="header-section-number">3.3.3</span> Step 4: Explore individual-level treatment effects (Optional but insightful)</a></li>
+  <li><a href="#binary-predictor" id="toc-binary-predictor" class="nav-link" data-scroll-target="#binary-predictor"><span class="header-section-number">3.4.1</span> Binary predictor</a></li>
+  <li><a href="#continuous-predictor-e.g.-age" id="toc-continuous-predictor-e.g.-age" class="nav-link" data-scroll-target="#continuous-predictor-e.g.-age"><span class="header-section-number">3.4.2</span> Continuous Predictor (e.g., <code>age</code>)</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#bootstrap-confidence-interval" id="toc-bootstrap-confidence-interval" class="nav-link" data-scroll-target="#bootstrap-confidence-interval"><span class="header-section-number">4</span> Bootstrap confidence interval</a>
+  <li><a href="#g-computation-marginally-adjusted-parametric-regression" id="toc-g-computation-marginally-adjusted-parametric-regression" class="nav-link" data-scroll-target="#g-computation-marginally-adjusted-parametric-regression"><span class="header-section-number">4</span> g-computation: Marginally adjusted parametric regression</a>
   <ul>
-  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1"><span class="header-section-number">4.1</span> Interpretation</a>
+  <li><a href="#the-core-idea-of-g-computation" id="toc-the-core-idea-of-g-computation" class="nav-link" data-scroll-target="#the-core-idea-of-g-computation"><span class="header-section-number">4.1</span> The Core Idea of G-Computation</a>
   <ul class="collapse">
-  <li><a href="#summary-of-g-computation-bootstrap-estimates" id="toc-summary-of-g-computation-bootstrap-estimates" class="nav-link" data-scroll-target="#summary-of-g-computation-bootstrap-estimates"><span class="header-section-number">4.1.1</span> Summary of G-Computation Bootstrap Estimates</a></li>
-  <li><a href="#g-computation-bootstrap-estimates-and-confidence-intervals" id="toc-g-computation-bootstrap-estimates-and-confidence-intervals" class="nav-link" data-scroll-target="#g-computation-bootstrap-estimates-and-confidence-intervals"><span class="header-section-number">4.1.2</span> G-Computation Bootstrap Estimates and Confidence Intervals</a>
+  <li><a href="#step-1-fit-a-parametric-outcome-model" id="toc-step-1-fit-a-parametric-outcome-model" class="nav-link" data-scroll-target="#step-1-fit-a-parametric-outcome-model"><span class="header-section-number">4.1.1</span> Step 1: Fit a parametric outcome model</a></li>
+  <li><a href="#step-2-predict-counterfactuals-for-everyone" id="toc-step-2-predict-counterfactuals-for-everyone" class="nav-link" data-scroll-target="#step-2-predict-counterfactuals-for-everyone"><span class="header-section-number">4.1.2</span> Step 2: Predict counterfactuals for <strong>everyone</strong></a></li>
+  <li><a href="#step-3-average-over-the-population" id="toc-step-3-average-over-the-population" class="nav-link" data-scroll-target="#step-3-average-over-the-population"><span class="header-section-number">4.1.3</span> Step 3: Average over the population</a></li>
+  </ul></li>
+  <li><a href="#why-its-called-marginally-adjusted-parametric-regression" id="toc-why-its-called-marginally-adjusted-parametric-regression" class="nav-link" data-scroll-target="#why-its-called-marginally-adjusted-parametric-regression"><span class="header-section-number">4.2</span> Why it’s called “Marginally Adjusted Parametric Regression”</a></li>
+  <li><a href="#demo-with-nhefs.csv" id="toc-demo-with-nhefs.csv" class="nav-link" data-scroll-target="#demo-with-nhefs.csv"><span class="header-section-number">4.3</span> Demo with <strong>nhefs.csv</strong></a>
   <ul class="collapse">
-  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output"><span class="header-section-number">4.1.2.1</span> Output</a></li>
-  <li><a href="#types-of-ci" id="toc-types-of-ci" class="nav-link" data-scroll-target="#types-of-ci"><span class="header-section-number">4.1.2.2</span> Types of CI</a></li>
-  <li><a href="#summary-and-conclusion" id="toc-summary-and-conclusion" class="nav-link" data-scroll-target="#summary-and-conclusion"><span class="header-section-number">4.1.2.3</span> Summary and Conclusion</a></li>
+  <li><a href="#step-1-and-2" id="toc-step-1-and-2" class="nav-link" data-scroll-target="#step-1-and-2"><span class="header-section-number">4.3.1</span> Step 1 and 2</a></li>
+  <li><a href="#step-3" id="toc-step-3" class="nav-link" data-scroll-target="#step-3"><span class="header-section-number">4.3.2</span> Step 3</a>
+  <ul class="collapse">
+  <li><a href="#a.-marginal-odds-ratio" id="toc-a.-marginal-odds-ratio" class="nav-link" data-scroll-target="#a.-marginal-odds-ratio"><span class="header-section-number">4.3.2.1</span> a. Marginal Odds Ratio</a></li>
+  <li><a href="#b.-marginal-risk-ratio" id="toc-b.-marginal-risk-ratio" class="nav-link" data-scroll-target="#b.-marginal-risk-ratio"><span class="header-section-number">4.3.2.2</span> b. <strong>Marginal Risk Ratio</strong></a></li>
+  <li><a href="#c.-marginal-risk-difference-ate" id="toc-c.-marginal-risk-difference-ate" class="nav-link" data-scroll-target="#c.-marginal-risk-difference-ate"><span class="header-section-number">4.3.2.3</span> c. <strong>Marginal Risk Difference (ATE)</strong></a></li>
+  </ul></li>
+  <li><a href="#step-4-explore-individual-level-treatment-effects-optional-but-insightful" id="toc-step-4-explore-individual-level-treatment-effects-optional-but-insightful" class="nav-link" data-scroll-target="#step-4-explore-individual-level-treatment-effects-optional-but-insightful"><span class="header-section-number">4.3.3</span> Step 4: Explore individual-level treatment effects (Optional but insightful)</a></li>
   </ul></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#marginal-standardization-approach-stratifed-modeling-approach" id="toc-marginal-standardization-approach-stratifed-modeling-approach" class="nav-link" data-scroll-target="#marginal-standardization-approach-stratifed-modeling-approach"><span class="header-section-number">5</span> Marginal Standardization Approach: Stratifed modeling approach</a>
+  <li><a href="#bootstrap-confidence-interval" id="toc-bootstrap-confidence-interval" class="nav-link" data-scroll-target="#bootstrap-confidence-interval"><span class="header-section-number">5</span> Bootstrap confidence interval</a>
   <ul>
-  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts"><span class="header-section-number">5.1</span> Concepts</a>
+  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1"><span class="header-section-number">5.1</span> Interpretation</a>
   <ul class="collapse">
-  <li><a href="#what-is-marginal-standardization" id="toc-what-is-marginal-standardization" class="nav-link" data-scroll-target="#what-is-marginal-standardization"><span class="header-section-number">5.1.1</span> What is <em>Marginal Standardization</em>?</a></li>
-  <li><a href="#what-is-the-stratified-modeling-version" id="toc-what-is-the-stratified-modeling-version" class="nav-link" data-scroll-target="#what-is-the-stratified-modeling-version"><span class="header-section-number">5.1.2</span> What is the <em>Stratified Modeling Version</em>?</a>
+  <li><a href="#summary-of-g-computation-bootstrap-estimates" id="toc-summary-of-g-computation-bootstrap-estimates" class="nav-link" data-scroll-target="#summary-of-g-computation-bootstrap-estimates"><span class="header-section-number">5.1.1</span> Summary of G-Computation Bootstrap Estimates</a></li>
+  <li><a href="#g-computation-bootstrap-estimates-and-confidence-intervals" id="toc-g-computation-bootstrap-estimates-and-confidence-intervals" class="nav-link" data-scroll-target="#g-computation-bootstrap-estimates-and-confidence-intervals"><span class="header-section-number">5.1.2</span> G-Computation Bootstrap Estimates and Confidence Intervals</a>
   <ul class="collapse">
-  <li><a href="#why-stratify" id="toc-why-stratify" class="nav-link" data-scroll-target="#why-stratify"><span class="header-section-number">5.1.2.1</span> Why Stratify?</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output"><span class="header-section-number">5.1.2.1</span> Output</a></li>
+  <li><a href="#types-of-ci" id="toc-types-of-ci" class="nav-link" data-scroll-target="#types-of-ci"><span class="header-section-number">5.1.2.2</span> Types of CI</a></li>
+  <li><a href="#summary-and-conclusion" id="toc-summary-and-conclusion" class="nav-link" data-scroll-target="#summary-and-conclusion"><span class="header-section-number">5.1.2.3</span> Summary and Conclusion</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#mechanics" id="toc-mechanics" class="nav-link" data-scroll-target="#mechanics"><span class="header-section-number">5.2</span> Mechanics</a></li>
-  <li><a href="#bootstrap-confidence-intervals" id="toc-bootstrap-confidence-intervals" class="nav-link" data-scroll-target="#bootstrap-confidence-intervals"><span class="header-section-number">5.3</span> Bootstrap Confidence Intervals</a></li>
-  <li><a href="#comparison-g-computation-vs-marginal-standardization-via-stratified-modeling" id="toc-comparison-g-computation-vs-marginal-standardization-via-stratified-modeling" class="nav-link" data-scroll-target="#comparison-g-computation-vs-marginal-standardization-via-stratified-modeling"><span class="header-section-number">5.4</span> Comparison: G-Computation vs Marginal Standardization via Stratified Modeling</a></li>
-  <li><a href="#when-to-use-which" id="toc-when-to-use-which" class="nav-link" data-scroll-target="#when-to-use-which"><span class="header-section-number">5.5</span> When to Use Which?</a></li>
   </ul></li>
-  <li><a href="#marginal-standardization-with-random-forest-stratified-sampling" id="toc-marginal-standardization-with-random-forest-stratified-sampling" class="nav-link" data-scroll-target="#marginal-standardization-with-random-forest-stratified-sampling"><span class="header-section-number">6</span> Marginal Standardization with Random Forest (Stratified Sampling)</a></li>
-  <li><a href="#propensity-score-inverse-probability-weighting" id="toc-propensity-score-inverse-probability-weighting" class="nav-link" data-scroll-target="#propensity-score-inverse-probability-weighting"><span class="header-section-number">7</span> Propensity Score &amp; Inverse Probability Weighting</a>
+  <li><a href="#marginal-standardization-approach-with-stratified-modeling" id="toc-marginal-standardization-approach-with-stratified-modeling" class="nav-link" data-scroll-target="#marginal-standardization-approach-with-stratified-modeling"><span class="header-section-number">6</span> Marginal Standardization Approach with Stratified Modeling</a>
   <ul>
-  <li><a href="#prelude" id="toc-prelude" class="nav-link" data-scroll-target="#prelude"><span class="header-section-number">7.1</span> Prelude:</a></li>
-  <li><a href="#what-is-a-propensity-score-ps" id="toc-what-is-a-propensity-score-ps" class="nav-link" data-scroll-target="#what-is-a-propensity-score-ps"><span class="header-section-number">7.2</span> What is a <strong>Propensity Score (PS)?</strong></a></li>
-  <li><a href="#what-is-inverse-probability-weighting-ipw" id="toc-what-is-inverse-probability-weighting-ipw" class="nav-link" data-scroll-target="#what-is-inverse-probability-weighting-ipw"><span class="header-section-number">7.3</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></a></li>
-  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">7.4</span> Intuition</a></li>
-  <li><a href="#estimating-propensity-scores-and-applying-ipw-in-a-model" id="toc-estimating-propensity-scores-and-applying-ipw-in-a-model" class="nav-link" data-scroll-target="#estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">7.5</span> Estimating Propensity Scores and Applying IPW in a Model</a>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts"><span class="header-section-number">6.1</span> Concepts</a>
   <ul class="collapse">
-  <li><a href="#step-1-estimate-propensity-scores" id="toc-step-1-estimate-propensity-scores" class="nav-link" data-scroll-target="#step-1-estimate-propensity-scores"><span class="header-section-number">7.5.1</span> Step 1: Estimate Propensity Scores</a></li>
-  <li><a href="#step-2-calculate-weights" id="toc-step-2-calculate-weights" class="nav-link" data-scroll-target="#step-2-calculate-weights"><span class="header-section-number">7.5.2</span> Step 2: Calculate Weights</a></li>
-  <li><a href="#step-3-weighted-outcome-model" id="toc-step-3-weighted-outcome-model" class="nav-link" data-scroll-target="#step-3-weighted-outcome-model"><span class="header-section-number">7.5.3</span> Step 3: Weighted Outcome Model</a></li>
-  </ul></li>
-  <li><a href="#summary-ps-vs-ipw" id="toc-summary-ps-vs-ipw" class="nav-link" data-scroll-target="#summary-ps-vs-ipw"><span class="header-section-number">7.6</span> Summary: PS vs IPW</a></li>
-  <li><a href="#when-to-use" id="toc-when-to-use" class="nav-link" data-scroll-target="#when-to-use"><span class="header-section-number">7.7</span> When to Use</a></li>
-  <li><a href="#demo-weighted-logistic-regression-model-with-sipw" id="toc-demo-weighted-logistic-regression-model-with-sipw" class="nav-link" data-scroll-target="#demo-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">7.8</span> Demo: <strong>Weighted Logistic Regression Model with SIPW</strong></a>
+  <li><a href="#what-is-marginal-standardization" id="toc-what-is-marginal-standardization" class="nav-link" data-scroll-target="#what-is-marginal-standardization"><span class="header-section-number">6.1.1</span> What is <em>Marginal Standardization</em>?</a></li>
+  <li><a href="#what-is-the-stratified-modeling-version" id="toc-what-is-the-stratified-modeling-version" class="nav-link" data-scroll-target="#what-is-the-stratified-modeling-version"><span class="header-section-number">6.1.2</span> What is the <em>Stratified Modeling Version</em>?</a>
   <ul class="collapse">
-  <li><a href="#steps-1-2" id="toc-steps-1-2" class="nav-link" data-scroll-target="#steps-1-2"><span class="header-section-number">7.8.1</span> Steps 1 &amp; 2</a>
+  <li><a href="#why-stratify" id="toc-why-stratify" class="nav-link" data-scroll-target="#why-stratify"><span class="header-section-number">6.1.2.1</span> Why Stratify?</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#demo-with-epidemology-data" id="toc-demo-with-epidemology-data" class="nav-link" data-scroll-target="#demo-with-epidemology-data"><span class="header-section-number">6.2</span> Demo with Epidemology Data</a></li>
+  <li><a href="#bootstrap-confidence-intervals" id="toc-bootstrap-confidence-intervals" class="nav-link" data-scroll-target="#bootstrap-confidence-intervals"><span class="header-section-number">6.3</span> Bootstrap Confidence Intervals</a></li>
+  <li><a href="#comparison-g-computation-vs-marginal-standardization-via-stratified-modeling" id="toc-comparison-g-computation-vs-marginal-standardization-via-stratified-modeling" class="nav-link" data-scroll-target="#comparison-g-computation-vs-marginal-standardization-via-stratified-modeling"><span class="header-section-number">6.4</span> Comparison: G-Computation vs Marginal Standardization via Stratified Modeling</a></li>
+  <li><a href="#when-to-use-which" id="toc-when-to-use-which" class="nav-link" data-scroll-target="#when-to-use-which"><span class="header-section-number">6.5</span> When to Use Which?</a></li>
+  </ul></li>
+  <li><a href="#marginal-standardization-with-random-forest-stratified-sampling" id="toc-marginal-standardization-with-random-forest-stratified-sampling" class="nav-link" data-scroll-target="#marginal-standardization-with-random-forest-stratified-sampling"><span class="header-section-number">7</span> Marginal Standardization with Random Forest (Stratified Sampling)</a></li>
+  <li><a href="#propensity-score-ipw-concepts" id="toc-propensity-score-ipw-concepts" class="nav-link" data-scroll-target="#propensity-score-ipw-concepts"><span class="header-section-number">8</span> Propensity Score &amp; IPW (Concepts)</a>
+  <ul>
+  <li><a href="#prelude" id="toc-prelude" class="nav-link" data-scroll-target="#prelude"><span class="header-section-number">8.1</span> Prelude:</a></li>
+  <li><a href="#what-is-a-propensity-score-ps" id="toc-what-is-a-propensity-score-ps" class="nav-link" data-scroll-target="#what-is-a-propensity-score-ps"><span class="header-section-number">8.2</span> What is a <strong>Propensity Score (PS)?</strong></a></li>
+  <li><a href="#what-is-inverse-probability-weighting-ipw" id="toc-what-is-inverse-probability-weighting-ipw" class="nav-link" data-scroll-target="#what-is-inverse-probability-weighting-ipw"><span class="header-section-number">8.3</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></a></li>
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">8.4</span> Intuition</a></li>
+  <li><a href="#estimating-propensity-scores-and-applying-ipw-in-a-model" id="toc-estimating-propensity-scores-and-applying-ipw-in-a-model" class="nav-link" data-scroll-target="#estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">8.5</span> Estimating Propensity Scores and Applying IPW in a Model</a>
   <ul class="collapse">
-  <li><a href="#stabilized-weights" id="toc-stabilized-weights" class="nav-link" data-scroll-target="#stabilized-weights"><span class="header-section-number">7.8.1.1</span> Stabilized Weights:</a></li>
-  <li><a href="#why-stabilize" id="toc-why-stabilize" class="nav-link" data-scroll-target="#why-stabilize"><span class="header-section-number">7.8.1.2</span> Why Stabilize?</a></li>
-  <li><a href="#how" id="toc-how" class="nav-link" data-scroll-target="#how"><span class="header-section-number">7.8.1.3</span> How?</a></li>
+  <li><a href="#step-1-estimate-propensity-scores" id="toc-step-1-estimate-propensity-scores" class="nav-link" data-scroll-target="#step-1-estimate-propensity-scores"><span class="header-section-number">8.5.1</span> Step 1: Estimate Propensity Scores</a></li>
+  <li><a href="#step-2-calculate-weights" id="toc-step-2-calculate-weights" class="nav-link" data-scroll-target="#step-2-calculate-weights"><span class="header-section-number">8.5.2</span> Step 2: Calculate Weights</a></li>
+  <li><a href="#step-3-weighted-outcome-model" id="toc-step-3-weighted-outcome-model" class="nav-link" data-scroll-target="#step-3-weighted-outcome-model"><span class="header-section-number">8.5.3</span> Step 3: Weighted Outcome Model</a></li>
   </ul></li>
-  <li><a href="#steps-3-7" id="toc-steps-3-7" class="nav-link" data-scroll-target="#steps-3-7"><span class="header-section-number">7.8.2</span> Steps 3-7</a>
+  <li><a href="#summary-ps-vs-ipw" id="toc-summary-ps-vs-ipw" class="nav-link" data-scroll-target="#summary-ps-vs-ipw"><span class="header-section-number">8.6</span> Summary: PS vs IPW</a></li>
+  <li><a href="#when-to-use" id="toc-when-to-use" class="nav-link" data-scroll-target="#when-to-use"><span class="header-section-number">8.7</span> When to Use</a></li>
+  </ul></li>
+  <li><a href="#ipw-example-weighted-logistic-regression-model-with-sipw" id="toc-ipw-example-weighted-logistic-regression-model-with-sipw" class="nav-link" data-scroll-target="#ipw-example-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">9</span> <strong>IPW Example: Weighted Logistic Regression Model with SIPW</strong></a>
+  <ul>
+  <li><a href="#steps-1-2" id="toc-steps-1-2" class="nav-link" data-scroll-target="#steps-1-2"><span class="header-section-number">9.1</span> Steps 1 &amp; 2</a>
   <ul class="collapse">
-  <li><a href="#interpretation-of-coefficients" id="toc-interpretation-of-coefficients" class="nav-link" data-scroll-target="#interpretation-of-coefficients"><span class="header-section-number">7.8.2.1</span> Interpretation of Coefficients</a></li>
+  <li><a href="#stabilized-weights" id="toc-stabilized-weights" class="nav-link" data-scroll-target="#stabilized-weights"><span class="header-section-number">9.1.1</span> Stabilized Weights:</a></li>
+  <li><a href="#why-stabilize" id="toc-why-stabilize" class="nav-link" data-scroll-target="#why-stabilize"><span class="header-section-number">9.1.2</span> Why Stabilize?</a></li>
+  <li><a href="#how" id="toc-how" class="nav-link" data-scroll-target="#how"><span class="header-section-number">9.1.3</span> How?</a></li>
+  <li><a href="#when-to-use-stabilized-ipw" id="toc-when-to-use-stabilized-ipw" class="nav-link" data-scroll-target="#when-to-use-stabilized-ipw"><span class="header-section-number">9.1.4</span> When to Use Stabilized IPW?</a></li>
   </ul></li>
-  <li><a href="#summary-for-reporting" id="toc-summary-for-reporting" class="nav-link" data-scroll-target="#summary-for-reporting"><span class="header-section-number">7.8.3</span> Summary for Reporting</a></li>
+  <li><a href="#ipw-vs.-stabilized-ipw" id="toc-ipw-vs.-stabilized-ipw" class="nav-link" data-scroll-target="#ipw-vs.-stabilized-ipw"><span class="header-section-number">9.2</span> IPW vs. Stabilized IPW</a></li>
+  <li><a href="#steps-3-7" id="toc-steps-3-7" class="nav-link" data-scroll-target="#steps-3-7"><span class="header-section-number">9.3</span> Steps 3-7</a></li>
+  <li><a href="#interpretation-of-coefficients" id="toc-interpretation-of-coefficients" class="nav-link" data-scroll-target="#interpretation-of-coefficients"><span class="header-section-number">9.4</span> Interpretation of Coefficients</a>
+  <ul class="collapse">
+  <li><a href="#why-use-vcovhc" id="toc-why-use-vcovhc" class="nav-link" data-scroll-target="#why-use-vcovhc"><span class="header-section-number">9.4.1</span> Why use <code>vcovHC</code>?</a></li>
+  <li><a href="#coefficients" id="toc-coefficients" class="nav-link" data-scroll-target="#coefficients"><span class="header-section-number">9.4.2</span> Coefficients</a></li>
   </ul></li>
+  <li><a href="#summary-for-reporting" id="toc-summary-for-reporting" class="nav-link" data-scroll-target="#summary-for-reporting"><span class="header-section-number">9.5</span> Summary for Reporting</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -3328,7 +3338,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ML-M1b: g-computation and pscore introduction</h1>
+<h1 class="title">ML-M1b: g-computation and p-score introduction</h1>
 </div>
 
 
@@ -3355,108 +3365,246 @@ window.Quarto = {
    
   <ul>
   <li><a href="#packages" id="toc-packages"><span class="header-section-number">1</span> Packages</a></li>
-  <li><a href="#conditionally-adjusted-parametric-regression" id="toc-conditionally-adjusted-parametric-regression"><span class="header-section-number">2</span> Conditionally Adjusted Parametric Regression</a>
+  <li><a href="#introduction" id="toc-introduction"><span class="header-section-number">2</span> Introduction</a>
   <ul>
-  <li><a href="#data" id="toc-data"><span class="header-section-number">2.1</span> Data</a></li>
-  <li><a href="#model" id="toc-model"><span class="header-section-number">2.2</span> Model</a></li>
-  <li><a href="#interpretation" id="toc-interpretation"><span class="header-section-number">2.3</span> Interpretation</a>
-  <ul>
-  <li><a href="#what-is-an-odds-ratio-or" id="toc-what-is-an-odds-ratio-or"><span class="header-section-number">2.3.1</span> What is an Odds Ratio (OR)?</a></li>
+  <li><a href="#more-formal-classification-with-terminology" id="toc-more-formal-classification-with-terminology"><span class="header-section-number">2.1</span> More Formal Classification (with Terminology)</a></li>
+  <li><a href="#brief-comparison" id="toc-brief-comparison"><span class="header-section-number">2.2</span> Brief Comparison</a></li>
+  <li><a href="#summary" id="toc-summary"><span class="header-section-number">2.3</span> Summary</a></li>
   </ul></li>
-  <li><a href="#interpreting-odds-ratios" id="toc-interpreting-odds-ratios"><span class="header-section-number">2.4</span> Interpreting Odds Ratios</a>
+  <li><a href="#conditionally-adjusted-parametric-regression" id="toc-conditionally-adjusted-parametric-regression"><span class="header-section-number">3</span> Conditionally Adjusted Parametric Regression</a>
   <ul>
-  <li><a href="#binary-predictor" id="toc-binary-predictor"><span class="header-section-number">2.4.1</span> Binary predictor</a></li>
-  <li><a href="#continuous-predictor-e.g.-age" id="toc-continuous-predictor-e.g.-age"><span class="header-section-number">2.4.2</span> Continuous Predictor (e.g., <code>age</code>)</a></li>
+  <li><a href="#data" id="toc-data"><span class="header-section-number">3.1</span> Data</a></li>
+  <li><a href="#model" id="toc-model"><span class="header-section-number">3.2</span> Model</a></li>
+  <li><a href="#interpretation" id="toc-interpretation"><span class="header-section-number">3.3</span> Interpretation</a>
+  <ul>
+  <li><a href="#what-is-an-odds-ratio-or" id="toc-what-is-an-odds-ratio-or"><span class="header-section-number">3.3.1</span> What is an Odds Ratio (OR)?</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#g-computation-marginally-adjusted-parametric-regression" id="toc-g-computation-marginally-adjusted-parametric-regression"><span class="header-section-number">3</span> g-computation: Marginally adjusted parametric regression</a>
+  <li><a href="#interpreting-odds-ratios" id="toc-interpreting-odds-ratios"><span class="header-section-number">3.4</span> Interpreting Odds Ratios</a>
   <ul>
-  <li><a href="#the-core-idea-of-g-computation" id="toc-the-core-idea-of-g-computation"><span class="header-section-number">3.1</span> The Core Idea of G-Computation</a>
-  <ul>
-  <li><a href="#step-1-fit-a-parametric-outcome-model" id="toc-step-1-fit-a-parametric-outcome-model"><span class="header-section-number">3.1.1</span> Step 1: Fit a parametric outcome model</a></li>
-  <li><a href="#step-2-predict-counterfactuals-for-everyone" id="toc-step-2-predict-counterfactuals-for-everyone"><span class="header-section-number">3.1.2</span> Step 2: Predict counterfactuals for <strong>everyone</strong></a></li>
-  <li><a href="#step-3-average-over-the-population" id="toc-step-3-average-over-the-population"><span class="header-section-number">3.1.3</span> Step 3: Average over the population</a></li>
-  </ul></li>
-  <li><a href="#why-its-called-marginally-adjusted-parametric-regression" id="toc-why-its-called-marginally-adjusted-parametric-regression"><span class="header-section-number">3.2</span> Why it’s called “Marginally Adjusted Parametric Regression”</a></li>
-  <li><a href="#demo-with-nhefs.csv" id="toc-demo-with-nhefs.csv"><span class="header-section-number">3.3</span> Demo with <strong>nhefs.csv</strong></a>
-  <ul>
-  <li><a href="#step-1-and-2" id="toc-step-1-and-2"><span class="header-section-number">3.3.1</span> Step 1 and 2</a></li>
-  <li><a href="#step-3" id="toc-step-3"><span class="header-section-number">3.3.2</span> Step 3</a>
-  <ul>
-  <li><a href="#a.-marginal-odds-ratio" id="toc-a.-marginal-odds-ratio"><span class="header-section-number">3.3.2.1</span> a. Marginal Odds Ratio</a></li>
-  <li><a href="#b.-marginal-risk-ratio" id="toc-b.-marginal-risk-ratio"><span class="header-section-number">3.3.2.2</span> b. <strong>Marginal Risk Ratio</strong></a></li>
-  <li><a href="#c.-marginal-risk-difference-ate" id="toc-c.-marginal-risk-difference-ate"><span class="header-section-number">3.3.2.3</span> c. <strong>Marginal Risk Difference (ATE)</strong></a></li>
-  </ul></li>
-  <li><a href="#step-4-explore-individual-level-treatment-effects-optional-but-insightful" id="toc-step-4-explore-individual-level-treatment-effects-optional-but-insightful"><span class="header-section-number">3.3.3</span> Step 4: Explore individual-level treatment effects (Optional but insightful)</a></li>
+  <li><a href="#binary-predictor" id="toc-binary-predictor"><span class="header-section-number">3.4.1</span> Binary predictor</a></li>
+  <li><a href="#continuous-predictor-e.g.-age" id="toc-continuous-predictor-e.g.-age"><span class="header-section-number">3.4.2</span> Continuous Predictor (e.g., <code>age</code>)</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#bootstrap-confidence-interval" id="toc-bootstrap-confidence-interval"><span class="header-section-number">4</span> Bootstrap confidence interval</a>
+  <li><a href="#g-computation-marginally-adjusted-parametric-regression" id="toc-g-computation-marginally-adjusted-parametric-regression"><span class="header-section-number">4</span> g-computation: Marginally adjusted parametric regression</a>
   <ul>
-  <li><a href="#interpretation-1" id="toc-interpretation-1"><span class="header-section-number">4.1</span> Interpretation</a>
+  <li><a href="#the-core-idea-of-g-computation" id="toc-the-core-idea-of-g-computation"><span class="header-section-number">4.1</span> The Core Idea of G-Computation</a>
   <ul>
-  <li><a href="#summary-of-g-computation-bootstrap-estimates" id="toc-summary-of-g-computation-bootstrap-estimates"><span class="header-section-number">4.1.1</span> Summary of G-Computation Bootstrap Estimates</a></li>
-  <li><a href="#g-computation-bootstrap-estimates-and-confidence-intervals" id="toc-g-computation-bootstrap-estimates-and-confidence-intervals"><span class="header-section-number">4.1.2</span> G-Computation Bootstrap Estimates and Confidence Intervals</a>
+  <li><a href="#step-1-fit-a-parametric-outcome-model" id="toc-step-1-fit-a-parametric-outcome-model"><span class="header-section-number">4.1.1</span> Step 1: Fit a parametric outcome model</a></li>
+  <li><a href="#step-2-predict-counterfactuals-for-everyone" id="toc-step-2-predict-counterfactuals-for-everyone"><span class="header-section-number">4.1.2</span> Step 2: Predict counterfactuals for <strong>everyone</strong></a></li>
+  <li><a href="#step-3-average-over-the-population" id="toc-step-3-average-over-the-population"><span class="header-section-number">4.1.3</span> Step 3: Average over the population</a></li>
+  </ul></li>
+  <li><a href="#why-its-called-marginally-adjusted-parametric-regression" id="toc-why-its-called-marginally-adjusted-parametric-regression"><span class="header-section-number">4.2</span> Why it’s called “Marginally Adjusted Parametric Regression”</a></li>
+  <li><a href="#demo-with-nhefs.csv" id="toc-demo-with-nhefs.csv"><span class="header-section-number">4.3</span> Demo with <strong>nhefs.csv</strong></a>
   <ul>
-  <li><a href="#output" id="toc-output"><span class="header-section-number">4.1.2.1</span> Output</a></li>
-  <li><a href="#types-of-ci" id="toc-types-of-ci"><span class="header-section-number">4.1.2.2</span> Types of CI</a></li>
-  <li><a href="#summary-and-conclusion" id="toc-summary-and-conclusion"><span class="header-section-number">4.1.2.3</span> Summary and Conclusion</a></li>
+  <li><a href="#step-1-and-2" id="toc-step-1-and-2"><span class="header-section-number">4.3.1</span> Step 1 and 2</a></li>
+  <li><a href="#step-3" id="toc-step-3"><span class="header-section-number">4.3.2</span> Step 3</a>
+  <ul>
+  <li><a href="#a.-marginal-odds-ratio" id="toc-a.-marginal-odds-ratio"><span class="header-section-number">4.3.2.1</span> a. Marginal Odds Ratio</a></li>
+  <li><a href="#b.-marginal-risk-ratio" id="toc-b.-marginal-risk-ratio"><span class="header-section-number">4.3.2.2</span> b. <strong>Marginal Risk Ratio</strong></a></li>
+  <li><a href="#c.-marginal-risk-difference-ate" id="toc-c.-marginal-risk-difference-ate"><span class="header-section-number">4.3.2.3</span> c. <strong>Marginal Risk Difference (ATE)</strong></a></li>
+  </ul></li>
+  <li><a href="#step-4-explore-individual-level-treatment-effects-optional-but-insightful" id="toc-step-4-explore-individual-level-treatment-effects-optional-but-insightful"><span class="header-section-number">4.3.3</span> Step 4: Explore individual-level treatment effects (Optional but insightful)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#bootstrap-confidence-interval" id="toc-bootstrap-confidence-interval"><span class="header-section-number">5</span> Bootstrap confidence interval</a>
+  <ul>
+  <li><a href="#interpretation-1" id="toc-interpretation-1"><span class="header-section-number">5.1</span> Interpretation</a>
+  <ul>
+  <li><a href="#summary-of-g-computation-bootstrap-estimates" id="toc-summary-of-g-computation-bootstrap-estimates"><span class="header-section-number">5.1.1</span> Summary of G-Computation Bootstrap Estimates</a></li>
+  <li><a href="#g-computation-bootstrap-estimates-and-confidence-intervals" id="toc-g-computation-bootstrap-estimates-and-confidence-intervals"><span class="header-section-number">5.1.2</span> G-Computation Bootstrap Estimates and Confidence Intervals</a>
+  <ul>
+  <li><a href="#output" id="toc-output"><span class="header-section-number">5.1.2.1</span> Output</a></li>
+  <li><a href="#types-of-ci" id="toc-types-of-ci"><span class="header-section-number">5.1.2.2</span> Types of CI</a></li>
+  <li><a href="#summary-and-conclusion" id="toc-summary-and-conclusion"><span class="header-section-number">5.1.2.3</span> Summary and Conclusion</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
-  <li><a href="#marginal-standardization-approach-stratifed-modeling-approach" id="toc-marginal-standardization-approach-stratifed-modeling-approach"><span class="header-section-number">5</span> Marginal Standardization Approach: Stratifed modeling approach</a>
+  <li><a href="#marginal-standardization-approach-with-stratified-modeling" id="toc-marginal-standardization-approach-with-stratified-modeling"><span class="header-section-number">6</span> Marginal Standardization Approach with Stratified Modeling</a>
   <ul>
-  <li><a href="#concepts" id="toc-concepts"><span class="header-section-number">5.1</span> Concepts</a>
+  <li><a href="#concepts" id="toc-concepts"><span class="header-section-number">6.1</span> Concepts</a>
   <ul>
-  <li><a href="#what-is-marginal-standardization" id="toc-what-is-marginal-standardization"><span class="header-section-number">5.1.1</span> What is <em>Marginal Standardization</em>?</a></li>
-  <li><a href="#what-is-the-stratified-modeling-version" id="toc-what-is-the-stratified-modeling-version"><span class="header-section-number">5.1.2</span> What is the <em>Stratified Modeling Version</em>?</a>
+  <li><a href="#what-is-marginal-standardization" id="toc-what-is-marginal-standardization"><span class="header-section-number">6.1.1</span> What is <em>Marginal Standardization</em>?</a></li>
+  <li><a href="#what-is-the-stratified-modeling-version" id="toc-what-is-the-stratified-modeling-version"><span class="header-section-number">6.1.2</span> What is the <em>Stratified Modeling Version</em>?</a>
   <ul>
-  <li><a href="#why-stratify" id="toc-why-stratify"><span class="header-section-number">5.1.2.1</span> Why Stratify?</a></li>
+  <li><a href="#why-stratify" id="toc-why-stratify"><span class="header-section-number">6.1.2.1</span> Why Stratify?</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#mechanics" id="toc-mechanics"><span class="header-section-number">5.2</span> Mechanics</a></li>
-  <li><a href="#bootstrap-confidence-intervals" id="toc-bootstrap-confidence-intervals"><span class="header-section-number">5.3</span> Bootstrap Confidence Intervals</a></li>
-  <li><a href="#comparison-g-computation-vs-marginal-standardization-via-stratified-modeling" id="toc-comparison-g-computation-vs-marginal-standardization-via-stratified-modeling"><span class="header-section-number">5.4</span> Comparison: G-Computation vs Marginal Standardization via Stratified Modeling</a></li>
-  <li><a href="#when-to-use-which" id="toc-when-to-use-which"><span class="header-section-number">5.5</span> When to Use Which?</a></li>
+  <li><a href="#demo-with-epidemology-data" id="toc-demo-with-epidemology-data"><span class="header-section-number">6.2</span> Demo with Epidemology Data</a></li>
+  <li><a href="#bootstrap-confidence-intervals" id="toc-bootstrap-confidence-intervals"><span class="header-section-number">6.3</span> Bootstrap Confidence Intervals</a></li>
+  <li><a href="#comparison-g-computation-vs-marginal-standardization-via-stratified-modeling" id="toc-comparison-g-computation-vs-marginal-standardization-via-stratified-modeling"><span class="header-section-number">6.4</span> Comparison: G-Computation vs Marginal Standardization via Stratified Modeling</a></li>
+  <li><a href="#when-to-use-which" id="toc-when-to-use-which"><span class="header-section-number">6.5</span> When to Use Which?</a></li>
   </ul></li>
-  <li><a href="#marginal-standardization-with-random-forest-stratified-sampling" id="toc-marginal-standardization-with-random-forest-stratified-sampling"><span class="header-section-number">6</span> Marginal Standardization with Random Forest (Stratified Sampling)</a></li>
-  <li><a href="#propensity-score-inverse-probability-weighting" id="toc-propensity-score-inverse-probability-weighting"><span class="header-section-number">7</span> Propensity Score &amp; Inverse Probability Weighting</a>
+  <li><a href="#marginal-standardization-with-random-forest-stratified-sampling" id="toc-marginal-standardization-with-random-forest-stratified-sampling"><span class="header-section-number">7</span> Marginal Standardization with Random Forest (Stratified Sampling)</a></li>
+  <li><a href="#propensity-score-ipw-concepts" id="toc-propensity-score-ipw-concepts"><span class="header-section-number">8</span> Propensity Score &amp; IPW (Concepts)</a>
   <ul>
-  <li><a href="#prelude" id="toc-prelude"><span class="header-section-number">7.1</span> Prelude:</a></li>
-  <li><a href="#what-is-a-propensity-score-ps" id="toc-what-is-a-propensity-score-ps"><span class="header-section-number">7.2</span> What is a <strong>Propensity Score (PS)?</strong></a></li>
-  <li><a href="#what-is-inverse-probability-weighting-ipw" id="toc-what-is-inverse-probability-weighting-ipw"><span class="header-section-number">7.3</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></a></li>
-  <li><a href="#intuition" id="toc-intuition"><span class="header-section-number">7.4</span> Intuition</a></li>
-  <li><a href="#estimating-propensity-scores-and-applying-ipw-in-a-model" id="toc-estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">7.5</span> Estimating Propensity Scores and Applying IPW in a Model</a>
+  <li><a href="#prelude" id="toc-prelude"><span class="header-section-number">8.1</span> Prelude:</a></li>
+  <li><a href="#what-is-a-propensity-score-ps" id="toc-what-is-a-propensity-score-ps"><span class="header-section-number">8.2</span> What is a <strong>Propensity Score (PS)?</strong></a></li>
+  <li><a href="#what-is-inverse-probability-weighting-ipw" id="toc-what-is-inverse-probability-weighting-ipw"><span class="header-section-number">8.3</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></a></li>
+  <li><a href="#intuition" id="toc-intuition"><span class="header-section-number">8.4</span> Intuition</a></li>
+  <li><a href="#estimating-propensity-scores-and-applying-ipw-in-a-model" id="toc-estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">8.5</span> Estimating Propensity Scores and Applying IPW in a Model</a>
   <ul>
-  <li><a href="#step-1-estimate-propensity-scores" id="toc-step-1-estimate-propensity-scores"><span class="header-section-number">7.5.1</span> Step 1: Estimate Propensity Scores</a></li>
-  <li><a href="#step-2-calculate-weights" id="toc-step-2-calculate-weights"><span class="header-section-number">7.5.2</span> Step 2: Calculate Weights</a></li>
-  <li><a href="#step-3-weighted-outcome-model" id="toc-step-3-weighted-outcome-model"><span class="header-section-number">7.5.3</span> Step 3: Weighted Outcome Model</a></li>
+  <li><a href="#step-1-estimate-propensity-scores" id="toc-step-1-estimate-propensity-scores"><span class="header-section-number">8.5.1</span> Step 1: Estimate Propensity Scores</a></li>
+  <li><a href="#step-2-calculate-weights" id="toc-step-2-calculate-weights"><span class="header-section-number">8.5.2</span> Step 2: Calculate Weights</a></li>
+  <li><a href="#step-3-weighted-outcome-model" id="toc-step-3-weighted-outcome-model"><span class="header-section-number">8.5.3</span> Step 3: Weighted Outcome Model</a></li>
   </ul></li>
-  <li><a href="#summary-ps-vs-ipw" id="toc-summary-ps-vs-ipw"><span class="header-section-number">7.6</span> Summary: PS vs IPW</a></li>
-  <li><a href="#when-to-use" id="toc-when-to-use"><span class="header-section-number">7.7</span> When to Use</a></li>
-  <li><a href="#demo-weighted-logistic-regression-model-with-sipw" id="toc-demo-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">7.8</span> Demo: <strong>Weighted Logistic Regression Model with SIPW</strong></a>
-  <ul>
-  <li><a href="#steps-1-2" id="toc-steps-1-2"><span class="header-section-number">7.8.1</span> Steps 1 &amp; 2</a>
-  <ul>
-  <li><a href="#stabilized-weights" id="toc-stabilized-weights"><span class="header-section-number">7.8.1.1</span> Stabilized Weights:</a></li>
-  <li><a href="#why-stabilize" id="toc-why-stabilize"><span class="header-section-number">7.8.1.2</span> Why Stabilize?</a></li>
-  <li><a href="#how" id="toc-how"><span class="header-section-number">7.8.1.3</span> How?</a></li>
+  <li><a href="#summary-ps-vs-ipw" id="toc-summary-ps-vs-ipw"><span class="header-section-number">8.6</span> Summary: PS vs IPW</a></li>
+  <li><a href="#when-to-use" id="toc-when-to-use"><span class="header-section-number">8.7</span> When to Use</a></li>
   </ul></li>
-  <li><a href="#steps-3-7" id="toc-steps-3-7"><span class="header-section-number">7.8.2</span> Steps 3-7</a>
+  <li><a href="#ipw-example-weighted-logistic-regression-model-with-sipw" id="toc-ipw-example-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">9</span> <strong>IPW Example: Weighted Logistic Regression Model with SIPW</strong></a>
   <ul>
-  <li><a href="#interpretation-of-coefficients" id="toc-interpretation-of-coefficients"><span class="header-section-number">7.8.2.1</span> Interpretation of Coefficients</a></li>
+  <li><a href="#steps-1-2" id="toc-steps-1-2"><span class="header-section-number">9.1</span> Steps 1 &amp; 2</a>
+  <ul>
+  <li><a href="#stabilized-weights" id="toc-stabilized-weights"><span class="header-section-number">9.1.1</span> Stabilized Weights:</a></li>
+  <li><a href="#why-stabilize" id="toc-why-stabilize"><span class="header-section-number">9.1.2</span> Why Stabilize?</a></li>
+  <li><a href="#how" id="toc-how"><span class="header-section-number">9.1.3</span> How?</a></li>
+  <li><a href="#when-to-use-stabilized-ipw" id="toc-when-to-use-stabilized-ipw"><span class="header-section-number">9.1.4</span> When to Use Stabilized IPW?</a></li>
   </ul></li>
-  <li><a href="#summary-for-reporting" id="toc-summary-for-reporting"><span class="header-section-number">7.8.3</span> Summary for Reporting</a></li>
+  <li><a href="#ipw-vs.-stabilized-ipw" id="toc-ipw-vs.-stabilized-ipw"><span class="header-section-number">9.2</span> IPW vs. Stabilized IPW</a></li>
+  <li><a href="#steps-3-7" id="toc-steps-3-7"><span class="header-section-number">9.3</span> Steps 3-7</a></li>
+  <li><a href="#interpretation-of-coefficients" id="toc-interpretation-of-coefficients"><span class="header-section-number">9.4</span> Interpretation of Coefficients</a>
+  <ul>
+  <li><a href="#why-use-vcovhc" id="toc-why-use-vcovhc"><span class="header-section-number">9.4.1</span> Why use <code>vcovHC</code>?</a></li>
+  <li><a href="#coefficients" id="toc-coefficients"><span class="header-section-number">9.4.2</span> Coefficients</a></li>
   </ul></li>
+  <li><a href="#summary-for-reporting" id="toc-summary-for-reporting"><span class="header-section-number">9.5</span> Summary for Reporting</a></li>
   </ul></li>
   </ul>
 </nav>
 <section id="packages" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Packages</h1>
 </section>
-<section id="conditionally-adjusted-parametric-regression" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Conditionally Adjusted Parametric Regression</h1>
-<section id="data" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="data"><span class="header-section-number">2.1</span> Data</h2>
+<section id="introduction" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Introduction</h1>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Two main methods for causal inference to obtain ATE
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Two main approaches to estimate the Average Treatment Effect (ATE)</strong> in causal inference from observational data are:</p>
+<ol type="1">
+<li><p><strong>Outcome modeling</strong> methods, such as <strong>G-computation</strong> (marginal standardization),</p></li>
+<li><p><strong>Treatment modeling</strong> methods, such as <strong>propensity score-based weighting</strong> (e.g., inverse probability weighted logistic regression).</p></li>
+</ol>
+<p>These represent two <strong>broad classes</strong> of causal estimation strategies.</p>
+</div>
+</div>
+<section id="more-formal-classification-with-terminology" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="more-formal-classification-with-terminology"><span class="header-section-number">2.1</span> More Formal Classification (with Terminology)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 34%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Broad Approach</th>
+<th>Specific Method</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Outcome modeling</strong> (also called g-formula or standardization)</td>
+<td><strong>G-computation</strong></td>
+<td>Fit outcome model and simulate <span class="math inline">\(Y(1)\)</span>, <span class="math inline">\(Y(0)\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Treatment modeling</strong></td>
+<td><strong>Inverse Probability Weighting (IPW)</strong></td>
+<td>Estimate propensity scores and reweight</td>
+</tr>
+<tr class="odd">
+<td><strong>Doubly robust</strong></td>
+<td><strong>Augmented IPW (AIPW)</strong>, <strong>TMLE</strong></td>
+<td>Combines both models</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="brief-comparison" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="brief-comparison"><span class="header-section-number">2.2</span> Brief Comparison</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th><strong>G-Computation</strong></th>
+<th><strong>IPW (Propensity Score Weighting)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Core Idea</td>
+<td>Model the outcome: <span class="math inline">\(E[Y \mid A, C]\)</span>]</td>
+<td>Model the treatment: <span class="math inline">\(P(A \mid C)\)</span></td>
+</tr>
+<tr class="even">
+<td>Requires outcome model?</td>
+<td>✅ Yes</td>
+<td>❌ Not directly</td>
+</tr>
+<tr class="odd">
+<td>Requires treatment model?</td>
+<td>❌ No</td>
+<td>✅ Yes (propensity score)</td>
+</tr>
+<tr class="even">
+<td>Uses weights?</td>
+<td>❌ No</td>
+<td>✅ Yes (inverse of PS or stabilized weights)</td>
+</tr>
+<tr class="odd">
+<td>Estimate type</td>
+<td>Marginal (average) potential outcomes</td>
+<td>Marginal ATE via weighted sample</td>
+</tr>
+<tr class="even">
+<td>Key Assumption</td>
+<td>Outcome model is correctly specified</td>
+<td>Propensity score model is correctly specified</td>
+</tr>
+<tr class="odd">
+<td>Sensitive to</td>
+<td>Outcome model misspecification</td>
+<td>Extreme or poorly estimated PS (e.g., near 0 or 1)</td>
+</tr>
+<tr class="even">
+<td>Extensions</td>
+<td>Standardization, risk difference, ICE curves</td>
+<td>Stabilized IPW, overlap weights, etc.</td>
+</tr>
+<tr class="odd">
+<td>Inference</td>
+<td>Straightforward (bootstrap or delta method)</td>
+<td>Needs robust SEs due to heteroskedasticity</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="summary" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.3</span> Summary</h2>
+<blockquote class="blockquote">
+<p>In causal inference, two primary approaches for estimating the Average Treatment Effect (ATE) are:<br>
+(1) <strong>G-computation</strong>, an outcome modeling approach that simulates potential outcomes via a regression model, and<br>
+(2) <strong>Propensity score-based inverse probability weighting (IPW)</strong>, a treatment modeling approach that reweights the data to mimic a randomized experiment.</p>
+</blockquote>
+<p>Both methods estimate <strong>marginal causal effects</strong> and rely on different modeling assumptions. They can also be <strong>combined</strong> in <strong>doubly robust</strong> estimators like AIPW or TMLE, which remain consistent if either model is correctly specified.</p>
+</section>
+</section>
+<section id="conditionally-adjusted-parametric-regression" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Conditionally Adjusted Parametric Regression</h1>
+<section id="data" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="data"><span class="header-section-number">3.1</span> Data</h2>
 <blockquote class="blockquote">
 <p><strong>Epidemiologic Follow-Up Study Data (nhefs.csv)</strong></p>
 <ul>
@@ -3517,8 +3665,8 @@ window.Quarto = {
 </tbody>
 </table>
 </section>
-<section id="model" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="model"><span class="header-section-number">2.2</span> Model</h2>
+<section id="model" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="model"><span class="header-section-number">3.2</span> Model</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nhefs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nhefs.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">wt_delta =</span> <span class="fu">as.numeric</span>(wt82_71 <span class="sc">&gt;</span> <span class="fu">median</span>(wt82_71)))</span>
@@ -3601,10 +3749,10 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
 </section>
-<section id="interpretation" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">2.3</span> Interpretation</h2>
-<section id="what-is-an-odds-ratio-or" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="what-is-an-odds-ratio-or"><span class="header-section-number">2.3.1</span> What is an Odds Ratio (OR)?</h3>
+<section id="interpretation" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">3.3</span> Interpretation</h2>
+<section id="what-is-an-odds-ratio-or" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="what-is-an-odds-ratio-or"><span class="header-section-number">3.3.1</span> What is an Odds Ratio (OR)?</h3>
 <p>In logistic regression, you’re modeling the <strong>log odds</strong> of a binary outcome <span class="math inline">\(Y\)</span> (e.g., 1 = success, 0 = failure), based on predictors <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, ., …</p>
 <p><span class="math display">\[ \log\left(\frac{P(Y=1)}{P(Y=0)}\right) = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k\]</span></p>
 <p>The coefficient <span class="math inline">\(\beta_j\)</span> represents the <strong>change in log-odds</strong> of the outcome for a one-unit increase in <span class="math inline">\(X_j\)</span>, <strong>holding other variables constant</strong>.</p>
@@ -3612,8 +3760,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p><span class="math display">\[OR_j = \exp(\beta_j)\]</span></p>
 </section>
 </section>
-<section id="interpreting-odds-ratios" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="interpreting-odds-ratios"><span class="header-section-number">2.4</span> Interpreting Odds Ratios</h2>
+<section id="interpreting-odds-ratios" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="interpreting-odds-ratios"><span class="header-section-number">3.4</span> Interpreting Odds Ratios</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 37%">
@@ -3644,8 +3792,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p>Important: ORs compare <strong>odds</strong>, not probabilities. Odds are defined as:</p>
 <p><span class="math display">\[\text{Odds} = \frac{P(Y=1)}{1 - P(Y=1)}\]</span></p>
 </blockquote>
-<section id="binary-predictor" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="binary-predictor"><span class="header-section-number">2.4.1</span> Binary predictor</h3>
+<section id="binary-predictor" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="binary-predictor"><span class="header-section-number">3.4.1</span> Binary predictor</h3>
 <pre><code># A tibble: 1 × 4
   estimate_logit    OR OR_low OR_high
            &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
@@ -3662,8 +3810,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <li><p>95% CI [1.40, 2.36] → statistically significant (doesn’t cross 1).</p></li>
 </ul>
 </section>
-<section id="continuous-predictor-e.g.-age" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="continuous-predictor-e.g.-age"><span class="header-section-number">2.4.2</span> Continuous Predictor (e.g., <code>age</code>)</h3>
+<section id="continuous-predictor-e.g.-age" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="continuous-predictor-e.g.-age"><span class="header-section-number">3.4.2</span> Continuous Predictor (e.g., <code>age</code>)</h3>
 <pre><code># A tibble: 1 × 4
   estimate_logit    OR OR_low OR_high
            &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
@@ -3678,27 +3826,27 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </section>
 </section>
 </section>
-<section id="g-computation-marginally-adjusted-parametric-regression" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> g-computation: Marginally adjusted parametric regression</h1>
-<p><strong>G-computation</strong>, also known as the <strong>G-formula</strong> or <strong>G-estimation</strong>, is a method in <strong>causal inference</strong> used to estimate <strong>marginal (population-level) causal effects</strong> from observational data — even when there are confounders.</p>
+<section id="g-computation-marginally-adjusted-parametric-regression" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> g-computation: Marginally adjusted parametric regression</h1>
+<p><strong>G-computation</strong> (<strong>G-formula</strong>, <strong>G-estimation, or g-standardization)</strong> is a method for estimating <strong>marginal (population-level) causal effects</strong> by modeling the outcome variables as a function of treatment and confounders from observational data.</p>
 <p>The term “<strong>marginally adjusted parametric regression</strong>” refers to a <strong>parametric</strong> implementation of g-computation where:</p>
 <ul>
 <li><p>You fit a <strong>regression model</strong> (e.g., linear, logistic) for the outcome, adjusting for covariates,</p></li>
 <li><p>Then you <strong>simulate counterfactual outcomes</strong> by setting treatment values for everyone,</p></li>
 <li><p>And compute <strong>marginal expectations</strong> (averages) over the whole population.</p></li>
 </ul>
-<section id="the-core-idea-of-g-computation" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="the-core-idea-of-g-computation"><span class="header-section-number">3.1</span> The Core Idea of G-Computation</h2>
+<section id="the-core-idea-of-g-computation" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-core-idea-of-g-computation"><span class="header-section-number">4.1</span> The Core Idea of G-Computation</h2>
 <p>You want to estimate the <strong>average treatment effect (ATE)</strong>:</p>
 <p><span class="math display">\[ATE = \mathbb{E}[Y(1)] - \mathbb{E}[Y(0)]\]</span></p>
 <p>But you don’t have access to both outcomes for any individual. So you:</p>
-<section id="step-1-fit-a-parametric-outcome-model" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="step-1-fit-a-parametric-outcome-model"><span class="header-section-number">3.1.1</span> Step 1: Fit a parametric outcome model</h3>
+<section id="step-1-fit-a-parametric-outcome-model" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="step-1-fit-a-parametric-outcome-model"><span class="header-section-number">4.1.1</span> Step 1: Fit a parametric outcome model</h3>
 <p><span class="math display">\[Y^= \mathbb{E}[Y \mid X, C]\]</span></p>
 <p>e.g., linear or logistic regression of <span class="math inline">\(Y\)</span> on treatment <span class="math inline">\(X\)</span> and covariates <span class="math inline">\(C\)</span>.</p>
 </section>
-<section id="step-2-predict-counterfactuals-for-everyone" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="step-2-predict-counterfactuals-for-everyone"><span class="header-section-number">3.1.2</span> Step 2: Predict counterfactuals for <strong>everyone</strong></h3>
+<section id="step-2-predict-counterfactuals-for-everyone" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="step-2-predict-counterfactuals-for-everyone"><span class="header-section-number">4.1.2</span> Step 2: Predict counterfactuals for <strong>everyone</strong></h3>
 <p>You generate two <strong>predicted outcomes</strong> for each individual:</p>
 <ul>
 <li><p><span class="math inline">\(\hat{Y}_1 = \mathbb{E}[Y \mid X=1, C]\)</span></p></li>
@@ -3706,16 +3854,16 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <li><p>You <strong>manually set</strong> the treatment to 1 and 0 for everyone to simulate the counterfactuals.</p></li>
 </ul>
 </section>
-<section id="step-3-average-over-the-population" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="step-3-average-over-the-population"><span class="header-section-number">3.1.3</span> Step 3: Average over the population</h3>
+<section id="step-3-average-over-the-population" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="step-3-average-over-the-population"><span class="header-section-number">4.1.3</span> Step 3: Average over the population</h3>
 <p>Compute:</p>
 <p><span class="math display">\[\widehat{\mathbb{E}[Y(1)]} = \frac{1}{n} \sum_{i=1}^{n} \hat{Y}_{1i},  \widehat{\mathbb{E}[Y(0)]} = \frac{1}{n} \sum_{i=1}^{n} \hat{Y}_{0i}\]</span></p>
 <p>Then:</p>
 <p><span class="math display">\[\widehat{\text{ATE}} = \widehat{\mathbb{E}[Y(1)]} - \widehat{\mathbb{E}[Y(0)]}\]</span></p>
 </section>
 </section>
-<section id="why-its-called-marginally-adjusted-parametric-regression" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="why-its-called-marginally-adjusted-parametric-regression"><span class="header-section-number">3.2</span> Why it’s called “Marginally Adjusted Parametric Regression”</h2>
+<section id="why-its-called-marginally-adjusted-parametric-regression" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="why-its-called-marginally-adjusted-parametric-regression"><span class="header-section-number">4.2</span> Why it’s called “Marginally Adjusted Parametric Regression”</h2>
 <ul>
 <li><p><strong>Parametric regression</strong>: You specify and fit a model like <code>Y ~ A + X</code> (e.g., logistic or linear regression).</p></li>
 <li><p><strong>Marginally adjusted</strong>: Even though the model adjusts <strong>conditionally</strong> for covariates (like in OLS or logistic regression), the final estimate is a <strong>marginal (population-level) average</strong>, not a conditional effect.</p></li>
@@ -3727,10 +3875,10 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </ul>
 <p>This marginal standardization approach yields an estimate of the average treatment effect under the required identifiability assumptions. However, it assumes a constant effect of ‘<strong>qsmk</strong>’ on weight change across levels of all of the other variables in the model. This constant effect assumption might be true, but if one wanted to account for potential interactions between the exposure and all of the confounders in the model, there is an easy way. We call this the “<strong>stratified modeling approach</strong>” (next approach)</p>
 </section>
-<section id="demo-with-nhefs.csv" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="demo-with-nhefs.csv"><span class="header-section-number">3.3</span> Demo with <strong>nhefs.csv</strong></h2>
-<section id="step-1-and-2" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="step-1-and-2"><span class="header-section-number">3.3.1</span> Step 1 and 2</h3>
+<section id="demo-with-nhefs.csv" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="demo-with-nhefs.csv"><span class="header-section-number">4.3</span> Demo with <strong>nhefs.csv</strong></h2>
+<section id="step-1-and-2" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="step-1-and-2"><span class="header-section-number">4.3.1</span> Step 1 and 2</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Fit a parametric outcome model</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ms_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(modelForm, <span class="at">data =</span> nhefs,<span class="at">family =</span> <span class="fu">binomial</span>(<span class="st">&quot;logit&quot;</span>))</span>
@@ -3746,8 +3894,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># type = &quot;class&quot; provide 0 and 1 based on predicted probabilities</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-3" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="step-3"><span class="header-section-number">3.3.2</span> Step 3</h3>
+<section id="step-3" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="step-3"><span class="header-section-number">4.3.2</span> Step 3</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Compute marginal causal effects</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Marginally adjusted odds ratio</span></span>
@@ -3769,8 +3917,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <pre><code>[1] 0.1377615</code></pre>
 </div>
 </div>
-<section id="a.-marginal-odds-ratio" class="level4" data-number="3.3.2.1">
-<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="a.-marginal-odds-ratio"><span class="header-section-number">3.3.2.1</span> a. Marginal Odds Ratio</h4>
+<section id="a.-marginal-odds-ratio" class="level4" data-number="4.3.2.1">
+<h4 data-number="4.3.2.1" class="anchored" data-anchor-id="a.-marginal-odds-ratio"><span class="header-section-number">4.3.2.1</span> a. Marginal Odds Ratio</h4>
 <pre><code>marg_stand_OR &lt;- (mean(mu1)/mean(1 - mu1)) / (mean(mu0)/mean(1 - mu0))</code></pre>
 <p>This calculates:</p>
 <p><span class="math display">\[\frac{\text{Odds}(Y(1))}{\text{Odds}(Y(0))}\]</span></p>
@@ -3779,21 +3927,21 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p>The odds of the outcome if <strong>everyone had been treated</strong> vs. <strong>everyone untreated</strong>, averaged over the entire sample.</p>
 </blockquote>
 </section>
-<section id="b.-marginal-risk-ratio" class="level4" data-number="3.3.2.2">
-<h4 data-number="3.3.2.2" class="anchored" data-anchor-id="b.-marginal-risk-ratio"><span class="header-section-number">3.3.2.2</span> b. <strong>Marginal Risk Ratio</strong></h4>
+<section id="b.-marginal-risk-ratio" class="level4" data-number="4.3.2.2">
+<h4 data-number="4.3.2.2" class="anchored" data-anchor-id="b.-marginal-risk-ratio"><span class="header-section-number">4.3.2.2</span> b. <strong>Marginal Risk Ratio</strong></h4>
 <pre><code>marg_stand_RR &lt;- mean(mu1)/mean(mu0)</code></pre>
 <p><span class="math display">\[\frac{\mathbb{E}[Y(1)]}{\mathbb{E}[Y(0)]}\]</span></p>
 <p>→ The <strong>relative risk</strong> if everyone were treated vs. untreated.</p>
 </section>
-<section id="c.-marginal-risk-difference-ate" class="level4" data-number="3.3.2.3">
-<h4 data-number="3.3.2.3" class="anchored" data-anchor-id="c.-marginal-risk-difference-ate"><span class="header-section-number">3.3.2.3</span> c. <strong>Marginal Risk Difference (ATE)</strong></h4>
+<section id="c.-marginal-risk-difference-ate" class="level4" data-number="4.3.2.3">
+<h4 data-number="4.3.2.3" class="anchored" data-anchor-id="c.-marginal-risk-difference-ate"><span class="header-section-number">4.3.2.3</span> c. <strong>Marginal Risk Difference (ATE)</strong></h4>
 <pre><code>marg_stand_RD &lt;- mean(mu1) - mean(mu0)</code></pre>
 <p><span class="math display">\[\mathbb{E}[Y(1)] - \mathbb{E}[Y(0)]\]</span></p>
 <p>→ This is the <strong>Average Treatment Effect (ATE)</strong>. This is the <strong>primary quantity targeted by G-computation</strong>.</p>
 </section>
 </section>
-<section id="step-4-explore-individual-level-treatment-effects-optional-but-insightful" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="step-4-explore-individual-level-treatment-effects-optional-but-insightful"><span class="header-section-number">3.3.3</span> Step 4: Explore individual-level treatment effects (Optional but insightful)</h3>
+<section id="step-4-explore-individual-level-treatment-effects-optional-but-insightful" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="step-4-explore-individual-level-treatment-effects-optional-but-insightful"><span class="header-section-number">4.3.3</span> Step 4: Explore individual-level treatment effects (Optional but insightful)</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Individual level treatment effect: Risk Difference</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>indv_treat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(mu1, mu0)) </span>
@@ -3830,8 +3978,8 @@ Tip
 </section>
 </section>
 </section>
-<section id="bootstrap-confidence-interval" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Bootstrap confidence interval</h1>
+<section id="bootstrap-confidence-interval" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Bootstrap confidence interval</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the bootstrap to obtain confidence intervals for the marginally adjusted odd ratio, risk ratio, and risk difference.</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -3918,10 +4066,10 @@ Level     Percentile            BCa
 Calculations and Intervals on Original Scale</code></pre>
 </div>
 </div>
-<section id="interpretation-1" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="interpretation-1"><span class="header-section-number">4.1</span> Interpretation</h2>
-<section id="summary-of-g-computation-bootstrap-estimates" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="summary-of-g-computation-bootstrap-estimates"><span class="header-section-number">4.1.1</span> Summary of G-Computation Bootstrap Estimates</h3>
+<section id="interpretation-1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="interpretation-1"><span class="header-section-number">5.1</span> Interpretation</h2>
+<section id="summary-of-g-computation-bootstrap-estimates" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="summary-of-g-computation-bootstrap-estimates"><span class="header-section-number">5.1.1</span> Summary of G-Computation Bootstrap Estimates</h3>
 <pre><code>Bootstrap Statistics :
      original        bias       std. error
 t1* 0.1377615   -0.0002023   0.02992375  # Risk Difference (RD)
@@ -3952,10 +4100,10 @@ t3* 1.7462129    0.0144292   0.21935613  # Odds Ratio (OR)</code></pre>
 <li><p><strong>Bias</strong>: small (0.014), but worth noting.</p></li>
 </ul>
 </section>
-<section id="g-computation-bootstrap-estimates-and-confidence-intervals" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="g-computation-bootstrap-estimates-and-confidence-intervals"><span class="header-section-number">4.1.2</span> G-Computation Bootstrap Estimates and Confidence Intervals</h3>
-<section id="output" class="level4" data-number="4.1.2.1">
-<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="output"><span class="header-section-number">4.1.2.1</span> Output</h4>
+<section id="g-computation-bootstrap-estimates-and-confidence-intervals" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="g-computation-bootstrap-estimates-and-confidence-intervals"><span class="header-section-number">5.1.2</span> G-Computation Bootstrap Estimates and Confidence Intervals</h3>
+<section id="output" class="level4" data-number="5.1.2.1">
+<h4 data-number="5.1.2.1" class="anchored" data-anchor-id="output"><span class="header-section-number">5.1.2.1</span> Output</h4>
 <pre><code>&gt; marg_stand_RD
 [1] 0.1377615
 &gt; boot_RD
@@ -3973,15 +4121,15 @@ Level     Percentile            BCa
 95%   ( 0.0779,  0.1953 )   ( 0.0779,  0.1952 )  
 Calculations and Intervals on Original Scale</code></pre>
 </section>
-<section id="types-of-ci" class="level4" data-number="4.1.2.2">
-<h4 data-number="4.1.2.2" class="anchored" data-anchor-id="types-of-ci"><span class="header-section-number">4.1.2.2</span> Types of CI</h4>
+<section id="types-of-ci" class="level4" data-number="5.1.2.2">
+<h4 data-number="5.1.2.2" class="anchored" data-anchor-id="types-of-ci"><span class="header-section-number">5.1.2.2</span> Types of CI</h4>
 <ul>
 <li>Which CI to Report?</li>
 </ul>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 35%">
-<col style="width: 64%">
+<col style="width: 36%">
+<col style="width: 63%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -4012,8 +4160,8 @@ Calculations and Intervals on Original Scale</code></pre>
 <li>In most cases, the <strong>BCa interval</strong> is preferred because it’s more accurate, especially when the bootstrap distribution is skewed or biased.</li>
 </ul>
 </section>
-<section id="summary-and-conclusion" class="level4" data-number="4.1.2.3">
-<h4 data-number="4.1.2.3" class="anchored" data-anchor-id="summary-and-conclusion"><span class="header-section-number">4.1.2.3</span> Summary and Conclusion</h4>
+<section id="summary-and-conclusion" class="level4" data-number="5.1.2.3">
+<h4 data-number="5.1.2.3" class="anchored" data-anchor-id="summary-and-conclusion"><span class="header-section-number">5.1.2.3</span> Summary and Conclusion</h4>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 24%">
@@ -4071,13 +4219,13 @@ Calculations and Intervals on Original Scale</code></pre>
 </section>
 </section>
 </section>
-<section id="marginal-standardization-approach-stratifed-modeling-approach" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Marginal Standardization Approach: Stratifed modeling approach</h1>
+<section id="marginal-standardization-approach-with-stratified-modeling" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Marginal Standardization Approach with Stratified Modeling</h1>
 <p>This stratified modeling approach avoids the exposure effect homogeneity assumption across levels of all the confounders. In effect, the approach fits a separate model for each exposure stratum.</p>
-<section id="concepts" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">5.1</span> Concepts</h2>
-<section id="what-is-marginal-standardization" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="what-is-marginal-standardization"><span class="header-section-number">5.1.1</span> What is <em>Marginal Standardization</em>?</h3>
+<section id="concepts" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">6.1</span> Concepts</h2>
+<section id="what-is-marginal-standardization" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="what-is-marginal-standardization"><span class="header-section-number">6.1.1</span> What is <em>Marginal Standardization</em>?</h3>
 <p><strong>Marginal Standardization</strong> is a general technique used to estimate <strong>population-level (marginal) effects</strong> from regression models that are <strong>conditional</strong> on covariates.</p>
 <p>It works by:</p>
 <ol type="1">
@@ -4087,8 +4235,8 @@ Calculations and Intervals on Original Scale</code></pre>
 <li><p>This is essentially <strong>parametric G-computation</strong>.</p></li>
 </ol>
 </section>
-<section id="what-is-the-stratified-modeling-version" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="what-is-the-stratified-modeling-version"><span class="header-section-number">5.1.2</span> What is the <em>Stratified Modeling Version</em>?</h3>
+<section id="what-is-the-stratified-modeling-version" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="what-is-the-stratified-modeling-version"><span class="header-section-number">6.1.2</span> What is the <em>Stratified Modeling Version</em>?</h3>
 <p>The <strong>“stratified modeling approach”</strong> to marginal standardization means that instead of fitting one big regression model that includes <strong>treatment + all covariates</strong>, you <strong>fit separate models within strata of the treatment variable</strong>.</p>
 <p>In other words: <strong>Stratified Modeling:</strong></p>
 <ul>
@@ -4101,8 +4249,8 @@ Calculations and Intervals on Original Scale</code></pre>
 <li><p>Average the predicted outcomes (standardize over the covariate distribution)</p></li>
 </ul>
 <p>This allows the treatment and covariates to interact <strong>non-parametrically</strong> — i.e., the effect of covariates on the outcome <strong>can differ between treatment groups</strong>.</p>
-<section id="why-stratify" class="level4" data-number="5.1.2.1">
-<h4 data-number="5.1.2.1" class="anchored" data-anchor-id="why-stratify"><span class="header-section-number">5.1.2.1</span> Why Stratify?</h4>
+<section id="why-stratify" class="level4" data-number="6.1.2.1">
+<h4 data-number="6.1.2.1" class="anchored" data-anchor-id="why-stratify"><span class="header-section-number">6.1.2.1</span> Why Stratify?</h4>
 <ul>
 <li><p>It allows for <strong>treatment effect heterogeneity</strong> across strata (i.e., different regression functions for treated and untreated).</p></li>
 <li><p>Avoids imposing <strong>homogeneous treatment effects</strong> as in a single model with linear terms.</p></li>
@@ -4111,8 +4259,8 @@ Calculations and Intervals on Original Scale</code></pre>
 </section>
 </section>
 </section>
-<section id="mechanics" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="mechanics"><span class="header-section-number">5.2</span> Mechanics</h2>
+<section id="demo-with-epidemology-data" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="demo-with-epidemology-data"><span class="header-section-number">6.2</span> Demo with Epidemology Data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Marginal Standardization</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="do">##&#39; To avoid assuming no interaction between</span></span>
@@ -4162,8 +4310,8 @@ Calculations and Intervals on Original Scale</code></pre>
 </div>
 </div>
 </section>
-<section id="bootstrap-confidence-intervals" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="bootstrap-confidence-intervals"><span class="header-section-number">5.3</span> Bootstrap Confidence Intervals</h2>
+<section id="bootstrap-confidence-intervals" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="bootstrap-confidence-intervals"><span class="header-section-number">6.3</span> Bootstrap Confidence Intervals</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Using the bootstrap to obtain confidence intervals for the marginally adjusted</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; risk ratio and risk difference.</span></span>
@@ -4254,8 +4402,8 @@ Calculations and Intervals on Original Scale</code></pre>
 </div>
 </div>
 </section>
-<section id="comparison-g-computation-vs-marginal-standardization-via-stratified-modeling" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="comparison-g-computation-vs-marginal-standardization-via-stratified-modeling"><span class="header-section-number">5.4</span> Comparison: G-Computation vs Marginal Standardization via Stratified Modeling</h2>
+<section id="comparison-g-computation-vs-marginal-standardization-via-stratified-modeling" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="comparison-g-computation-vs-marginal-standardization-via-stratified-modeling"><span class="header-section-number">6.4</span> Comparison: G-Computation vs Marginal Standardization via Stratified Modeling</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -4303,8 +4451,8 @@ Calculations and Intervals on Original Scale</code></pre>
 </tbody>
 </table>
 </section>
-<section id="when-to-use-which" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="when-to-use-which"><span class="header-section-number">5.5</span> When to Use Which?</h2>
+<section id="when-to-use-which" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="when-to-use-which"><span class="header-section-number">6.5</span> When to Use Which?</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 100%">
@@ -4346,8 +4494,8 @@ Calculations and Intervals on Original Scale</code></pre>
 </table>
 </section>
 </section>
-<section id="marginal-standardization-with-random-forest-stratified-sampling" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Marginal Standardization with Random Forest (Stratified Sampling)</h1>
+<section id="marginal-standardization-with-random-forest-stratified-sampling" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Marginal Standardization with Random Forest (Stratified Sampling)</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4380,8 +4528,8 @@ Task:
 </div>
 </div>
 </section>
-<section id="propensity-score-inverse-probability-weighting" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Propensity Score &amp; Inverse Probability Weighting</h1>
+<section id="propensity-score-ipw-concepts" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Propensity Score &amp; IPW (Concepts)</h1>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4396,12 +4544,12 @@ Introduction:
 <p>They are designed to <strong>adjust for confounding</strong> — that is, differences in background characteristics between treated and untreated groups — when treatment is not randomly assigned.</p>
 </div>
 </div>
-<section id="prelude" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="prelude"><span class="header-section-number">7.1</span> Prelude:</h2>
+<section id="prelude" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="prelude"><span class="header-section-number">8.1</span> Prelude:</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/YQDMlNIQSA8" title frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 </section>
-<section id="what-is-a-propensity-score-ps" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="what-is-a-propensity-score-ps"><span class="header-section-number">7.2</span> What is a <strong>Propensity Score (PS)?</strong></h2>
+<section id="what-is-a-propensity-score-ps" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="what-is-a-propensity-score-ps"><span class="header-section-number">8.2</span> What is a <strong>Propensity Score (PS)?</strong></h2>
 <p>A <strong>propensity score</strong> is:</p>
 <blockquote class="blockquote">
 <p>The <strong>probability of receiving the treatment</strong> given a set of observed covariates.</p>
@@ -4416,8 +4564,8 @@ Introduction:
 </ul>
 <p>It’s typically estimated using <strong>logistic regression</strong> or <strong>machine learning models</strong> like random forests or gradient boosting.</p>
 </section>
-<section id="what-is-inverse-probability-weighting-ipw" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="what-is-inverse-probability-weighting-ipw"><span class="header-section-number">7.3</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></h2>
+<section id="what-is-inverse-probability-weighting-ipw" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="what-is-inverse-probability-weighting-ipw"><span class="header-section-number">8.3</span> What is <strong>Inverse Probability Weighting (IPW)?</strong></h2>
 <p><strong>IPW</strong> uses the estimated propensity scores to create a <strong>pseudo-population</strong> in which <strong>treatment is independent of covariates</strong> — mimicking a randomized experiment.</p>
 <p>The idea:</p>
 <ul>
@@ -4434,36 +4582,36 @@ w_i = \begin{cases}
 <p>where: <span class="math inline">\(e(C_i)=P(A=1∣C_i)\)</span> is the propensity score.</p>
 <p>This gives us a <strong>weighted sample</strong> in which the distribution of covariates is balanced across treatment groups.</p>
 </section>
-<section id="intuition" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="intuition"><span class="header-section-number">7.4</span> Intuition</h2>
+<section id="intuition" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="intuition"><span class="header-section-number">8.4</span> Intuition</h2>
 <p>Imagine you want to compare people who <strong>quit smoking</strong> (<code>qsmk = 1</code>) to those who <strong>did not</strong> (<code>qsmk = 0</code>). But quitting is more likely among older, richer, or sicker people.</p>
 <p>To make a fair comparison, IPW adjusts the contribution of each observation based on how “expected” their treatment status was given their covariates.</p>
 </section>
-<section id="estimating-propensity-scores-and-applying-ipw-in-a-model" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">7.5</span> Estimating Propensity Scores and Applying IPW in a Model</h2>
-<section id="step-1-estimate-propensity-scores" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="step-1-estimate-propensity-scores"><span class="header-section-number">7.5.1</span> Step 1: Estimate Propensity Scores</h3>
+<section id="estimating-propensity-scores-and-applying-ipw-in-a-model" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="estimating-propensity-scores-and-applying-ipw-in-a-model"><span class="header-section-number">8.5</span> Estimating Propensity Scores and Applying IPW in a Model</h2>
+<section id="step-1-estimate-propensity-scores" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="step-1-estimate-propensity-scores"><span class="header-section-number">8.5.1</span> Step 1: Estimate Propensity Scores</h3>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>ps_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(qsmk <span class="sc">~</span> age <span class="sc">+</span> sex <span class="sc">+</span> income <span class="sc">+</span> sbp <span class="sc">+</span> dbp, <span class="at">data =</span> nhefs, <span class="at">family =</span> binomial)</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>nhefs<span class="sc">$</span>ps <span class="ot">&lt;-</span> <span class="fu">predict</span>(ps_model, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="step-2-calculate-weights" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="step-2-calculate-weights"><span class="header-section-number">7.5.2</span> Step 2: Calculate Weights</h3>
+<section id="step-2-calculate-weights" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="step-2-calculate-weights"><span class="header-section-number">8.5.2</span> Step 2: Calculate Weights</h3>
 <div class="sourceCode" id="cb61"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>nhefs <span class="ot">&lt;-</span> nhefs <span class="sc">%&gt;%</span></span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ipw =</span> <span class="fu">ifelse</span>(qsmk <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span>ps, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> ps)))</span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="step-3-weighted-outcome-model" class="level3" data-number="7.5.3">
-<h3 data-number="7.5.3" class="anchored" data-anchor-id="step-3-weighted-outcome-model"><span class="header-section-number">7.5.3</span> Step 3: Weighted Outcome Model</h3>
+<section id="step-3-weighted-outcome-model" class="level3" data-number="8.5.3">
+<h3 data-number="8.5.3" class="anchored" data-anchor-id="step-3-weighted-outcome-model"><span class="header-section-number">8.5.3</span> Step 3: Weighted Outcome Model</h3>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>weighted_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(wt_delta <span class="sc">~</span> qsmk, <span class="at">data =</span> nhefs, <span class="at">weights =</span> ipw, <span class="at">family =</span> binomial) </span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(weighted_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This gives you a <strong>causal estimate of treatment effect</strong> (e.g., on weight change), <strong>adjusted for confounding via IPW</strong>.</p>
 </section>
 </section>
-<section id="summary-ps-vs-ipw" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="summary-ps-vs-ipw"><span class="header-section-number">7.6</span> Summary: PS vs IPW</h2>
+<section id="summary-ps-vs-ipw" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="summary-ps-vs-ipw"><span class="header-section-number">8.6</span> Summary: PS vs IPW</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -4491,8 +4639,8 @@ w_i = \begin{cases}
 </tbody>
 </table>
 </section>
-<section id="when-to-use" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="when-to-use"><span class="header-section-number">7.7</span> When to Use</h2>
+<section id="when-to-use" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="when-to-use"><span class="header-section-number">8.7</span> When to Use</h2>
 <ul>
 <li><p>You want to estimate <strong>marginal (population-level)</strong> treatment effects.</p></li>
 <li><p>You’re working with <strong>observational data</strong>.</p></li>
@@ -4500,13 +4648,14 @@ w_i = \begin{cases}
 <li><p>You’re aiming for <strong>doubly robust estimation</strong> (combine IPW + outcome model).</p></li>
 </ul>
 </section>
-<section id="demo-weighted-logistic-regression-model-with-sipw" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="demo-weighted-logistic-regression-model-with-sipw"><span class="header-section-number">7.8</span> Demo: <strong>Weighted Logistic Regression Model with SIPW</strong></h2>
+</section>
+<section id="ipw-example-weighted-logistic-regression-model-with-sipw" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> <strong>IPW Example: Weighted Logistic Regression Model with SIPW</strong></h1>
 <ul>
-<li><strong>Run Weighted logistic regression model with identity link</strong> to estimate a <strong>causal risk difference (ATE)</strong> using <strong>stabilized inverse probability weights (IPW) to control for confounding.</strong></li>
+<li><strong>Run</strong> a Weighted logistic regression model with an <strong>identity link</strong> to estimate a <strong>causal risk difference (ATE)</strong> using <strong>stabilized inverse probability weights (IPW) to control for confounding.</strong></li>
 </ul>
-<section id="steps-1-2" class="level3" data-number="7.8.1">
-<h3 data-number="7.8.1" class="anchored" data-anchor-id="steps-1-2"><span class="header-section-number">7.8.1</span> Steps 1 &amp; 2</h3>
+<section id="steps-1-2" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="steps-1-2"><span class="header-section-number">9.1</span> Steps 1 &amp; 2</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create the propensity score in the dataset</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>nhefs<span class="sc">$</span>propensity_score <span class="ot">&lt;-</span> </span>
@@ -4521,25 +4670,25 @@ w_i = \begin{cases}
 <ul>
 <li><code>mean(nhefs$qsmk)</code>: marginal probability of treatment</li>
 </ul>
-<section id="stabilized-weights" class="level4" data-number="7.8.1.1">
-<h4 data-number="7.8.1.1" class="anchored" data-anchor-id="stabilized-weights"><span class="header-section-number">7.8.1.1</span> Stabilized Weights:</h4>
+<section id="stabilized-weights" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="stabilized-weights"><span class="header-section-number">9.1.1</span> Stabilized Weights:</h3>
 <p><span class="math display">\[w_i =  \begin{cases} \frac{P(A=1)}{e(C_i)} &amp; \text{if } A_i = 1 \\ \frac{P(A=0)}{1 - e(C_i)} &amp; \text{if } A_i = 0 \end{cases}\]</span>​Where,</p>
 <ul>
 <li><p><span class="math inline">\(P(A=1)\)</span>: the <strong>marginal (overall)</strong> probability of treatment in the sample</p></li>
 <li><p>This numerator <strong>“stabilizes”</strong> the weight</p></li>
 </ul>
 </section>
-<section id="why-stabilize" class="level4" data-number="7.8.1.2">
-<h4 data-number="7.8.1.2" class="anchored" data-anchor-id="why-stabilize"><span class="header-section-number">7.8.1.2</span> Why Stabilize?</h4>
-<section id="problem-with-standard-ipw" class="level5" data-number="7.8.1.2.1">
-<h5 data-number="7.8.1.2.1" class="anchored" data-anchor-id="problem-with-standard-ipw"><span class="header-section-number">7.8.1.2.1</span> Problem with standard IPW:</h5>
+<section id="why-stabilize" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="why-stabilize"><span class="header-section-number">9.1.2</span> Why Stabilize?</h3>
+<section id="problem-with-standard-ipw" class="level5" data-number="9.1.2.0.1">
+<h5 data-number="9.1.2.0.1" class="anchored" data-anchor-id="problem-with-standard-ipw"><span class="header-section-number">9.1.2.0.1</span> Problem with standard IPW:</h5>
 <ul>
 <li><p>Some people have very <strong>small propensity scores</strong>, so <span class="math inline">\(\frac{1}{e(C)}\)</span>​ becomes <strong>very large</strong></p></li>
 <li><p>This causes <strong>extreme weights</strong>, which Inflate standard errors, increase sensitivity to model misspecification and reduce precision</p></li>
 </ul>
 </section>
-<section id="stabilized-weights-1" class="level5" data-number="7.8.1.2.2">
-<h5 data-number="7.8.1.2.2" class="anchored" data-anchor-id="stabilized-weights-1"><span class="header-section-number">7.8.1.2.2</span> Stabilized weights:</h5>
+<section id="stabilized-weights-1" class="level5" data-number="9.1.2.0.2">
+<h5 data-number="9.1.2.0.2" class="anchored" data-anchor-id="stabilized-weights-1"><span class="header-section-number">9.1.2.0.2</span> Stabilized weights:</h5>
 <ul>
 <li><p>Keep weights closer to 1</p></li>
 <li><p>Reduce variance of the estimator</p></li>
@@ -4547,8 +4696,8 @@ w_i = \begin{cases}
 </ul>
 </section>
 </section>
-<section id="how" class="level4" data-number="7.8.1.3">
-<h4 data-number="7.8.1.3" class="anchored" data-anchor-id="how"><span class="header-section-number">7.8.1.3</span> How?</h4>
+<section id="how" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="how"><span class="header-section-number">9.1.3</span> How?</h3>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>ps_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(treatment <span class="sc">~</span> covariates, <span class="at">family =</span> binomial, <span class="at">data =</span> df)</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>ps <span class="ot">&lt;-</span> <span class="fu">predict</span>(ps_model, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
@@ -4561,9 +4710,73 @@ w_i = \begin{cases}
 <span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>                pA <span class="sc">/</span> df<span class="sc">$</span>ps,</span>
 <span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>                (<span class="dv">1</span> <span class="sc">-</span> pA) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> df<span class="sc">$</span>ps))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="when-to-use-stabilized-ipw" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="when-to-use-stabilized-ipw"><span class="header-section-number">9.1.4</span> When to Use Stabilized IPW?</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Use Stabilized Weights?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Small sample size</td>
+<td>✅ Yes</td>
+</tr>
+<tr class="even">
+<td>Extreme propensity scores</td>
+<td>✅ Yes</td>
+</tr>
+<tr class="odd">
+<td>Outcome model = weighted GLM</td>
+<td>✅ Yes (always better)</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="steps-3-7" class="level3" data-number="7.8.2">
-<h3 data-number="7.8.2" class="anchored" data-anchor-id="steps-3-7"><span class="header-section-number">7.8.2</span> Steps 3-7</h3>
+</section>
+<section id="ipw-vs.-stabilized-ipw" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="ipw-vs.-stabilized-ipw"><span class="header-section-number">9.2</span> IPW vs. Stabilized IPW</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 36%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Standard IPW</th>
+<th>Stabilized IPW</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Formula</td>
+<td><span class="math inline">\(\frac{1}{e(C)}\)</span> , <span class="math inline">\(\frac{1}{1-e(C)}\)</span></td>
+<td><span class="math inline">\(\frac{P(A)}{e(C)}\)</span>, <span class="math inline">\(\frac{P(1-A)}{1-e(C)}\)</span></td>
+</tr>
+<tr class="even">
+<td>Variance</td>
+<td>Higher</td>
+<td>Lower (more stable)</td>
+</tr>
+<tr class="odd">
+<td>Weight magnitude</td>
+<td>Can be extreme</td>
+<td>Usually closer to 1</td>
+</tr>
+<tr class="even">
+<td>Recommended?</td>
+<td>❌ Only for theory</td>
+<td>✅ Yes, in practice</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="steps-3-7" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="steps-3-7"><span class="header-section-number">9.3</span> Steps 3-7</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Inspect the Weights</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nhefs<span class="sc">$</span>sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4672,10 +4885,11 @@ Tips:
 </ul>
 </div>
 </div>
-<section id="interpretation-of-coefficients" class="level4" data-number="7.8.2.1">
-<h4 data-number="7.8.2.1" class="anchored" data-anchor-id="interpretation-of-coefficients"><span class="header-section-number">7.8.2.1</span> Interpretation of Coefficients</h4>
-<section id="why-use-vcovhc" class="level5" data-number="7.8.2.1.1">
-<h5 data-number="7.8.2.1.1" class="anchored" data-anchor-id="why-use-vcovhc"><span class="header-section-number">7.8.2.1.1</span> Why use <code>vcovHC</code>?</h5>
+</section>
+<section id="interpretation-of-coefficients" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="interpretation-of-coefficients"><span class="header-section-number">9.4</span> Interpretation of Coefficients</h2>
+<section id="why-use-vcovhc" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="why-use-vcovhc"><span class="header-section-number">9.4.1</span> Why use <code>vcovHC</code>?</h3>
 <p>You’re using <strong>inverse probability weights (IPW)</strong>, which:</p>
 <ul>
 <li><p>Can <strong>induce heteroskedasticity</strong> (variance of residuals changes across individuals),</p></li>
@@ -4688,8 +4902,8 @@ Tips:
 <li><p>Is <strong>recommended practice</strong> with IPW or survey weights.</p></li>
 </ul>
 </section>
-<section id="coefficients" class="level5" data-number="7.8.2.1.2">
-<h5 data-number="7.8.2.1.2" class="anchored" data-anchor-id="coefficients"><span class="header-section-number">7.8.2.1.2</span> Coefficients</h5>
+<section id="coefficients" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="coefficients"><span class="header-section-number">9.4.2</span> Coefficients</h3>
 <pre><code>z test of coefficients:
 
             Estimate Std. Error z value  Pr(&gt;|z|)    
@@ -4709,15 +4923,13 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 </ul>
 </section>
 </section>
-</section>
-<section id="summary-for-reporting" class="level3" data-number="7.8.3">
-<h3 data-number="7.8.3" class="anchored" data-anchor-id="summary-for-reporting"><span class="header-section-number">7.8.3</span> Summary for Reporting</h3>
+<section id="summary-for-reporting" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="summary-for-reporting"><span class="header-section-number">9.5</span> Summary for Reporting</h2>
 <blockquote class="blockquote">
 <p>After adjusting for confounding via stabilized inverse probability weighting, quitting smoking increases the probability of weight gain by <strong>13.8 percentage points</strong>. This effect is statistically significant (<strong>p &lt; 0.001</strong>, robust SE = 0.032).</p>
 <p>The <strong>robust 95% CI</strong> can be calculated as: <span class="math inline">\(0.138 \pm 1.96 \times 0.03204 \approx (0.075, 0.201)\)</span></p>
 <p>The predicted probability of weight gain among non-quitters was <strong>46.7%</strong>.</p>
 </blockquote>
-</section>
 </section>
 </section>
 
