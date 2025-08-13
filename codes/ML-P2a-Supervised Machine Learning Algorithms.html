@@ -3266,7 +3266,37 @@ window.Quarto = {
   <ul>
   <li><a href="#decision-trees-video-1721" id="toc-decision-trees-video-1721" class="nav-link" data-scroll-target="#decision-trees-video-1721"><span class="header-section-number">3.1</span> Decision Trees | Video (17:21)</a></li>
   <li><a href="#regression-trees-video-2232" id="toc-regression-trees-video-2232" class="nav-link" data-scroll-target="#regression-trees-video-2232"><span class="header-section-number">3.2</span> Regression Trees | Video (22:32)</a></li>
-  <li><a href="#demo-with-boston-data" id="toc-demo-with-boston-data" class="nav-link" data-scroll-target="#demo-with-boston-data"><span class="header-section-number">3.3</span> Demo with Boston Data</a></li>
+  <li><a href="#what-are-regression-trees" id="toc-what-are-regression-trees" class="nav-link" data-scroll-target="#what-are-regression-trees"><span class="header-section-number">3.3</span> What Are Regression Trees?</a>
+  <ul class="collapse">
+  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">3.3.1</span> Definition</a></li>
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">3.3.2</span> Intuition</a></li>
+  </ul></li>
+  <li><a href="#when-should-you-use-regression-trees" id="toc-when-should-you-use-regression-trees" class="nav-link" data-scroll-target="#when-should-you-use-regression-trees"><span class="header-section-number">3.4</span> When Should You Use Regression Trees?</a>
+  <ul class="collapse">
+  <li><a href="#ideal-scenarios" id="toc-ideal-scenarios" class="nav-link" data-scroll-target="#ideal-scenarios"><span class="header-section-number">3.4.1</span> Ideal Scenarios:</a></li>
+  <li><a href="#when-not-ideal" id="toc-when-not-ideal" class="nav-link" data-scroll-target="#when-not-ideal"><span class="header-section-number">3.4.2</span> When Not Ideal:</a></li>
+  </ul></li>
+  <li><a href="#how-regression-trees-work" id="toc-how-regression-trees-work" class="nav-link" data-scroll-target="#how-regression-trees-work"><span class="header-section-number">3.5</span> How Regression Trees Work</a>
+  <ul class="collapse">
+  <li><a href="#splitting" id="toc-splitting" class="nav-link" data-scroll-target="#splitting"><span class="header-section-number">3.5.1</span> Splitting</a></li>
+  <li><a href="#recursion" id="toc-recursion" class="nav-link" data-scroll-target="#recursion"><span class="header-section-number">3.5.2</span> Recursion</a></li>
+  <li><a href="#prediction" id="toc-prediction" class="nav-link" data-scroll-target="#prediction"><span class="header-section-number">3.5.3</span> Prediction</a></li>
+  <li><a href="#pruning" id="toc-pruning" class="nav-link" data-scroll-target="#pruning"><span class="header-section-number">3.5.4</span> Pruning</a></li>
+  </ul></li>
+  <li><a href="#typical-workflow-for-using-regression-trees" id="toc-typical-workflow-for-using-regression-trees" class="nav-link" data-scroll-target="#typical-workflow-for-using-regression-trees"><span class="header-section-number">3.6</span> Typical Workflow for Using Regression Trees</a>
+  <ul class="collapse">
+  <li><a href="#step-1-define-the-problem-1" id="toc-step-1-define-the-problem-1" class="nav-link" data-scroll-target="#step-1-define-the-problem-1"><span class="header-section-number">3.6.1</span> Step 1: Define the Problem</a></li>
+  <li><a href="#step-2-data-preparation" id="toc-step-2-data-preparation" class="nav-link" data-scroll-target="#step-2-data-preparation"><span class="header-section-number">3.6.2</span> Step 2: Data Preparation</a></li>
+  <li><a href="#step-3-split-the-data" id="toc-step-3-split-the-data" class="nav-link" data-scroll-target="#step-3-split-the-data"><span class="header-section-number">3.6.3</span> Step 3: Split the Data</a></li>
+  <li><a href="#step-4-fit-the-model" id="toc-step-4-fit-the-model" class="nav-link" data-scroll-target="#step-4-fit-the-model"><span class="header-section-number">3.6.4</span> Step 4: Fit the Model</a></li>
+  <li><a href="#step-5-predict-and-evaluate" id="toc-step-5-predict-and-evaluate" class="nav-link" data-scroll-target="#step-5-predict-and-evaluate"><span class="header-section-number">3.6.5</span> Step 5: Predict and Evaluate</a></li>
+  <li><a href="#step-6-visualize-tree" id="toc-step-6-visualize-tree" class="nav-link" data-scroll-target="#step-6-visualize-tree"><span class="header-section-number">3.6.6</span> Step 6: Visualize Tree</a></li>
+  </ul></li>
+  <li><a href="#comparison-to-other-methods" id="toc-comparison-to-other-methods" class="nav-link" data-scroll-target="#comparison-to-other-methods"><span class="header-section-number">3.7</span> Comparison to Other Methods</a></li>
+  <li><a href="#enhancements-variants" id="toc-enhancements-variants" class="nav-link" data-scroll-target="#enhancements-variants"><span class="header-section-number">3.8</span> Enhancements &amp; Variants</a></li>
+  <li><a href="#limitations-and-pitfalls" id="toc-limitations-and-pitfalls" class="nav-link" data-scroll-target="#limitations-and-pitfalls"><span class="header-section-number">3.9</span> Limitations and Pitfalls</a></li>
+  <li><a href="#use-cases" id="toc-use-cases" class="nav-link" data-scroll-target="#use-cases"><span class="header-section-number">3.10</span> Use Cases</a></li>
+  <li><a href="#regression-trees-random-forest" id="toc-regression-trees-random-forest" class="nav-link" data-scroll-target="#regression-trees-random-forest"><span class="header-section-number">3.11</span> Regression Trees &amp; Random Forest</a></li>
   </ul></li>
   <li><a href="#gradient-boosting---boston-housing-data" id="toc-gradient-boosting---boston-housing-data" class="nav-link" data-scroll-target="#gradient-boosting---boston-housing-data"><span class="header-section-number">4</span> Gradient Boosting - Boston Housing Data</a>
   <ul>
@@ -3368,7 +3398,37 @@ window.Quarto = {
   <ul>
   <li><a href="#decision-trees-video-1721" id="toc-decision-trees-video-1721"><span class="header-section-number">3.1</span> Decision Trees | Video (17:21)</a></li>
   <li><a href="#regression-trees-video-2232" id="toc-regression-trees-video-2232"><span class="header-section-number">3.2</span> Regression Trees | Video (22:32)</a></li>
-  <li><a href="#demo-with-boston-data" id="toc-demo-with-boston-data"><span class="header-section-number">3.3</span> Demo with Boston Data</a></li>
+  <li><a href="#what-are-regression-trees" id="toc-what-are-regression-trees"><span class="header-section-number">3.3</span> What Are Regression Trees?</a>
+  <ul>
+  <li><a href="#definition" id="toc-definition"><span class="header-section-number">3.3.1</span> Definition</a></li>
+  <li><a href="#intuition" id="toc-intuition"><span class="header-section-number">3.3.2</span> Intuition</a></li>
+  </ul></li>
+  <li><a href="#when-should-you-use-regression-trees" id="toc-when-should-you-use-regression-trees"><span class="header-section-number">3.4</span> When Should You Use Regression Trees?</a>
+  <ul>
+  <li><a href="#ideal-scenarios" id="toc-ideal-scenarios"><span class="header-section-number">3.4.1</span> Ideal Scenarios:</a></li>
+  <li><a href="#when-not-ideal" id="toc-when-not-ideal"><span class="header-section-number">3.4.2</span> When Not Ideal:</a></li>
+  </ul></li>
+  <li><a href="#how-regression-trees-work" id="toc-how-regression-trees-work"><span class="header-section-number">3.5</span> How Regression Trees Work</a>
+  <ul>
+  <li><a href="#splitting" id="toc-splitting"><span class="header-section-number">3.5.1</span> Splitting</a></li>
+  <li><a href="#recursion" id="toc-recursion"><span class="header-section-number">3.5.2</span> Recursion</a></li>
+  <li><a href="#prediction" id="toc-prediction"><span class="header-section-number">3.5.3</span> Prediction</a></li>
+  <li><a href="#pruning" id="toc-pruning"><span class="header-section-number">3.5.4</span> Pruning</a></li>
+  </ul></li>
+  <li><a href="#typical-workflow-for-using-regression-trees" id="toc-typical-workflow-for-using-regression-trees"><span class="header-section-number">3.6</span> Typical Workflow for Using Regression Trees</a>
+  <ul>
+  <li><a href="#step-1-define-the-problem-1" id="toc-step-1-define-the-problem-1"><span class="header-section-number">3.6.1</span> Step 1: Define the Problem</a></li>
+  <li><a href="#step-2-data-preparation" id="toc-step-2-data-preparation"><span class="header-section-number">3.6.2</span> Step 2: Data Preparation</a></li>
+  <li><a href="#step-3-split-the-data" id="toc-step-3-split-the-data"><span class="header-section-number">3.6.3</span> Step 3: Split the Data</a></li>
+  <li><a href="#step-4-fit-the-model" id="toc-step-4-fit-the-model"><span class="header-section-number">3.6.4</span> Step 4: Fit the Model</a></li>
+  <li><a href="#step-5-predict-and-evaluate" id="toc-step-5-predict-and-evaluate"><span class="header-section-number">3.6.5</span> Step 5: Predict and Evaluate</a></li>
+  <li><a href="#step-6-visualize-tree" id="toc-step-6-visualize-tree"><span class="header-section-number">3.6.6</span> Step 6: Visualize Tree</a></li>
+  </ul></li>
+  <li><a href="#comparison-to-other-methods" id="toc-comparison-to-other-methods"><span class="header-section-number">3.7</span> Comparison to Other Methods</a></li>
+  <li><a href="#enhancements-variants" id="toc-enhancements-variants"><span class="header-section-number">3.8</span> Enhancements &amp; Variants</a></li>
+  <li><a href="#limitations-and-pitfalls" id="toc-limitations-and-pitfalls"><span class="header-section-number">3.9</span> Limitations and Pitfalls</a></li>
+  <li><a href="#use-cases" id="toc-use-cases"><span class="header-section-number">3.10</span> Use Cases</a></li>
+  <li><a href="#regression-trees-random-forest" id="toc-regression-trees-random-forest"><span class="header-section-number">3.11</span> Regression Trees &amp; Random Forest</a></li>
   </ul></li>
   <li><a href="#gradient-boosting---boston-housing-data" id="toc-gradient-boosting---boston-housing-data"><span class="header-section-number">4</span> Gradient Boosting - Boston Housing Data</a>
   <ul>
@@ -3440,8 +3500,8 @@ window.Quarto = {
 -    Classification (predict categories)</code></pre>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 75%">
+<col style="width: 29%">
+<col style="width: 70%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -3615,57 +3675,258 @@ window.Quarto = {
 <h2 data-number="3.2" class="anchored" data-anchor-id="regression-trees-video-2232"><span class="header-section-number">3.2</span> Regression Trees | Video (22:32)</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/g9c66TUylZ4" title frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 </section>
-<section id="demo-with-boston-data" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="demo-with-boston-data"><span class="header-section-number">3.3</span> Demo with Boston Data</h2>
+<section id="what-are-regression-trees" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="what-are-regression-trees"><span class="header-section-number">3.3</span> What Are Regression Trees?</h2>
+<section id="definition" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">3.3.1</span> Definition</h3>
+<p>A <strong>regression tree</strong> is a supervised learning algorithm used to predict <strong>continuous outcomes</strong>. It works by recursively splitting the dataset into branches based on feature values, producing a tree-like model where each leaf gives a predicted value (typically the average outcome in that region).</p>
+</section>
+<section id="intuition" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="intuition"><span class="header-section-number">3.3.2</span> Intuition</h3>
+<p>Imagine a game of “20 Questions” where each question narrows down the value you’re trying to predict. A regression tree asks yes/no (or inequality) questions about input features (e.g., “Is income &gt; $50,000?”). Each answer leads to a different branch, and at the end (leaf node), you predict the mean of observed outcomes in that group.</p>
+</section>
+</section>
+<section id="when-should-you-use-regression-trees" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="when-should-you-use-regression-trees"><span class="header-section-number">3.4</span> When Should You Use Regression Trees?</h2>
+<section id="ideal-scenarios" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="ideal-scenarios"><span class="header-section-number">3.4.1</span> Ideal Scenarios:</h3>
+<ul>
+<li><p>Your outcome is continuous.</p></li>
+<li><p>You expect <strong>nonlinear relationships</strong> between predictors and the outcome.</p></li>
+<li><p>You want <strong>interpretable results</strong> with “if-then” logic.</p></li>
+<li><p>You have a <strong>mix of categorical and numerical</strong> features.</p></li>
+<li><p>You want a model that requires <strong>little preprocessing</strong> (no scaling, encoding).</p></li>
+</ul>
+</section>
+<section id="when-not-ideal" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="when-not-ideal"><span class="header-section-number">3.4.2</span> When Not Ideal:</h3>
+<ul>
+<li><p>You need the <strong>highest predictive accuracy</strong>.</p></li>
+<li><p>Your dataset is <strong>very small</strong> and prone to overfitting.</p></li>
+<li><p>You need smooth, <strong>stable predictions</strong> (trees can be unstable).</p></li>
+</ul>
+</section>
+</section>
+<section id="how-regression-trees-work" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="how-regression-trees-work"><span class="header-section-number">3.5</span> How Regression Trees Work</h2>
+<section id="splitting" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="splitting"><span class="header-section-number">3.5.1</span> Splitting</h3>
+<ul>
+<li>At each node, the algorithm selects the feature and threshold that <strong>minimizes Residual Sum of Squares (RSS)</strong>:</li>
+</ul>
+</section>
+<section id="recursion" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="recursion"><span class="header-section-number">3.5.2</span> Recursion</h3>
+<ul>
+<li>The algorithm recursively splits the data, building branches until a stopping rule is met (e.g., min node size, max depth).</li>
+</ul>
+</section>
+<section id="prediction" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="prediction"><span class="header-section-number">3.5.3</span> Prediction</h3>
+<ul>
+<li>For a new observation, the tree traverses nodes based on the observation’s values and returns the mean value of the terminal (leaf) node.</li>
+</ul>
+</section>
+<section id="pruning" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="pruning"><span class="header-section-number">3.5.4</span> Pruning</h3>
+<ul>
+<li><p>Trees often overfit. To prevent this:</p>
+<ul>
+<li><p><strong>Pre-prune</strong>: Stop growing early (e.g., limit depth)</p></li>
+<li><p><strong>Post-prune</strong>: Grow full tree, then cut back using cross-validation</p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="typical-workflow-for-using-regression-trees" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="typical-workflow-for-using-regression-trees"><span class="header-section-number">3.6</span> Typical Workflow for Using Regression Trees</h2>
+<section id="step-1-define-the-problem-1" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="step-1-define-the-problem-1"><span class="header-section-number">3.6.1</span> Step 1: Define the Problem</h3>
+<ul>
+<li>Is it a regression problem (continuous outcome)?</li>
+</ul>
+</section>
+<section id="step-2-data-preparation" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="step-2-data-preparation"><span class="header-section-number">3.6.2</span> Step 2: Data Preparation</h3>
+<ul>
+<li><p>Handle missing values (trees can often handle them natively)</p></li>
+<li><p>No need for scaling or dummy coding</p></li>
+</ul>
+</section>
+<section id="step-3-split-the-data" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="step-3-split-the-data"><span class="header-section-number">3.6.3</span> Step 3: Split the Data</h3>
+<ul>
+<li>Training and test sets (and optionally validation set or cross-validation)</li>
+</ul>
+</section>
+<section id="step-4-fit-the-model" class="level3" data-number="3.6.4">
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="step-4-fit-the-model"><span class="header-section-number">3.6.4</span> Step 4: Fit the Model</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(outcome <span class="sc">~</span> predictors, <span class="at">data =</span> train_data, <span class="at">method =</span> <span class="st">&quot;anova&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-5-predict-and-evaluate" class="level3" data-number="3.6.5">
+<h3 data-number="3.6.5" class="anchored" data-anchor-id="step-5-predict-and-evaluate"><span class="header-section-number">3.6.5</span> Step 5: Predict and Evaluate</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">newdata =</span> test_data) rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((test_data<span class="sc">$</span>y <span class="sc">-</span> preds)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-6-visualize-tree" class="level3" data-number="3.6.6">
+<h3 data-number="3.6.6" class="anchored" data-anchor-id="step-6-visualize-tree"><span class="header-section-number">3.6.6</span> Step 6: Visualize Tree</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rpart.plot<span class="sc">::</span><span class="fu">rpart.plot</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="comparison-to-other-methods" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="comparison-to-other-methods"><span class="header-section-number">3.7</span> Comparison to Other Methods</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Regression Tree</th>
+<th>Linear Regression</th>
+<th>Random Forest / Boosting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Captures nonlinearity</td>
+<td>✅ Yes</td>
+<td>❌ No (unless transformed)</td>
+<td>✅ Yes</td>
+</tr>
+<tr class="even">
+<td>Handles feature interaction</td>
+<td>✅ Implicitly</td>
+<td>❌ No (needs manual terms)</td>
+<td>✅ Very well</td>
+</tr>
+<tr class="odd">
+<td>Needs feature scaling</td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+<td>❌ No</td>
+</tr>
+<tr class="even">
+<td>Easy to interpret</td>
+<td>✅ Yes (rules)</td>
+<td>✅ Yes (coefficients)</td>
+<td>❌ No</td>
+</tr>
+<tr class="odd">
+<td>Accuracy</td>
+<td>⚪ Moderate</td>
+<td>⚪ Moderate</td>
+<td>✅ High</td>
+</tr>
+<tr class="even">
+<td>Overfitting risk</td>
+<td>✅ High if unpruned</td>
+<td>✅ High</td>
+<td>❌ Lower</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="enhancements-variants" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="enhancements-variants"><span class="header-section-number">3.8</span> Enhancements &amp; Variants</h2>
+<ul>
+<li><p><strong>Random Forests</strong>: Ensembles of many trees with bootstrapped samples</p></li>
+<li><p><strong>Gradient Boosting</strong>: Sequential trees fix errors from previous ones</p></li>
+<li><p><strong>Model Trees</strong>: Fit linear models at leaves</p></li>
+<li><p><strong>Oblique Trees</strong>: Use linear combinations to split, not single features</p></li>
+</ul>
+</section>
+<section id="limitations-and-pitfalls" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="limitations-and-pitfalls"><span class="header-section-number">3.9</span> Limitations and Pitfalls</h2>
+<ul>
+<li><p><strong>Overfitting</strong>: Deep trees can memorize training data</p></li>
+<li><p><strong>Instability</strong>: Small changes in data can produce very different trees</p></li>
+<li><p><strong>Bias in split selection</strong>: Variables with more values are favored</p></li>
+<li><p><strong>Poor extrapolation</strong>: Trees can’t predict beyond seen feature ranges</p></li>
+</ul>
+</section>
+<section id="use-cases" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="use-cases"><span class="header-section-number">3.10</span> Use Cases</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>Domain</strong></td>
+<td><strong>Example Task</strong></td>
+</tr>
+<tr class="even">
+<td>Real estate</td>
+<td>Predict housing prices from features</td>
+</tr>
+<tr class="odd">
+<td>Education</td>
+<td>Predict student performance based on inputs</td>
+</tr>
+<tr class="even">
+<td>Marketing</td>
+<td>Forecast customer spending</td>
+</tr>
+<tr class="odd">
+<td>Healthcare</td>
+<td>Estimate patient risk scores</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="regression-trees-random-forest" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="regression-trees-random-forest"><span class="header-section-number">3.11</span> Regression Trees &amp; Random Forest</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Boston&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default RF model: ntree = 500, mtry = nos. of features/3</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(<span class="at">formula =</span> <span class="fu">log</span>(medv) <span class="sc">~</span> .,  <span class="at">data =</span> Boston, <span class="at">importance=</span><span class="cn">TRUE</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(m1<span class="sc">$</span>mse)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Tuning mtry</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ForestTune <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">train</span>(<span class="at">y=</span><span class="fu">log</span>(Boston[,<span class="dv">14</span>]),</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">x=</span>Boston[,<span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>],</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tuneGrid=</span><span class="fu">data.frame</span>(<span class="at">mtry=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method=</span><span class="st">&quot;rf&quot;</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ntree=</span><span class="dv">500</span>,</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">trControl=</span><span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;oob&quot;</span>))</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>ForestTune</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ForestTune)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(<span class="at">formula =</span> <span class="fu">log</span>(medv) <span class="sc">~</span> ., <span class="at">data =</span> Boston, </span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ntree=</span><span class="dv">500</span>, <span class="at">mtry =</span> <span class="dv">5</span>, <span class="at">importance=</span><span class="cn">TRUE</span>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">importance</span>(m1)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(m1)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(m1<span class="sc">$</span>mse)</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Partial dependance plots</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Partial plots of single variable</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>m1 <span class="sc">%&gt;%</span>  </span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var =</span> <span class="st">&quot;rm&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotPartial</span>(<span class="at">smooth =</span> <span class="cn">FALSE</span>, <span class="at">lwd=</span><span class="dv">3</span>, </span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>              <span class="at">ylab =</span> <span class="st">&quot;Median log Price&quot;</span>,</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>              <span class="at">main =</span> <span class="st">&quot;Partial Dependance Plot&quot;</span>, </span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>              <span class="at">xlab =</span><span class="st">&quot;Number of Rooms&quot;</span>)</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="fu">partial</span>(m1, <span class="at">pred.var =</span> <span class="st">&quot;rm&quot;</span>, <span class="at">plot =</span> <span class="cn">TRUE</span>, <span class="at">rug =</span> <span class="cn">TRUE</span>) <span class="co">#rug: </span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="fu">partialPlot</span>(m1, <span class="at">pred.data =</span> Boston, <span class="at">x.var =</span> <span class="st">&quot;rm&quot;</span>, <span class="at">rug =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Partial plots of two variables</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> <span class="fu">partial</span>(m1, <span class="at">pred.var =</span> <span class="fu">c</span>(<span class="st">&quot;lstat&quot;</span>, <span class="st">&quot;rm&quot;</span>))</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPartial</span>(pd)</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Add contour lines and use a different color palette</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>rwb <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPartial</span>(pd, <span class="at">contour =</span> <span class="cn">TRUE</span>, <span class="at">col.regions =</span> rwb, </span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>            <span class="at">main =</span><span class="st">&quot;PDP: % lower status pop vs nos. room&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;number of rooms&quot;</span>,</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab =</span><span class="st">&quot;% lower status of Pop&quot;</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Boston&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default RF model: ntree = 500, mtry = nos. of features/3</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(<span class="at">formula =</span> <span class="fu">log</span>(medv) <span class="sc">~</span> .,  <span class="at">data =</span> Boston, <span class="at">importance=</span><span class="cn">TRUE</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(m1<span class="sc">$</span>mse)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Tuning mtry</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>ForestTune <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">train</span>(<span class="at">y=</span><span class="fu">log</span>(Boston[,<span class="dv">14</span>]),</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">x=</span>Boston[,<span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>],</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tuneGrid=</span><span class="fu">data.frame</span>(<span class="at">mtry=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method=</span><span class="st">&quot;rf&quot;</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ntree=</span><span class="dv">500</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">trControl=</span><span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;oob&quot;</span>))</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>ForestTune</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ForestTune)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(<span class="at">formula =</span> <span class="fu">log</span>(medv) <span class="sc">~</span> ., <span class="at">data =</span> Boston, </span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ntree=</span><span class="dv">500</span>, <span class="at">mtry =</span> <span class="dv">5</span>, <span class="at">importance=</span><span class="cn">TRUE</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">importance</span>(m1)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(m1)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(m1<span class="sc">$</span>mse)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Partial dependance plots</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Partial plots of single variable</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>m1 <span class="sc">%&gt;%</span>  </span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var =</span> <span class="st">&quot;rm&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotPartial</span>(<span class="at">smooth =</span> <span class="cn">FALSE</span>, <span class="at">lwd=</span><span class="dv">3</span>, </span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>              <span class="at">ylab =</span> <span class="st">&quot;Median log Price&quot;</span>,</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>              <span class="at">main =</span> <span class="st">&quot;Partial Dependance Plot&quot;</span>, </span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>              <span class="at">xlab =</span><span class="st">&quot;Number of Rooms&quot;</span>)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="fu">partial</span>(m1, <span class="at">pred.var =</span> <span class="st">&quot;rm&quot;</span>, <span class="at">plot =</span> <span class="cn">TRUE</span>, <span class="at">rug =</span> <span class="cn">TRUE</span>) <span class="co">#rug: </span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="fu">partialPlot</span>(m1, <span class="at">pred.data =</span> Boston, <span class="at">x.var =</span> <span class="st">&quot;rm&quot;</span>, <span class="at">rug =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Partial plots of two variables</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> <span class="fu">partial</span>(m1, <span class="at">pred.var =</span> <span class="fu">c</span>(<span class="st">&quot;lstat&quot;</span>, <span class="st">&quot;rm&quot;</span>))</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPartial</span>(pd)</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Add contour lines and use a different color palette</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>rwb <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;blue&quot;</span>)) <span class="co"># red=low price; blue=high price</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPartial</span>(pd, <span class="at">contour =</span> <span class="cn">TRUE</span>, <span class="at">col.regions =</span> rwb, </span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>            <span class="at">main =</span><span class="st">&quot;PDP: % lower status pop vs nos. room&quot;</span>, </span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab =</span><span class="st">&quot;% lower status of Pop&quot;</span> ,</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;number of rooms&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -3691,81 +3952,81 @@ window.Quarto = {
 <h2 data-number="4.5" class="anchored" data-anchor-id="gradient-boost-part-4-of-4-classification-details-video-3659"><span class="header-section-number">4.5</span> Gradient Boost Part 4 (of 4): Classification Details | Video (36:59)</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/StWY5QWMXCw" title frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># train GBM model</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>gbm1 <span class="ot">&lt;-</span> <span class="fu">gbm</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="fu">log</span>(medv) <span class="sc">~</span> .,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">distribution =</span> <span class="st">&quot;gaussian&quot;</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Boston,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.trees =</span> <span class="dv">2000</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">interaction.depth =</span> <span class="dv">1</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">shrinkage =</span> <span class="fl">0.001</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">cv.folds =</span> <span class="dv">5</span>,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.cores =</span> <span class="cn">NULL</span>, <span class="co"># will use all cores by default</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Using caret with the default grid to optimize tune parameters automatically</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># GBM Tuning parameters:</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># n.trees (# Boosting Iterations)</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># interaction.depth (Max Tree Depth)</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># shrinkage (Shrinkage)</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># n.minobsinnode (Min. Terminal Node Size)</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Tuning hyper hyper parameters</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>hyper_grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.trees =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">2000</span>),</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">shrinkage =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, .<span class="dv">01</span>, .<span class="dv">05</span>),</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">interaction.depth =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.minobsinnode =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>))</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>trainControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;cv&quot;</span>, <span class="at">number=</span><span class="dv">10</span>)</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>gbm.caret <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">log</span>(medv) <span class="sc">~</span> .</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">data=</span>Boston</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">distribution=</span><span class="st">&quot;gaussian&quot;</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">method=</span><span class="st">&quot;gbm&quot;</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">trControl=</span>trainControl</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">verbose=</span><span class="cn">FALSE</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">tuneGrid=</span>hyper_grid</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>                   )                  </span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co"># attributes(gbm.caret)</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>gbm.caret<span class="sc">$</span>bestTune</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="co"># GBM with tunes hyper parameters</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>gbm2 <span class="ot">&lt;-</span> <span class="fu">gbm</span>(</span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="fu">log</span>(medv) <span class="sc">~</span> .,</span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">distribution =</span> <span class="st">&quot;gaussian&quot;</span>,</span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Boston,</span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.trees =</span> <span class="dv">2000</span>,</span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">interaction.depth =</span> <span class="dv">2</span>,</span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">shrinkage =</span> <span class="fl">0.05</span>,</span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.minobsinnode =</span> <span class="dv">10</span>,</span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  <span class="at">cv.folds =</span> <span class="dv">5</span>,</span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.cores =</span> <span class="cn">NULL</span>, <span class="co"># will use all cores by default</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Variable importance</span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>vip<span class="sc">::</span><span class="fu">vip</span>(gbm2)</span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="co"># PDPs</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>gbm2 <span class="sc">%&gt;%</span></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var =</span> <span class="st">&quot;rm&quot;</span>, <span class="at">n.trees =</span> gbm2<span class="sc">$</span>n.trees, <span class="at">grid.resolution =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>(<span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">train =</span> Boston)</span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>gbm2 <span class="sc">%&gt;%</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var =</span> <span class="fu">c</span>(<span class="st">&quot;rm&quot;</span>, <span class="st">&quot;lstat&quot;</span>), <span class="at">n.trees =</span> gbm2<span class="sc">$</span>n.trees, <span class="at">grid.resolution =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>(<span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">train =</span> Boston)</span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> <span class="fu">partial</span>(gbm2, <span class="at">pred.var =</span> <span class="fu">c</span>(<span class="st">&quot;rm&quot;</span>,<span class="st">&quot;lstat&quot;</span>), <span class="at">n.trees =</span> gbm2<span class="sc">$</span>n.trees, <span class="at">grid.resolution =</span> <span class="dv">100</span>) </span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Add contour lines and use a different color palette</span></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>rwb <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPartial</span>(pd, <span class="at">contour =</span> <span class="cn">TRUE</span>, <span class="at">col.regions =</span> rwb, </span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>            <span class="at">main =</span><span class="st">&quot;PDP: % lower status pop vs nos. room&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;% lower status of Pop&quot;</span>,  <span class="at">ylab =</span><span class="st">&quot;number of rooms&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># train GBM model</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>gbm1 <span class="ot">&lt;-</span> <span class="fu">gbm</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="fu">log</span>(medv) <span class="sc">~</span> .,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">distribution =</span> <span class="st">&quot;gaussian&quot;</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Boston,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.trees =</span> <span class="dv">2000</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">interaction.depth =</span> <span class="dv">1</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">shrinkage =</span> <span class="fl">0.001</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">cv.folds =</span> <span class="dv">5</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.cores =</span> <span class="cn">NULL</span>, <span class="co"># will use all cores by default</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Using caret with the default grid to optimize tune parameters automatically</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># GBM Tuning parameters:</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># n.trees (# Boosting Iterations)</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># interaction.depth (Max Tree Depth)</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># shrinkage (Shrinkage)</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co"># n.minobsinnode (Min. Terminal Node Size)</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Tuning hyper hyper parameters</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>hyper_grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.trees =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">2000</span>),</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">shrinkage =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, .<span class="dv">01</span>, .<span class="dv">05</span>),</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">interaction.depth =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.minobsinnode =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>))</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>trainControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;cv&quot;</span>, <span class="at">number=</span><span class="dv">10</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>gbm.caret <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">log</span>(medv) <span class="sc">~</span> .</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">data=</span>Boston</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">distribution=</span><span class="st">&quot;gaussian&quot;</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">method=</span><span class="st">&quot;gbm&quot;</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">trControl=</span>trainControl</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">verbose=</span><span class="cn">FALSE</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>                   , <span class="at">tuneGrid=</span>hyper_grid</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>                   )                  </span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="co"># attributes(gbm.caret)</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>gbm.caret<span class="sc">$</span>bestTune</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="co"># GBM with tunes hyper parameters</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>gbm2 <span class="ot">&lt;-</span> <span class="fu">gbm</span>(</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="fu">log</span>(medv) <span class="sc">~</span> .,</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">distribution =</span> <span class="st">&quot;gaussian&quot;</span>,</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Boston,</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.trees =</span> <span class="dv">2000</span>,</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">interaction.depth =</span> <span class="dv">2</span>,</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">shrinkage =</span> <span class="fl">0.05</span>,</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.minobsinnode =</span> <span class="dv">10</span>,</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="at">cv.folds =</span> <span class="dv">5</span>,</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.cores =</span> <span class="cn">NULL</span>, <span class="co"># will use all cores by default</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Variable importance</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>vip<span class="sc">::</span><span class="fu">vip</span>(gbm2)</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="co"># PDPs</span></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>gbm2 <span class="sc">%&gt;%</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var =</span> <span class="st">&quot;rm&quot;</span>, <span class="at">n.trees =</span> gbm2<span class="sc">$</span>n.trees, <span class="at">grid.resolution =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>(<span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">train =</span> Boston)</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>gbm2 <span class="sc">%&gt;%</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var =</span> <span class="fu">c</span>(<span class="st">&quot;rm&quot;</span>, <span class="st">&quot;lstat&quot;</span>), <span class="at">n.trees =</span> gbm2<span class="sc">$</span>n.trees, <span class="at">grid.resolution =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>(<span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">train =</span> Boston)</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> <span class="fu">partial</span>(gbm2, <span class="at">pred.var =</span> <span class="fu">c</span>(<span class="st">&quot;rm&quot;</span>,<span class="st">&quot;lstat&quot;</span>), <span class="at">n.trees =</span> gbm2<span class="sc">$</span>n.trees, <span class="at">grid.resolution =</span> <span class="dv">100</span>) </span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Add contour lines and use a different color palette</span></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>rwb <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPartial</span>(pd, <span class="at">contour =</span> <span class="cn">TRUE</span>, <span class="at">col.regions =</span> rwb, </span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>            <span class="at">main =</span><span class="st">&quot;PDP: % lower status pop vs nos. room&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;% lower status of Pop&quot;</span>,  <span class="at">ylab =</span><span class="st">&quot;number of rooms&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -3775,42 +4036,42 @@ window.Quarto = {
 <h2 data-number="5.1" class="anchored" data-anchor-id="decision-and-classification-trees-video-1808"><span class="header-section-number">5.1</span> Decision and Classification Trees | Video (18:08)</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/_L39rN6gz7Y" title frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;iridata.csv&quot;</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Baby,Coffee,Detergent,Paste,Sauce,Snacks,Sunscreen,Tuna</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">=</span> <span class="fu">subset</span>(data1, <span class="at">subset=</span>catno <span class="sc">==</span><span class="st">&quot;Baby&quot;</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data2)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>cat_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;hhinc&quot;</span>, <span class="st">&quot;hhsize&quot;</span>, <span class="st">&quot;race&quot;</span>, <span class="st">&quot;ethnicity&quot;</span>, <span class="st">&quot;affluence&quot;</span>, <span class="st">&quot;pres_child&quot;</span>, </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;age_head&quot;</span>, <span class="st">&quot;educ_fem_head&quot;</span>, <span class="st">&quot;census&quot;</span>, <span class="st">&quot;purchase&quot;</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span>  data2 <span class="sc">%&gt;%</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(cat_vars), as_factor))</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Single Tree: Tuning complexity parameter, cp</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>TreeTune<span class="ot">&lt;-</span><span class="fu">train</span>(<span class="at">y=</span>data[,<span class="dv">12</span>],</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">x=</span>data[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>],</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">tuneGrid=</span><span class="fu">data.frame</span>(<span class="at">cp=</span><span class="fu">seq</span>(.<span class="dv">001</span>,.<span class="dv">05</span>,<span class="at">length.out =</span> <span class="dv">20</span>)),</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">&quot;rpart&quot;</span>,</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl=</span><span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;repeatedcv&quot;</span>,<span class="at">repeats=</span><span class="dv">10</span>,<span class="at">number=</span><span class="dv">10</span>))</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>TreeTune<span class="sc">$</span>bestTune</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(TreeTune)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Tree</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>GoodTree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(purchase <span class="sc">~</span> hhinc <span class="sc">+</span> hhsize <span class="sc">+</span> race <span class="sc">+</span> ethnicity <span class="sc">+</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                affluence <span class="sc">+</span> pres_child <span class="sc">+</span> age_head <span class="sc">+</span> educ_fem_head <span class="sc">+</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                census,<span class="at">data=</span>data,<span class="at">method=</span><span class="st">&quot;class&quot;</span>,</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                <span class="at">control=</span><span class="fu">rpart.control</span>(<span class="at">cp=</span><span class="fl">0.01389474</span>))</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(GoodTree) </span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="fu">fancyRpartPlot</span>(GoodTree)</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>onetree <span class="ot">&lt;-</span> <span class="fu">predict</span>(GoodTree, <span class="at">type=</span><span class="st">&quot;prob&quot;</span>)[,<span class="dv">2</span>]</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(GoodTree, <span class="at">type =</span><span class="dv">5</span>, <span class="at">extra=</span><span class="dv">104</span>, <span class="at">fallen.leaves=</span>T, <span class="at">main=</span><span class="st">&quot;Sample Single Tree&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;iridata.csv&quot;</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Baby,Coffee,Detergent,Paste,Sauce,Snacks,Sunscreen,Tuna</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">=</span> <span class="fu">subset</span>(data1, <span class="at">subset=</span>catno <span class="sc">==</span><span class="st">&quot;Baby&quot;</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data2)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>cat_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;hhinc&quot;</span>, <span class="st">&quot;hhsize&quot;</span>, <span class="st">&quot;race&quot;</span>, <span class="st">&quot;ethnicity&quot;</span>, <span class="st">&quot;affluence&quot;</span>, <span class="st">&quot;pres_child&quot;</span>, </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;age_head&quot;</span>, <span class="st">&quot;educ_fem_head&quot;</span>, <span class="st">&quot;census&quot;</span>, <span class="st">&quot;purchase&quot;</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span>  data2 <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(cat_vars), as_factor))</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Single Tree: Tuning complexity parameter, cp</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>TreeTune<span class="ot">&lt;-</span><span class="fu">train</span>(<span class="at">y=</span>data[,<span class="dv">12</span>],</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">x=</span>data[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>],</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">tuneGrid=</span><span class="fu">data.frame</span>(<span class="at">cp=</span><span class="fu">seq</span>(.<span class="dv">001</span>,.<span class="dv">05</span>,<span class="at">length.out =</span> <span class="dv">20</span>)),</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">&quot;rpart&quot;</span>,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl=</span><span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;repeatedcv&quot;</span>,<span class="at">repeats=</span><span class="dv">10</span>,<span class="at">number=</span><span class="dv">10</span>))</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>TreeTune<span class="sc">$</span>bestTune</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(TreeTune)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Tree</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>GoodTree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(purchase <span class="sc">~</span> hhinc <span class="sc">+</span> hhsize <span class="sc">+</span> race <span class="sc">+</span> ethnicity <span class="sc">+</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>                affluence <span class="sc">+</span> pres_child <span class="sc">+</span> age_head <span class="sc">+</span> educ_fem_head <span class="sc">+</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>                census,<span class="at">data=</span>data,<span class="at">method=</span><span class="st">&quot;class&quot;</span>,</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>                <span class="at">control=</span><span class="fu">rpart.control</span>(<span class="at">cp=</span><span class="fl">0.01389474</span>))</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(GoodTree) </span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="fu">fancyRpartPlot</span>(GoodTree)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>onetree <span class="ot">&lt;-</span> <span class="fu">predict</span>(GoodTree, <span class="at">type=</span><span class="st">&quot;prob&quot;</span>)[,<span class="dv">2</span>]</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(GoodTree, <span class="at">type =</span><span class="dv">5</span>, <span class="at">extra=</span><span class="dv">104</span>, <span class="at">fallen.leaves=</span>T, <span class="at">main=</span><span class="st">&quot;Sample Single Tree&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -3824,65 +4085,65 @@ window.Quarto = {
 <h2 data-number="6.2" class="anchored" data-anchor-id="random-forests-part-2-video-1152"><span class="header-section-number">6.2</span> Random Forests Part 2 | Video (11:52)</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/sQ870aTKqiM" title frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tuning mtry</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ForestTune <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">train</span>(<span class="at">y=</span>data[,<span class="dv">12</span>],</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">x=</span>data[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>],</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tuneGrid=</span><span class="fu">data.frame</span>(<span class="at">mtry=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method=</span><span class="st">&quot;rf&quot;</span>,<span class="at">ntree=</span><span class="dv">500</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">trControl=</span><span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;oob&quot;</span>))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>ForestTune<span class="sc">$</span>results</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ForestTune)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(<span class="at">x=</span>data[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">y=</span>data[,<span class="dv">12</span>],<span class="at">data=</span>data, </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">type=</span><span class="st">&quot;classification&quot;</span>,<span class="at">ntree=</span><span class="dv">500</span>,<span class="at">mtry=</span><span class="dv">2</span>, <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Random Forest prediction</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>rfpred <span class="ot">&lt;-</span> <span class="fu">predict</span>(m2,<span class="at">type=</span><span class="st">&quot;prob&quot;</span>)[,<span class="dv">2</span>]</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">importance</span>(m2)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(m2)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># PDP for single variable</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">partialPlot</span>(<span class="at">x=</span>m2, <span class="at">pred.data=</span>data, <span class="at">x.var=</span>hhsize, <span class="at">which.class=</span><span class="st">&quot;YES&quot;</span>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">partialPlot</span>(<span class="at">x=</span>m2, <span class="at">pred.data=</span>data, <span class="at">x.var=</span>pres_child, <span class="at">which.class=</span><span class="st">&quot;YES&quot;</span>)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Household Size</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>m2 <span class="sc">%&gt;%</span> </span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var=</span><span class="st">&quot;hhsize&quot;</span>, <span class="at">prob=</span><span class="cn">TRUE</span>, <span class="at">which.class =</span><span class="st">&quot;YES&quot;</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotPartial</span>(<span class="at">smooth=</span><span class="cn">FALSE</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="fu">expression</span>(probability),<span class="at">ylim=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.9</span>), <span class="at">main=</span><span class="fu">expression</span>(<span class="fu">Partial.Dependance.Plot</span>(Random.Forest)), <span class="at">xlab=</span><span class="fu">expression</span>(Household.Size))</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Age of Head</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>m2 <span class="sc">%&gt;%</span> </span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var=</span><span class="st">&quot;pres_child&quot;</span>, <span class="at">prob=</span><span class="cn">TRUE</span>, <span class="at">which.class =</span><span class="st">&quot;YES&quot;</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotPartial</span>(<span class="at">smooth=</span><span class="cn">TRUE</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="fu">expression</span>(probability),  <span class="at">ylim=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>), <span class="at">main=</span><span class="fu">expression</span>(<span class="fu">Partial.Dependance.Plot</span>(Random.Forest)), <span class="at">xlab=</span><span class="fu">expression</span>(Age.Head))</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co"># PDP for two variables</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>m2 <span class="sc">%&gt;%</span> </span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var=</span><span class="fu">c</span>(<span class="st">&quot;pres_child&quot;</span>, <span class="st">&quot;hhinc&quot;</span>), <span class="at">prob=</span><span class="cn">TRUE</span>, <span class="at">which.class =</span><span class="st">&quot;YES&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotPartial</span>(<span class="at">smooth=</span><span class="cn">TRUE</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="fu">expression</span>(probability), <span class="at">ylim=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>), <span class="at">main=</span><span class="fu">expression</span>(<span class="fu">Partial.Dependance.Plot</span>(Random.Forest)), <span class="at">xlab=</span><span class="fu">expression</span>(Presence.Child))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tuning mtry</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ForestTune <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">train</span>(<span class="at">y=</span>data[,<span class="dv">12</span>],</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">x=</span>data[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>],</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tuneGrid=</span><span class="fu">data.frame</span>(<span class="at">mtry=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method=</span><span class="st">&quot;rf&quot;</span>,<span class="at">ntree=</span><span class="dv">500</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">trControl=</span><span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;oob&quot;</span>))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ForestTune<span class="sc">$</span>results</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ForestTune)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(<span class="at">x=</span>data[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">y=</span>data[,<span class="dv">12</span>],<span class="at">data=</span>data, </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">type=</span><span class="st">&quot;classification&quot;</span>,<span class="at">ntree=</span><span class="dv">500</span>,<span class="at">mtry=</span><span class="dv">2</span>, <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Random Forest prediction</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>rfpred <span class="ot">&lt;-</span> <span class="fu">predict</span>(m2,<span class="at">type=</span><span class="st">&quot;prob&quot;</span>)[,<span class="dv">2</span>]</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">importance</span>(m2)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(m2)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># PDP for single variable</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="fu">partialPlot</span>(<span class="at">x=</span>m2, <span class="at">pred.data=</span>data, <span class="at">x.var=</span>hhsize, <span class="at">which.class=</span><span class="st">&quot;YES&quot;</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="fu">partialPlot</span>(<span class="at">x=</span>m2, <span class="at">pred.data=</span>data, <span class="at">x.var=</span>pres_child, <span class="at">which.class=</span><span class="st">&quot;YES&quot;</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Household Size</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>m2 <span class="sc">%&gt;%</span> </span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var=</span><span class="st">&quot;hhsize&quot;</span>, <span class="at">prob=</span><span class="cn">TRUE</span>, <span class="at">which.class =</span><span class="st">&quot;YES&quot;</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotPartial</span>(<span class="at">smooth=</span><span class="cn">FALSE</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="fu">expression</span>(probability),<span class="at">ylim=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.9</span>), <span class="at">main=</span><span class="fu">expression</span>(<span class="fu">Partial.Dependance.Plot</span>(Random.Forest)), <span class="at">xlab=</span><span class="fu">expression</span>(Household.Size))</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Age of Head</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>m2 <span class="sc">%&gt;%</span> </span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var=</span><span class="st">&quot;pres_child&quot;</span>, <span class="at">prob=</span><span class="cn">TRUE</span>, <span class="at">which.class =</span><span class="st">&quot;YES&quot;</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotPartial</span>(<span class="at">smooth=</span><span class="cn">TRUE</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="fu">expression</span>(probability),  <span class="at">ylim=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>), <span class="at">main=</span><span class="fu">expression</span>(<span class="fu">Partial.Dependance.Plot</span>(Random.Forest)), <span class="at">xlab=</span><span class="fu">expression</span>(Age.Head))</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co"># PDP for two variables</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>m2 <span class="sc">%&gt;%</span> </span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">partial</span>(<span class="at">pred.var=</span><span class="fu">c</span>(<span class="st">&quot;pres_child&quot;</span>, <span class="st">&quot;hhinc&quot;</span>), <span class="at">prob=</span><span class="cn">TRUE</span>, <span class="at">which.class =</span><span class="st">&quot;YES&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotPartial</span>(<span class="at">smooth=</span><span class="cn">TRUE</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="fu">expression</span>(probability), <span class="at">ylim=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>), <span class="at">main=</span><span class="fu">expression</span>(<span class="fu">Partial.Dependance.Plot</span>(Random.Forest)), <span class="at">xlab=</span><span class="fu">expression</span>(Presence.Child))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="random-forest-predictive-accuracy-in-iri-data" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Random Forest: Predictive Accuracy in IRI data</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1001</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> indxTrain <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> data<span class="sc">$</span>purchase,<span class="at">p =</span> <span class="fl">0.70</span>,<span class="at">list =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> training <span class="ot">&lt;-</span> data[indxTrain,]</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a> testing <span class="ot">&lt;-</span> data[<span class="sc">-</span>indxTrain,] </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>rfarrest <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(<span class="at">x=</span>training[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">y=</span>training[,<span class="dv">12</span>],<span class="at">data=</span>training, </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">type=</span><span class="st">&quot;classification&quot;</span>,<span class="at">ntree=</span><span class="dv">1000</span>,<span class="at">mtry=</span><span class="dv">2</span>, <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>rfarrest<span class="sc">$</span>confusion</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictive accuracy in training sample</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>accuracy.train <span class="ot">&lt;-</span> rfarrest <span class="sc">%&gt;%</span> <span class="fu">predict</span>(training)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(accuracy.train, training<span class="sc">$</span>purchase)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictive accuracy in testing sample </span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>accuracy.test <span class="ot">&lt;-</span> rfarrest <span class="sc">%&gt;%</span> <span class="fu">predict</span>(testing)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(accuracy.test, testing<span class="sc">$</span>purchase)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1001</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> indxTrain <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> data<span class="sc">$</span>purchase,<span class="at">p =</span> <span class="fl">0.70</span>,<span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> training <span class="ot">&lt;-</span> data[indxTrain,]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a> testing <span class="ot">&lt;-</span> data[<span class="sc">-</span>indxTrain,] </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>rfarrest <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(<span class="at">x=</span>training[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">y=</span>training[,<span class="dv">12</span>],<span class="at">data=</span>training, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">type=</span><span class="st">&quot;classification&quot;</span>,<span class="at">ntree=</span><span class="dv">1000</span>,<span class="at">mtry=</span><span class="dv">2</span>, <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>rfarrest<span class="sc">$</span>confusion</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictive accuracy in training sample</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>accuracy.train <span class="ot">&lt;-</span> rfarrest <span class="sc">%&gt;%</span> <span class="fu">predict</span>(training)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(accuracy.train, training<span class="sc">$</span>purchase)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictive accuracy in testing sample </span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>accuracy.test <span class="ot">&lt;-</span> rfarrest <span class="sc">%&gt;%</span> <span class="fu">predict</span>(testing)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(accuracy.test, testing<span class="sc">$</span>purchase)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="xgboot-conceptual-understanding" class="level1" data-number="8">
@@ -3911,59 +4172,59 @@ window.Quarto = {
 <section id="extreme-gradient-boosting-iri-data-buy-or-no-buy" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> Extreme Gradient Boosting: IRI data, Buy or NO BUy</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tuning grid</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>grid_default <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">nrounds =</span> <span class="fu">c</span>(<span class="dv">200</span>,<span class="dv">300</span>),</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">max_depth =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>), <span class="at">eta =</span> <span class="fu">c</span>(<span class="fl">0.01</span>), <span class="at">gamma =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">min_child_weight =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">25</span>),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">colsample_bytree =</span> <span class="fu">c</span>(<span class="fl">0.7</span>), <span class="at">subsample =</span> <span class="fu">c</span>(<span class="fl">0.6</span>))</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># train XGBoost model</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>xgboost2 <span class="ot">&lt;-</span> <span class="fu">train</span>(purchase <span class="sc">~</span> hhinc <span class="sc">+</span> hhsize <span class="sc">+</span> race <span class="sc">+</span> ethnicity <span class="sc">+</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                affluence <span class="sc">+</span> pres_child <span class="sc">+</span> age_head <span class="sc">+</span> educ_fem_head <span class="sc">+</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                census,<span class="at">data=</span>data, <span class="at">tuneGrid =</span> grid_default,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;xgbTree&quot;</span>, <span class="at">metric =</span><span class="st">&quot;Accuracy&quot;</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xgboost2)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>xgboost2<span class="sc">$</span>bestTune</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">xgb.plot.tree</span>(<span class="at">model =</span> xgboost2<span class="sc">$</span>finalModel,</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="at">trees =</span> <span class="dv">1</span>, <span class="at">plot_width =</span> <span class="dv">800</span>, <span class="at">plot_height =</span> <span class="dv">800</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>importance_matrix <span class="ot">&lt;-</span> <span class="fu">xgb.importance</span>(<span class="at">model =</span> xgboost2<span class="sc">$</span>finalModel)</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(importance_matrix)</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="fu">xgb.plot.importance</span>(<span class="at">importance_matrix =</span> importance_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tuning grid</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>grid_default <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">nrounds =</span> <span class="fu">c</span>(<span class="dv">200</span>,<span class="dv">300</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="at">max_depth =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>), <span class="at">eta =</span> <span class="fu">c</span>(<span class="fl">0.01</span>), <span class="at">gamma =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">min_child_weight =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">25</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="at">colsample_bytree =</span> <span class="fu">c</span>(<span class="fl">0.7</span>), <span class="at">subsample =</span> <span class="fu">c</span>(<span class="fl">0.6</span>))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># train XGBoost model</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>xgboost2 <span class="ot">&lt;-</span> <span class="fu">train</span>(purchase <span class="sc">~</span> hhinc <span class="sc">+</span> hhsize <span class="sc">+</span> race <span class="sc">+</span> ethnicity <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                affluence <span class="sc">+</span> pres_child <span class="sc">+</span> age_head <span class="sc">+</span> educ_fem_head <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                census,<span class="at">data=</span>data, <span class="at">tuneGrid =</span> grid_default,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">&quot;xgbTree&quot;</span>, <span class="at">metric =</span><span class="st">&quot;Accuracy&quot;</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xgboost2)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>xgboost2<span class="sc">$</span>bestTune</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">xgb.plot.tree</span>(<span class="at">model =</span> xgboost2<span class="sc">$</span>finalModel,</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="at">trees =</span> <span class="dv">1</span>, <span class="at">plot_width =</span> <span class="dv">800</span>, <span class="at">plot_height =</span> <span class="dv">800</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>importance_matrix <span class="ot">&lt;-</span> <span class="fu">xgb.importance</span>(<span class="at">model =</span> xgboost2<span class="sc">$</span>finalModel)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(importance_matrix)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="fu">xgb.plot.importance</span>(<span class="at">importance_matrix =</span> importance_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="extreme-gradient-boosting-nhefs-data" class="level1" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> Extreme Gradient Boosting: nhefs data</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nhefs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nhefs.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">wt_delta =</span> <span class="fu">as.numeric</span>(wt82_71 <span class="sc">&gt;</span> <span class="fu">median</span>(wt82_71)))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create tuning grid</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>grid_default <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">nrounds =</span> <span class="fu">c</span>(<span class="dv">200</span>,<span class="dv">300</span>),</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="at">max_depth =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>), <span class="at">eta =</span> <span class="fu">c</span>(<span class="fl">0.01</span>), <span class="at">gamma =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">min_child_weight =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">25</span>),</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">colsample_bytree =</span> <span class="fu">c</span>(<span class="fl">0.7</span>), <span class="at">subsample =</span> <span class="fu">c</span>(<span class="fl">0.6</span>))</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># train XGBoost model</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>xgboost1 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">factor</span>(wt_delta) <span class="sc">~</span> qsmk <span class="sc">+</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>sex <span class="sc">+</span> age <span class="sc">+</span> income <span class="sc">+</span> sbp <span class="sc">+</span> dbp <span class="sc">+</span> price71 <span class="sc">+</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>tax71 <span class="sc">+</span> race, <span class="at">data =</span> nhefs, <span class="at">tuneGrid =</span> grid_default,</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="at">method =</span> <span class="st">&quot;xgbTree&quot;</span>, <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(xgboost1)</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>xgboost1<span class="sc">$</span>bestTune</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="fu">xgb.plot.tree</span>(<span class="at">model =</span> xgboost1<span class="sc">$</span>finalModel,</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="at">trees =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">plot_width =</span> <span class="dv">800</span>, <span class="at">plot_height =</span> <span class="dv">800</span>)</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>importance_matrix <span class="ot">&lt;-</span> <span class="fu">xgb.importance</span>(<span class="at">model =</span> xgboost1<span class="sc">$</span>finalModel)</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(importance_matrix)</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="fu">xgb.plot.importance</span>(<span class="at">importance_matrix =</span> importance_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>nhefs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;nhefs.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">wt_delta =</span> <span class="fu">as.numeric</span>(wt82_71 <span class="sc">&gt;</span> <span class="fu">median</span>(wt82_71)))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create tuning grid</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>grid_default <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">nrounds =</span> <span class="fu">c</span>(<span class="dv">200</span>,<span class="dv">300</span>),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="at">max_depth =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>), <span class="at">eta =</span> <span class="fu">c</span>(<span class="fl">0.01</span>), <span class="at">gamma =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">min_child_weight =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">25</span>),</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="at">colsample_bytree =</span> <span class="fu">c</span>(<span class="fl">0.7</span>), <span class="at">subsample =</span> <span class="fu">c</span>(<span class="fl">0.6</span>))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># train XGBoost model</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>xgboost1 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">factor</span>(wt_delta) <span class="sc">~</span> qsmk <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>sex <span class="sc">+</span> age <span class="sc">+</span> income <span class="sc">+</span> sbp <span class="sc">+</span> dbp <span class="sc">+</span> price71 <span class="sc">+</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>tax71 <span class="sc">+</span> race, <span class="at">data =</span> nhefs, <span class="at">tuneGrid =</span> grid_default,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="at">method =</span> <span class="st">&quot;xgbTree&quot;</span>, <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(xgboost1)</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>xgboost1<span class="sc">$</span>bestTune</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="fu">xgb.plot.tree</span>(<span class="at">model =</span> xgboost1<span class="sc">$</span>finalModel,</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="at">trees =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">plot_width =</span> <span class="dv">800</span>, <span class="at">plot_height =</span> <span class="dv">800</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>importance_matrix <span class="ot">&lt;-</span> <span class="fu">xgb.importance</span>(<span class="at">model =</span> xgboost1<span class="sc">$</span>finalModel)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(importance_matrix)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="fu">xgb.plot.importance</span>(<span class="at">importance_matrix =</span> importance_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
