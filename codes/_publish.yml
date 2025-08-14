@@ -1,0 +1,4 @@
+- source: ML-P2a-Supervised Machine Learning Algorithms.qmd
+  quarto-pub:
+    - id: 1b3964fc-6425-4f7c-a20f-b85a7f0bf180
+      url: https://jmjung.quarto.pub/supervised-machine-learning
